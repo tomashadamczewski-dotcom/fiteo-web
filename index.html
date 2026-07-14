@@ -1,0 +1,402 @@
+<!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Fiteo — powiedz, co zjadłeś. Resztę policzy Fiteo.</title>
+<meta name="description" content="Licznik kalorii, do którego mówisz. Opisz posiłek normalnie — Fiteo szacuje kalorie i makro, pokazuje bilans na żywo. Beta na iPhone.">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fiteo — licznik kalorii, do którego mówisz">
+<meta property="og:description" content="Powiedz, co zjadłeś. Fiteo szacuje kalorie i makro oraz pokazuje bilans na żywo. Dołącz do bety.">
+<meta property="og:image" content="icon.png">
+<meta name="twitter:card" content="summary">
+<style>
+  :root {
+    --bg:#F5F5F7; --surface:#FFFFFF; --surface-2:#FBFBFD; --ink:#1C1C1E; --muted:#6E6E73; --hair:#E5E5EA;
+    --accent:#0A84FF; --accent-press:#0060DF; --on-accent:#fff; --accent-soft:#E6F0FF; --btn-bg:#0060DF;
+    --p:#34C759; --f:#FF9500; --c:#FFCC00;
+    --shadow:0 1px 2px rgba(0,0,0,.05),0 10px 30px -12px rgba(20,30,50,.18);
+    --maxw:1080px; --font:-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  @media (prefers-color-scheme: dark){:root{--bg:#000;--surface:#1C1C1E;--surface-2:#141416;--ink:#F5F5F7;--muted:#98989F;--hair:#2C2C2E;--accent:#0A84FF;--accent-press:#409CFF;--accent-soft:#0E2136;--btn-bg:#0A84FF;--shadow:0 1px 2px rgba(0,0,0,.5),0 16px 38px -14px rgba(0,0,0,.6);}}
+  :root[data-theme="light"]{--bg:#F5F5F7;--surface:#fff;--surface-2:#FBFBFD;--ink:#1C1C1E;--muted:#6E6E73;--hair:#E5E5EA;--accent:#0A84FF;--accent-soft:#E6F0FF;--shadow:0 1px 2px rgba(0,0,0,.05),0 10px 30px -12px rgba(20,30,50,.18);}
+  :root[data-theme="dark"]{--bg:#000;--surface:#1C1C1E;--surface-2:#141416;--ink:#F5F5F7;--muted:#98989F;--hair:#2C2C2E;--accent:#0A84FF;--accent-soft:#0E2136;--btn-bg:#0A84FF;--accent-press:#409CFF;--shadow:0 1px 2px rgba(0,0,0,.5),0 16px 38px -14px rgba(0,0,0,.6);}
+  *{box-sizing:border-box;} html,body{margin:0;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.021em;line-height:1.07;text-wrap:balance;}
+  p{margin:0;} a{color:inherit;}
+  .eyebrow{font-size:.8rem;font-weight:600;color:var(--accent-press);}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:12px 18px;flex-wrap:wrap;padding:18px 0;}
+  .navlangs{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end;}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.24rem;letter-spacing:-.02em;}
+  .logo{width:30px;height:30px;border-radius:8px;object-fit:cover;box-shadow:var(--shadow);display:block;}
+  .nav-cta{font-weight:600;font-size:.92rem;text-decoration:none;padding:9px 16px;border-radius:980px;background:var(--accent);color:var(--on-accent);white-space:nowrap;}
+  .btn{font-weight:600;font-size:1rem;text-decoration:none;padding:13px 22px;border-radius:980px;border:1.5px solid transparent;display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-family:var(--font);}
+  .btn-primary{background:var(--btn-bg);color:var(--on-accent);box-shadow:var(--shadow);}
+  .btn-ghost{background:transparent;color:var(--accent-press);border-color:color-mix(in srgb,var(--accent-press) 40%,transparent);}
+  .js-form::after{content:" ↗";font-weight:600;opacity:.8;}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;}
+  .microcopy{margin-top:13px;font-size:.85rem;color:var(--muted);}
+
+  .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding:44px 0 40px;}
+  .hero h1{font-size:clamp(2.3rem,5vw,3.7rem);} .hero .sub{margin-top:18px;font-size:1.14rem;color:var(--muted);max-width:34ch;}
+  .herophoto{margin:0;border-radius:24px;overflow:hidden;aspect-ratio:3/2;box-shadow:0 30px 60px -24px rgba(20,30,50,.4),0 0 0 1px var(--hair);} .herophoto img{display:block;width:100%;height:100%;object-fit:cover;object-position:52% 42%;}
+
+  .langbar{padding:20px 0 40px;} .langbar .lbl{display:block;font-size:.82rem;font-weight:600;color:var(--muted);margin-bottom:10px;}
+  .langrow{display:flex;gap:8px;flex-wrap:wrap;}
+  .langpill{font-size:.85rem;font-weight:600;color:var(--muted);background:var(--surface);border:1px solid var(--hair);border-radius:980px;padding:0 15px;min-height:44px;display:inline-flex;align-items:center;cursor:pointer;font-family:var(--font);transition:background .15s,color .15s,border-color .15s;}
+  .langpill:hover{border-color:var(--accent-press);color:var(--accent-press);}
+  .langpill.active{background:var(--btn-bg);color:var(--on-accent);border-color:var(--btn-bg);}
+  .langpill:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+
+  .gallery{padding:22px 0 60px;} .gallery-head{margin:0 auto 26px;max-width:44ch;text-align:center;} .gallery-head h2{font-size:clamp(1.4rem,3vw,2rem);} .gallery-head p{margin-top:8px;color:var(--muted);}
+  .gwrap{overflow:hidden;padding:4px 0;}
+  .gtrack{display:flex;gap:16px;will-change:transform;}
+  .gcard{flex:0 0 calc((100% - 32px)/3);margin:0;}
+  .gframe{border-radius:26px;overflow:hidden;background:#000;aspect-ratio:9/16;box-shadow:0 22px 44px -20px rgba(0,0,0,.5),0 0 0 1px rgba(0,0,0,.06);}
+  .gframe img{display:block;width:100%;height:100%;object-fit:cover;object-position:top center;}
+  .gcard figcaption{margin-top:10px;text-align:center;font-size:.8rem;font-weight:600;color:var(--muted);}
+  .gdots{margin-top:18px;}
+
+  /* auto-advancing showcase: scenes stacked in a fixed-height stage; the active one cross-fades in
+     (film from left, text from right) on a timer or dot click — no scroll-jacking. */
+  .showcase{position:relative;padding:16px 0 34px;}
+  .showcase-sticky{position:relative;height:min(84vh,720px);overflow:hidden;}
+  .scene{position:absolute;inset:0;display:grid;place-items:center;opacity:0;pointer-events:none;z-index:1;transition:opacity .55s ease;}
+  .scene.active{opacity:1;pointer-events:auto;z-index:2;}
+  .stage-inner{display:grid;grid-template-columns:minmax(230px,300px) 1fr;gap:56px;align-items:center;width:100%;max-width:var(--maxw);padding:0 24px;margin:0 auto;}
+  .stage-video{width:100%;transform:translateX(-60%);opacity:0;transition:transform .6s cubic-bezier(.2,.7,.2,1),opacity .6s;will-change:transform,opacity;}
+  .stage-text{transform:translateX(60%);opacity:0;transition:transform .6s cubic-bezier(.2,.7,.2,1),opacity .6s;will-change:transform,opacity;}
+  .scene.active .stage-video,.scene.active .stage-text{transform:none;opacity:1;}
+  .dots{display:flex;gap:9px;justify-content:center;margin-top:24px;}
+  .dot{position:relative;width:9px;height:9px;border-radius:50%;border:none;background:var(--hair);cursor:pointer;padding:0;transition:background .25s,width .25s;}
+  .dot::after{content:"";position:absolute;inset:-12px;}
+  .dot.on{background:var(--accent);width:26px;border-radius:6px;}
+  .dot:focus-visible{outline:3px solid var(--accent);outline-offset:3px;}
+  .phonewrap{position:relative;width:100%;max-width:300px;margin:0 auto;aspect-ratio:9/16;border-radius:34px;overflow:hidden;background:#0b0b0d;box-shadow:0 34px 70px -24px rgba(0,0,0,.55),0 0 0 1px var(--hair);}
+  .phonewrap video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#0b0b0d;}
+  .phonewrap .track{display:none;}
+  .stage-text .eyebrow{font-size:.85rem;} .stage-text h2{font-size:clamp(1.8rem,3.6vw,2.7rem);margin-top:10px;} .stage-text p{margin-top:14px;color:var(--muted);font-size:1.1rem;max-width:36ch;}
+
+  .section{padding:84px 0;border-top:1px solid var(--hair);}
+  .section-head{max-width:44ch;margin-bottom:38px;} .section-head h2{font-size:clamp(1.7rem,3.4vw,2.4rem);} .section-head p{margin-top:12px;color:var(--muted);}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .step{background:var(--surface);border:1px solid var(--hair);border-radius:18px;padding:22px;box-shadow:var(--shadow);}
+  .step .n{font-weight:700;color:var(--accent);font-size:.86rem;} .step h3{font-size:1.24rem;margin-top:9px;} .step p{margin-top:7px;color:var(--muted);font-size:.97rem;}
+
+  .waitlist{background:var(--surface);border:1px solid var(--hair);border-radius:22px;padding:38px;box-shadow:var(--shadow);display:grid;grid-template-columns:1.1fr .9fr;gap:38px;align-items:center;}
+  .waitlist h2{font-size:clamp(1.55rem,3vw,2.1rem);} .waitlist p{margin-top:11px;color:var(--muted);}
+  .waitgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .leadcard{background:var(--surface);border:1px solid var(--hair);border-radius:20px;padding:26px;box-shadow:var(--shadow);position:relative;}
+  .leadcard h3{font-size:1.3rem;margin-top:8px;} .leadcard p{margin-top:8px;color:var(--muted);font-size:.97rem;}
+  .leadrow{display:flex;gap:10px;margin-top:16px;}
+  .lead-email{flex:1;min-width:0;padding:13px 16px;border-radius:980px;border:1.5px solid var(--hair);background:var(--surface-2);color:var(--ink);font-size:1rem;font-family:var(--font);}
+  .lead-email:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-color:var(--accent);}
+  .consent{display:flex;gap:8px;align-items:flex-start;margin-top:12px;font-size:.8rem;color:var(--muted);line-height:1.45;} .consent input{margin-top:3px;flex:none;width:16px;height:16px;} .consent a{color:var(--accent-press);}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;}
+  .note{margin-top:12px;font-size:.85rem;} .thanks-msg{color:var(--accent-press);font-weight:600;} .err-msg{color:#D1453B;font-weight:600;}
+  .foot{border-top:1px solid var(--hair);padding:32px 0 46px;color:var(--muted);font-size:.9rem;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;} .foot a{text-decoration:none;color:var(--muted);} .foot .links{display:flex;gap:20px;flex-wrap:wrap;}
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0)*90ms);} .reveal.in{opacity:1;transform:none;}
+  .btn:focus-visible{outline:3px solid var(--accent);outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){.reveal{animation:none;opacity:1;transform:none;transition:none;} .showcase-sticky{position:static;height:auto;overflow:visible;} .scene{position:relative;inset:auto;opacity:1!important;visibility:visible!important;padding:40px 0;transition:none;} .scene .stage-video,.scene .stage-text{opacity:1!important;transform:none!important;transition:none;} .dots{display:none;}}
+  @media (max-width:920px){
+    .stage-inner{grid-template-columns:minmax(190px,240px) 1fr;gap:30px;}
+    .stage-text h2{font-size:clamp(1.4rem,3.4vw,2rem);}.stage-text p{font-size:1rem;}
+    .hero{gap:40px;}
+    .gcard{flex-basis:calc((100% - 16px)/2);}
+  }
+  @media (max-width:680px){
+    .navlangs{width:100%;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;-webkit-overflow-scrolling:touch;padding-bottom:2px;}
+    .hero{grid-template-columns:1fr;gap:34px;padding-bottom:24px;}.hero .sub{max-width:none;}
+    .showcase-sticky{position:static;height:auto;overflow:visible;}
+    .scene{position:relative;inset:auto;opacity:1!important;visibility:visible!important;padding:52px 0;transition:none;}
+    .scene + .scene{border-top:1px solid var(--hair);}
+    .stage-inner{grid-template-columns:1fr;gap:26px;text-align:center;}
+    .scene .stage-video,.scene .stage-text{transform:none!important;opacity:1!important;transition:none;}
+    .dots{display:none;}
+    .stage-text p{max-width:none;}.phonewrap{max-width:230px;margin:0 auto;}
+    .steps{grid-template-columns:1fr;}.waitgrid{grid-template-columns:1fr;}.section{padding:60px 0;}
+    .gcard{flex-basis:78%;}
+  }
+</style></head>
+<body>
+  <div class="wrap">
+    <nav class="nav"><div class="brand"><img class="logo" src="icon.png" alt=""> Fiteo</div><div class="langrow navlangs" role="group" aria-label="Wybór języka / Language">
+      <button class="langpill" data-lang="pl">Polski</button>
+      <button class="langpill" data-lang="en">English</button>
+      <button class="langpill" data-lang="es">Español</button>
+      <button class="langpill" data-lang="pt">Português</button>
+      <button class="langpill" data-lang="it">Italiano</button>
+      <button class="langpill" data-lang="fr">Français</button>
+      <button class="langpill" data-lang="de">Deutsch</button>
+    </div></nav>
+    <header class="hero">
+      <div>
+        <span class="eyebrow" data-i18n="hero_eyebrow">Licznik kalorii, do którego mówisz</span>
+        <h1 data-i18n="hero_h1">Powiedz, co zjadłeś. Resztę policzy Fiteo.</h1>
+        <p class="sub" data-i18n="hero_sub">Bez ważenia, bez skanowania kodów, bez szukania w bazie. Opisujesz posiłek normalnie — jak koledze — a Fiteo szacuje kalorie i makro.</p>
+        <div class="cta-row"><a class="btn btn-primary js-form" href="https://forms.gle/pG5ZUVBNDkghYqMh7" target="_blank" rel="noopener" data-i18n="hero_cta1">Dołącz do bety · iPhone</a><a class="btn btn-ghost" href="#waitlist" data-i18n="hero_cta2">Nie teraz? Zostaw maila</a></div>
+        <p class="microcopy" data-i18n="hero_micro">Za darmo w becie · na razie iPhone (TestFlight)</p>
+      </div>
+      <figure class="herophoto"><img src="hero.jpg" alt="Ktoś sprawdza swój bilans kalorii w Fiteo przy stole"></figure>
+    </header>
+  </div>
+
+
+  <div class="wrap"><section class="gallery reveal">
+    <div class="gallery-head"><h2 data-i18n="gallery_h">Lokalne potrawy — po Twojemu.</h2><p data-i18n="gallery_p">Zaloguj to, co naprawdę jesz — od paelli po schabowego.</p></div>
+    <div class="gwrap">
+      <div class="gtrack">
+        <figure class="gcard"><div class="gframe"><img src="shot_pl.jpg" alt="Fiteo po polsku — kurczak z ryżem i surówką" loading="lazy"></div><figcaption>Polski</figcaption></figure>
+        <figure class="gcard"><div class="gframe"><img src="shot_es.jpg" alt="Fiteo en español — paella de marisco" loading="lazy"></div><figcaption>Español</figcaption></figure>
+        <figure class="gcard"><div class="gframe"><img src="shot_it.jpg" alt="Fiteo in italiano — pasta al pomodoro" loading="lazy"></div><figcaption>Italiano</figcaption></figure>
+        <figure class="gcard"><div class="gframe"><img src="shot_pt.jpg" alt="Fiteo em português — bacalhau à brás" loading="lazy"></div><figcaption>Português</figcaption></figure>
+        <figure class="gcard"><div class="gframe"><img src="shot_fr.jpg" alt="Fiteo en français — poulet rôti" loading="lazy"></div><figcaption>Français</figcaption></figure>
+        <figure class="gcard"><div class="gframe"><img src="shot_de.jpg" alt="Fiteo auf Deutsch — Schnitzel mit Kartoffelsalat" loading="lazy"></div><figcaption>Deutsch</figcaption></figure>
+      </div>
+    </div>
+    <div class="dots gdots" role="tablist" aria-label="Język zrzutu">
+      <button class="dot on" data-g="0" aria-label="Polski" aria-selected="true"></button>
+      <button class="dot" data-g="1" aria-label="Español" aria-selected="false"></button>
+      <button class="dot" data-g="2" aria-label="Italiano" aria-selected="false"></button>
+      <button class="dot" data-g="3" aria-label="Português" aria-selected="false"></button>
+      <button class="dot" data-g="4" aria-label="Français" aria-selected="false"></button>
+      <button class="dot" data-g="5" aria-label="Deutsch" aria-selected="false"></button>
+    </div>
+  </section></div>
+
+  <section class="showcase"><div class="showcase-sticky">
+
+    <!-- Scene 0 — calories IN (phone, dictation) -->
+    <div class="scene"><div class="stage-inner">
+      <div class="stage-video"><div class="phonewrap"><video muted playsinline preload="auto" poster="phone.jpg" src="phone.mp4"></video><div class="track"><div class="playhead"></div></div></div></div>
+      <div class="stage-text">
+        <span class="eyebrow" data-i18n="s1_eyebrow">Przyjęcie kalorii</span>
+        <h2 data-i18n="s1_h">Mówisz, co zjadłeś.</h2>
+        <p data-i18n="s1_p">Bez wpisywania, bez zdjęć. Opisujesz posiłek po swojemu — konwersacyjny model zamienia to na kalorie i makro.</p>
+      </div>
+    </div></div>
+
+    <!-- Scene 1 — calories OUT (cycling, Apple Health) -->
+    <div class="scene"><div class="stage-inner">
+      <div class="stage-video"><div class="phonewrap"><video muted playsinline preload="auto" poster="cycling.jpg" src="cycling.mp4"></video><div class="track"><div class="playhead"></div></div></div></div>
+      <div class="stage-text">
+        <span class="eyebrow" data-i18n="s2_eyebrow">Wydatek kalorii</span>
+        <h2 data-i18n="s2_h">Fiteo widzi Twój trening.</h2>
+        <p data-i18n="s2_p">Spalone z aktywności wchodzą do bilansu z Apple Health — automatycznie, bez wpisywania.</p>
+      </div>
+    </div></div>
+
+    <!-- Scene 2 — the balance (screen) = USP -->
+    <div class="scene"><div class="stage-inner">
+      <div class="stage-video"><div class="phonewrap"><video muted playsinline preload="auto" poster="screen.jpg" src="screen.mp4"></video><div class="track"><div class="playhead"></div></div></div></div>
+      <div class="stage-text">
+        <span class="eyebrow" data-i18n="s3_eyebrow">Bilans na żywo</span>
+        <h2 data-i18n="s3_h">Zawsze wiesz, ile kalorii możesz jeszcze zjeść.</h2>
+        <p data-i18n="s3_p">Przyjęte minus spalone, względem celu na dziś — tyle kalorii Ci zostaje. Na bieżąco, na jednym ekranie.</p>
+      </div>
+    </div></div>
+
+  </div>
+    <div class="dots" role="tablist" aria-label="Sceny">
+      <button class="dot on" data-scene="0" aria-label="Scena 1: przyjęcie kalorii" aria-selected="true"></button>
+      <button class="dot" data-scene="1" aria-label="Scena 2: wydatek kalorii" aria-selected="false"></button>
+      <button class="dot" data-scene="2" aria-label="Scena 3: bilans na żywo" aria-selected="false"></button>
+    </div>
+  </section>
+
+  <section class="section"><div class="wrap">
+    <div class="section-head reveal"><span class="eyebrow" data-i18n="steps_eyebrow">Jak to działa</span><h2 data-i18n="steps_h">Trzy sekundy zamiast trzech minut.</h2></div>
+    <div class="steps">
+      <div class="step reveal" style="--i:0"><div class="n" data-i18n="st1_n">Opowiedz</div><h3 data-i18n="st1_h">Wpisz albo powiedz</h3><p data-i18n="st1_p">Całym zdaniem, z ilościami albo bez. „Owsianka z bananem, było tego sporo."</p></div>
+      <div class="step reveal" style="--i:1"><div class="n" data-i18n="st2_n">Fiteo liczy</div><h3 data-i18n="st2_h">AI szacuje</h3><p data-i18n="st2_p">Kalorie i makro — bez ważenia i gramów. Wielokrotności też („3× kanapka").</p></div>
+      <div class="step reveal" style="--i:2"><div class="n" data-i18n="st3_n">Widzisz bilans</div><h3 data-i18n="st3_h">Na żywo</h3><p data-i18n="st3_p">Przyjęte vs spalone (z Apple Health), z celem na dziś.</p></div>
+    </div>
+  </div></section>
+
+  <section class="section" id="waitlist"><div class="wrap">
+    <div class="section-head reveal" style="text-align:center;margin:0 auto 34px;max-width:44ch;">
+      <span class="eyebrow" data-i18n="wait_eyebrow">Jeszcze nie teraz?</span>
+      <h2 data-i18n="wait_h">Zostaw maila — dam znać.</h2>
+    </div>
+    <div class="waitgrid">
+      <form class="leadcard reveal" data-segment="stable" novalidate>
+        <span class="eyebrow" data-i18n="beta_eyebrow">iPhone</span>
+        <h3 data-i18n="stable_h">Masz iPhone, wolisz stabilną wersję?</h3>
+        <p data-i18n="stable_p">Damy Ci znać, gdy Fiteo trafi do App Store.</p>
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="leadrow"><input class="lead-email" type="email" inputmode="email" required placeholder="twój@email.com" data-i18n-ph="form_ph" aria-label="e-mail"><button class="btn btn-primary" type="submit" data-i18n="form_btn">Powiadom mnie</button></div>
+        <label class="consent"><input class="lead-consent" type="checkbox" required> <span><span data-i18n="consent_label">Zgadzam się na kontakt mailowy w sprawie premiery.</span> <a href="https://tomashadamczewski-dotcom.github.io/fiteo-privacy/privacy.html" target="_blank" rel="noopener" data-i18n="foot_privacy">Prywatność</a></span></label>
+        <p class="note thanks-msg" hidden data-i18n="form_thanks">Dzięki! Odezwę się na premierę. 🙌</p>
+        <p class="note err-msg" hidden data-i18n="form_err">Coś poszło nie tak — spróbuj ponownie.</p>
+      </form>
+      <form class="leadcard reveal" data-segment="android" novalidate>
+        <span class="eyebrow" data-i18n="android_eyebrow">Android</span>
+        <h3 data-i18n="android_h">Fiteo rusza najpierw na iPhone'a.</h3>
+        <p data-i18n="android_p">Wersja na Androida jest w planach. Zostaw kontakt — dam znać, gdy będzie gotowa.</p>
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="leadrow"><input class="lead-email" type="email" inputmode="email" required placeholder="twój@email.com" data-i18n-ph="form_ph" aria-label="e-mail"><button class="btn btn-primary" type="submit" data-i18n="form_btn">Powiadom mnie</button></div>
+        <label class="consent"><input class="lead-consent" type="checkbox" required> <span><span data-i18n="consent_label">Zgadzam się na kontakt mailowy w sprawie premiery.</span> <a href="https://tomashadamczewski-dotcom.github.io/fiteo-privacy/privacy.html" target="_blank" rel="noopener" data-i18n="foot_privacy">Prywatność</a></span></label>
+        <p class="note thanks-msg" hidden data-i18n="form_thanks">Dzięki! Odezwę się na premierę. 🙌</p>
+        <p class="note err-msg" hidden data-i18n="form_err">Coś poszło nie tak — spróbuj ponownie.</p>
+      </form>
+    </div>
+  </div></section>
+
+  <section class="section" id="beta"><div class="wrap reveal" style="text-align:center;max-width:640px;">
+    <span class="eyebrow" data-i18n="beta_eyebrow">iPhone</span>
+    <h2 style="font-size:clamp(1.8rem,3.6vw,2.5rem);margin-top:8px;" data-i18n="beta_h">Wejdź do bety i licz kalorie, po prostu mówiąc.</h2>
+    <p style="color:var(--muted);margin-top:13px;" data-i18n="beta_p">Kilka minut dziennie, szczery feedback. Za darmo w trakcie testów.</p>
+    <div class="cta-row" style="justify-content:center;"><a class="btn btn-primary js-form" href="https://forms.gle/pG5ZUVBNDkghYqMh7" target="_blank" rel="noopener" data-i18n="beta_cta">Zapisz się do bety</a></div>
+  </div></section>
+
+  <div class="wrap"><footer class="foot"><div class="brand"><img class="logo" src="icon.png" alt=""> Fiteo</div><div class="links"><a href="https://tomashadamczewski-dotcom.github.io/fiteo-privacy/privacy.html" target="_blank" rel="noopener" data-i18n="foot_privacy">Prywatność</a><a href="#beta" data-i18n="foot_beta">Beta (iPhone)</a><a href="#waitlist" data-i18n="foot_android">Android</a></div><div>© 2026 Fiteo</div></footer></div>
+
+<script>
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---- i18n: whole page localizes; language pills double as the switcher and swap the hero's regional dish ----
+  var I18N = {
+    pl:{nav_cta:"Dołącz do bety",hero_eyebrow:"Licznik kalorii, do którego mówisz",hero_h1:"Powiedz, co zjadłeś. Resztę policzy Fiteo.",hero_sub:"Bez ważenia, bez skanowania kodów, bez szukania w bazie. Opisujesz posiłek normalnie — jak koledze — a Fiteo szacuje kalorie i makro.",hero_cta1:"Dołącz do bety · iPhone",hero_cta2:"Nie teraz? Zostaw maila",hero_micro:"Za darmo w becie · na razie iPhone (TestFlight)",langs_label:"Fiteo mówi Twoim językiem:",gallery_h:"Lokalne potrawy — po Twojemu.",gallery_p:"Zaloguj to, co naprawdę jesz — od paelli po schabowego.",demo_input:"Opowiedz, co zjadłeś — normalnie…",demo_dish:"Kurczak z ryżem i surówką",demo_badge:"pewne",macro_p:"B",macro_f:"T",macro_c:"W",s1_eyebrow:"Przyjęcie kalorii",s1_h:"Mówisz, co zjadłeś.",s1_p:"Bez wpisywania, bez zdjęć. Opisujesz posiłek po swojemu — konwersacyjny model zamienia to na kalorie i makro.",s2_eyebrow:"Wydatek kalorii",s2_h:"Fiteo widzi Twój trening.",s2_p:"Spalone z aktywności wchodzą do bilansu z Apple Health — automatycznie, bez wpisywania.",s3_eyebrow:"Bilans na żywo",s3_h:"Zawsze wiesz, ile kalorii możesz jeszcze zjeść.",s3_p:"Przyjęte minus spalone, względem celu na dziś — tyle kalorii Ci zostaje. Na bieżąco, na jednym ekranie.",steps_eyebrow:"Jak to działa",steps_h:"Trzy sekundy zamiast trzech minut.",st1_n:"Opowiedz",st1_h:"Wpisz albo powiedz",st1_p:"Całym zdaniem, z ilościami albo bez. „Owsianka z bananem, było tego sporo.”",st2_n:"Fiteo liczy",st2_h:"AI szacuje",st2_p:"Kalorie i makro — bez ważenia i gramów. Wielokrotności też („3× kanapka”).",st3_n:"Widzisz bilans",st3_h:"Na żywo",st3_p:"Przyjęte vs spalone (z Apple Health), z celem na dziś.",android_eyebrow:"Android",android_h:"Fiteo rusza najpierw na iPhone'a.",android_p:"Wersja na Androida jest w planach. Zostaw kontakt w formularzu — dam znać, gdy będzie gotowa.",android_btn:"Zapisz się na listę Android",form_ph:"twój@email.com",form_btn:"Powiadom mnie",form_note:"Bez spamu. Jeden mail, gdy Android wystartuje.",form_thanks:"Dzięki! Odezwę się, gdy ruszy Android. 🙌",beta_eyebrow:"iPhone",beta_h:"Wejdź do bety i licz kalorie, po prostu mówiąc.",beta_p:"Kilka minut dziennie, szczery feedback. Za darmo w trakcie testów.",beta_cta:"Zapisz się do bety",wait_eyebrow:"Jeszcze nie teraz?",wait_h:"Zostaw maila — dam znać.",stable_h:"Masz iPhone, wolisz stabilną wersję?",stable_p:"Damy Ci znać, gdy Fiteo trafi do App Store.",consent_label:"Zgadzam się na kontakt mailowy w sprawie premiery.",form_err:"Coś poszło nie tak — spróbuj ponownie.",foot_privacy:"Prywatność",foot_beta:"Beta (iPhone)",foot_android:"Android"},
+    en:{nav_cta:"Join the beta",hero_eyebrow:"The calorie tracker you talk to",hero_h1:"Say what you ate. Fiteo counts the rest.",hero_sub:"No weighing, no barcode scanning, no database search. Describe your meal like you'd tell a friend — Fiteo estimates the calories and macros.",hero_cta1:"Join the beta · iPhone",hero_cta2:"Not now? Leave your email",hero_micro:"Free during beta · iPhone only for now (TestFlight)",langs_label:"Fiteo speaks your language:",gallery_h:"Local food, in your language.",gallery_p:"Log what you actually eat — from paella to schnitzel.",demo_input:"Tell me what you ate — just talk…",demo_dish:"Chicken with rice and salad",demo_badge:"confident",macro_p:"P",macro_f:"F",macro_c:"C",s1_eyebrow:"Calories in",s1_h:"Just say what you ate.",s1_p:"No typing, no photos. Describe your meal your way — a conversational model turns it into calories and macros.",s2_eyebrow:"Calories out",s2_h:"Fiteo sees your workout.",s2_p:"Calories burned flow into your balance from Apple Health — automatically, nothing to log.",s3_eyebrow:"Live balance",s3_h:"Always know how many calories you can still eat.",s3_p:"Eaten minus burned, against today's goal — that's what you have left. Live, on one screen.",steps_eyebrow:"How it works",steps_h:"Three seconds instead of three minutes.",st1_n:"Say it",st1_h:"Type or talk",st1_p:"A full sentence, with amounts or without. “Oatmeal with a banana, quite a lot of it.”",st2_n:"Fiteo counts",st2_h:"AI estimates",st2_p:"Calories and macros — no weighing, no grams. Multiples too (“3× sandwich”).",st3_n:"See the balance",st3_h:"Live",st3_p:"Eaten vs burned (from Apple Health), against today's goal.",android_eyebrow:"Android",android_h:"Fiteo starts on iPhone first.",android_p:"The Android version is planned. Leave your details in the form — I'll let you know when it's ready.",android_btn:"Join the Android list",form_ph:"you@email.com",form_btn:"Notify me",form_note:"No spam. One email when Android launches.",form_thanks:"Thanks! I'll reach out when Android goes live. 🙌",beta_eyebrow:"iPhone",beta_h:"Join the beta and track calories just by talking.",beta_p:"A few minutes a day, honest feedback. Free during testing.",beta_cta:"Sign up for the beta",wait_eyebrow:"Not yet?",wait_h:"Leave your email — I'll let you know.",stable_h:"On iPhone, prefer the stable version?",stable_p:"We'll let you know when Fiteo hits the App Store.",consent_label:"I agree to be emailed about the launch.",form_err:"Something went wrong — please try again.",foot_privacy:"Privacy",foot_beta:"Beta (iPhone)",foot_android:"Android"},
+    es:{nav_cta:"Únete a la beta",hero_eyebrow:"El contador de calorías al que le hablas",hero_h1:"Di qué comiste. Fiteo cuenta el resto.",hero_sub:"Sin pesar, sin escanear códigos, sin buscar en bases de datos. Describe tu comida como se lo contarías a un amigo — Fiteo estima las calorías y los macros.",hero_cta1:"Únete a la beta · iPhone",hero_cta2:"¿Ahora no? Deja tu correo",hero_micro:"Gratis durante la beta · solo iPhone por ahora (TestFlight)",langs_label:"Fiteo habla tu idioma:",gallery_h:"Comida local, en tu idioma.",gallery_p:"Registra lo que comes de verdad — de la paella al schnitzel.",demo_input:"Cuéntame qué comiste — habla normal…",demo_dish:"Paella de marisco",demo_badge:"seguro",macro_p:"P",macro_f:"G",macro_c:"C",s1_eyebrow:"Calorías que entran",s1_h:"Solo di qué comiste.",s1_p:"Sin escribir, sin fotos. Describe tu comida a tu manera — un modelo conversacional lo convierte en calorías y macros.",s2_eyebrow:"Calorías que gastas",s2_h:"Fiteo ve tu entrenamiento.",s2_p:"Las calorías quemadas entran en tu balance desde Apple Health — automáticamente, sin registrar nada.",s3_eyebrow:"Balance en vivo",s3_h:"Siempre sabes cuántas calorías te quedan por comer.",s3_p:"Ingerido menos quemado, frente a tu objetivo de hoy — eso es lo que te queda. En vivo, en una sola pantalla.",steps_eyebrow:"Cómo funciona",steps_h:"Tres segundos en vez de tres minutos.",st1_n:"Dilo",st1_h:"Escribe o habla",st1_p:"Una frase entera, con cantidades o sin ellas. «Avena con plátano, bastante cantidad.»",st2_n:"Fiteo cuenta",st2_h:"La IA estima",st2_p:"Calorías y macros — sin pesar, sin gramos. También múltiplos («3× sándwich»).",st3_n:"Ves el balance",st3_h:"En vivo",st3_p:"Ingerido vs quemado (de Apple Health), frente al objetivo de hoy.",android_eyebrow:"Android",android_h:"Fiteo empieza primero en iPhone.",android_p:"La versión Android está planeada. Deja tus datos en el formulario — te aviso cuando esté lista.",android_btn:"Apúntate a la lista de Android",form_ph:"tú@email.com",form_btn:"Avísame",form_note:"Sin spam. Un correo cuando Android salga.",form_thanks:"¡Gracias! Te escribiré cuando Android esté disponible. 🙌",beta_eyebrow:"iPhone",beta_h:"Únete a la beta y cuenta calorías solo hablando.",beta_p:"Unos minutos al día, feedback sincero. Gratis durante las pruebas.",beta_cta:"Apúntate a la beta",wait_eyebrow:"¿Todavía no?",wait_h:"Déjame tu correo — te aviso.",stable_h:"¿iPhone y prefieres la versión estable?",stable_p:"Te avisamos cuando Fiteo llegue a la App Store.",consent_label:"Acepto recibir un correo sobre el lanzamiento.",form_err:"Algo salió mal — inténtalo de nuevo.",foot_privacy:"Privacidad",foot_beta:"Beta (iPhone)",foot_android:"Android"},
+    pt:{nav_cta:"Entrar na beta",hero_eyebrow:"O contador de calorias com quem você fala",hero_h1:"Diga o que comeu. O Fiteo conta o resto.",hero_sub:"Sem pesar, sem escanear códigos, sem procurar em bases de dados. Descreva a refeição como contaria a um amigo — o Fiteo estima as calorias e os macros.",hero_cta1:"Entrar na beta · iPhone",hero_cta2:"Agora não? Deixe o e-mail",hero_micro:"Grátis na beta · só iPhone por agora (TestFlight)",langs_label:"O Fiteo fala a sua língua:",gallery_h:"Comida local, na sua língua.",gallery_p:"Registe o que come mesmo — da paella ao schnitzel.",demo_input:"Diga o que comeu — fale normal…",demo_dish:"Bacalhau à Brás",demo_badge:"confiante",macro_p:"P",macro_f:"G",macro_c:"C",s1_eyebrow:"Calorias que entram",s1_h:"Basta dizer o que comeu.",s1_p:"Sem digitar, sem fotos. Descreva a refeição do seu jeito — um modelo conversacional transforma isso em calorias e macros.",s2_eyebrow:"Calorias gastas",s2_h:"O Fiteo vê o seu treino.",s2_p:"As calorias queimadas entram no seu balanço pelo Apple Health — automaticamente, sem registrar nada.",s3_eyebrow:"Balanço ao vivo",s3_h:"Você sempre sabe quantas calorias ainda pode comer.",s3_p:"Ingerido menos gasto, frente à meta de hoje — é o que resta. Ao vivo, numa tela só.",steps_eyebrow:"Como funciona",steps_h:"Três segundos em vez de três minutos.",st1_n:"Diga",st1_h:"Escreva ou fale",st1_p:"Uma frase inteira, com quantidades ou sem. «Aveia com banana, bastante.»",st2_n:"O Fiteo conta",st2_h:"A IA estima",st2_p:"Calorias e macros — sem pesar, sem gramas. Múltiplos também («3× sanduíche»).",st3_n:"Veja o balanço",st3_h:"Ao vivo",st3_p:"Ingerido vs gasto (do Apple Health), frente à meta de hoje.",android_eyebrow:"Android",android_h:"O Fiteo começa primeiro no iPhone.",android_p:"A versão Android está planejada. Deixe o seu contacto no formulário — aviso quando estiver pronta.",android_btn:"Entrar na lista de Android",form_ph:"voce@email.com",form_btn:"Avise-me",form_note:"Sem spam. Um e-mail quando o Android sair.",form_thanks:"Obrigado! Aviso quando o Android chegar. 🙌",beta_eyebrow:"iPhone",beta_h:"Entre na beta e conte calorias só falando.",beta_p:"Alguns minutos por dia, feedback sincero. Grátis durante os testes.",beta_cta:"Inscreva-se na beta",wait_eyebrow:"Ainda não?",wait_h:"Deixe o seu e-mail — eu aviso.",stable_h:"iPhone e prefere a versão estável?",stable_p:"Avisamos quando o Fiteo chegar à App Store.",consent_label:"Aceito receber um e-mail sobre o lançamento.",form_err:"Algo correu mal — tente novamente.",foot_privacy:"Privacidade",foot_beta:"Beta (iPhone)",foot_android:"Android"},
+    it:{nav_cta:"Entra nella beta",hero_eyebrow:"Il contacalorie a cui parli",hero_h1:"Di' cosa hai mangiato. Al resto pensa Fiteo.",hero_sub:"Senza pesare, senza scansionare codici, senza cercare nel database. Descrivi il pasto come lo racconteresti a un amico — Fiteo stima calorie e macro.",hero_cta1:"Entra nella beta · iPhone",hero_cta2:"Non ora? Lascia l’email",hero_micro:"Gratis durante la beta · solo iPhone per ora (TestFlight)",langs_label:"Fiteo parla la tua lingua:",gallery_h:"Cibo locale, nella tua lingua.",gallery_p:"Registra ciò che mangi davvero — dalla paella allo schnitzel.",demo_input:"Dimmi cosa hai mangiato — parla normale…",demo_dish:"Pasta al pomodoro e basilico",demo_badge:"sicuro",macro_p:"P",macro_f:"G",macro_c:"C",s1_eyebrow:"Calorie assunte",s1_h:"Basta dire cosa hai mangiato.",s1_p:"Niente da scrivere, niente foto. Descrivi il pasto a modo tuo — un modello conversazionale lo trasforma in calorie e macro.",s2_eyebrow:"Calorie bruciate",s2_h:"Fiteo vede il tuo allenamento.",s2_p:"Le calorie bruciate entrano nel bilancio da Apple Health — in automatico, senza registrare nulla.",s3_eyebrow:"Bilancio in tempo reale",s3_h:"Sai sempre quante calorie puoi ancora mangiare.",s3_p:"Assunte meno bruciate, rispetto all'obiettivo di oggi — è ciò che ti resta. In tempo reale, in una schermata.",steps_eyebrow:"Come funziona",steps_h:"Tre secondi invece di tre minuti.",st1_n:"Dillo",st1_h:"Scrivi o parla",st1_p:"Una frase intera, con quantità o senza. «Porridge con banana, parecchio.»",st2_n:"Fiteo conta",st2_h:"L'IA stima",st2_p:"Calorie e macro — senza pesare, senza grammi. Anche multipli («3× panino»).",st3_n:"Vedi il bilancio",st3_h:"In tempo reale",st3_p:"Assunte vs bruciate (da Apple Health), rispetto all'obiettivo di oggi.",android_eyebrow:"Android",android_h:"Fiteo parte prima su iPhone.",android_p:"La versione Android è in programma. Lascia i tuoi dati nel modulo — ti avviso quando è pronta.",android_btn:"Iscriviti alla lista Android",form_ph:"tu@email.com",form_btn:"Avvisami",form_note:"Niente spam. Una email quando Android parte.",form_thanks:"Grazie! Ti scrivo quando Android è disponibile. 🙌",beta_eyebrow:"iPhone",beta_h:"Entra nella beta e conta le calorie solo parlando.",beta_p:"Pochi minuti al giorno, feedback sincero. Gratis durante i test.",beta_cta:"Iscriviti alla beta",wait_eyebrow:"Non ancora?",wait_h:"Lascia la tua email — ti avviso.",stable_h:"Hai iPhone e preferisci la versione stabile?",stable_p:"Ti avvisiamo quando Fiteo arriva sull'App Store.",consent_label:"Accetto di essere contattato via email per il lancio.",form_err:"Qualcosa è andato storto — riprova.",foot_privacy:"Privacy",foot_beta:"Beta (iPhone)",foot_android:"Android"},
+    fr:{nav_cta:"Rejoindre la bêta",hero_eyebrow:"Le compteur de calories à qui tu parles",hero_h1:"Dis ce que tu as mangé. Fiteo compte le reste.",hero_sub:"Sans peser, sans scanner de codes, sans chercher dans une base. Décris ton repas comme à un ami — Fiteo estime les calories et les macros.",hero_cta1:"Rejoindre la bêta · iPhone",hero_cta2:"Pas maintenant ? Ton email",hero_micro:"Gratuit pendant la bêta · iPhone seulement pour l'instant (TestFlight)",langs_label:"Fiteo parle ta langue :",gallery_h:"Des plats locaux, dans ta langue.",gallery_p:"Enregistre ce que tu manges vraiment — de la paella au schnitzel.",demo_input:"Dis-moi ce que tu as mangé — parle normalement…",demo_dish:"Poulet rôti et ratatouille",demo_badge:"fiable",macro_p:"P",macro_f:"L",macro_c:"G",s1_eyebrow:"Calories absorbées",s1_h:"Dis simplement ce que tu as mangé.",s1_p:"Sans saisie, sans photo. Décris ton repas à ta façon — un modèle conversationnel le transforme en calories et macros.",s2_eyebrow:"Calories dépensées",s2_h:"Fiteo voit ton entraînement.",s2_p:"Les calories brûlées entrent dans ton bilan via Apple Health — automatiquement, rien à saisir.",s3_eyebrow:"Bilan en direct",s3_h:"Tu sais toujours combien de calories il te reste à manger.",s3_p:"Absorbé moins brûlé, face à l'objectif du jour — voilà ce qu'il te reste. En direct, sur un seul écran.",steps_eyebrow:"Comment ça marche",steps_h:"Trois secondes au lieu de trois minutes.",st1_n:"Dis-le",st1_h:"Écris ou parle",st1_p:"Une phrase entière, avec quantités ou non. « Porridge à la banane, une bonne portion. »",st2_n:"Fiteo compte",st2_h:"L'IA estime",st2_p:"Calories et macros — sans peser, sans grammes. Les multiples aussi (« 3× sandwich »).",st3_n:"Vois le bilan",st3_h:"En direct",st3_p:"Absorbé vs brûlé (via Apple Health), face à l'objectif du jour.",android_eyebrow:"Android",android_h:"Fiteo démarre d'abord sur iPhone.",android_p:"La version Android est prévue. Laisse tes coordonnées dans le formulaire — je te préviens dès qu'elle est prête.",android_btn:"Rejoindre la liste Android",form_ph:"toi@email.com",form_btn:"Préviens-moi",form_note:"Pas de spam. Un email au lancement d'Android.",form_thanks:"Merci ! Je te contacte au lancement d'Android. 🙌",beta_eyebrow:"iPhone",beta_h:"Rejoins la bêta et compte tes calories en parlant.",beta_p:"Quelques minutes par jour, un retour sincère. Gratuit pendant les tests.",beta_cta:"S'inscrire à la bêta",wait_eyebrow:"Pas encore ?",wait_h:"Laisse ton email — je te préviens.",stable_h:"iPhone, tu préfères la version stable ?",stable_p:"On te prévient dès que Fiteo arrive sur l'App Store.",consent_label:"J'accepte d'être contacté par email pour le lancement.",form_err:"Une erreur s'est produite — réessaie.",foot_privacy:"Confidentialité",foot_beta:"Bêta (iPhone)",foot_android:"Android"},
+    de:{nav_cta:"Zur Beta",hero_eyebrow:"Der Kalorienzähler, mit dem du sprichst",hero_h1:"Sag, was du gegessen hast. Den Rest zählt Fiteo.",hero_sub:"Kein Wiegen, kein Barcode-Scannen, keine Datenbanksuche. Beschreib dein Essen wie einem Freund — Fiteo schätzt Kalorien und Makros.",hero_cta1:"Zur Beta · iPhone",hero_cta2:"Nicht jetzt? E-Mail hier",hero_micro:"Kostenlos in der Beta · vorerst nur iPhone (TestFlight)",langs_label:"Fiteo spricht deine Sprache:",gallery_h:"Lokale Gerichte, in deiner Sprache.",gallery_p:"Logge, was du wirklich isst — von Paella bis Schnitzel.",demo_input:"Sag, was du gegessen hast — einfach reden…",demo_dish:"Schnitzel mit Kartoffelsalat",demo_badge:"sicher",macro_p:"E",macro_f:"F",macro_c:"K",s1_eyebrow:"Kalorien rein",s1_h:"Sag einfach, was du gegessen hast.",s1_p:"Kein Tippen, keine Fotos. Beschreib dein Essen in deinen Worten — ein Sprachmodell macht daraus Kalorien und Makros.",s2_eyebrow:"Kalorien raus",s2_h:"Fiteo sieht dein Training.",s2_p:"Verbrannte Kalorien fließen über Apple Health in deine Bilanz — automatisch, ohne Eintragen.",s3_eyebrow:"Bilanz in Echtzeit",s3_h:"Du weißt immer, wie viele Kalorien du noch essen kannst.",s3_p:"Gegessen minus verbrannt, gegen dein Tagesziel — so viel bleibt dir. Live, auf einem Bildschirm.",steps_eyebrow:"So funktioniert's",steps_h:"Drei Sekunden statt drei Minuten.",st1_n:"Sag es",st1_h:"Tippen oder sprechen",st1_p:"Ein ganzer Satz, mit Mengen oder ohne. „Haferbrei mit Banane, ziemlich viel.”",st2_n:"Fiteo zählt",st2_h:"KI schätzt",st2_p:"Kalorien und Makros — ohne Wiegen, ohne Gramm. Auch Vielfache („3× Sandwich”).",st3_n:"Sieh die Bilanz",st3_h:"In Echtzeit",st3_p:"Gegessen vs. verbrannt (aus Apple Health), gegen dein Tagesziel.",android_eyebrow:"Android",android_h:"Fiteo startet zuerst auf dem iPhone.",android_p:"Die Android-Version ist geplant. Hinterlasse deine Daten im Formular — ich melde mich, sobald sie fertig ist.",android_btn:"Auf die Android-Liste",form_ph:"du@email.com",form_btn:"Benachrichtige mich",form_note:"Kein Spam. Eine E-Mail zum Android-Start.",form_thanks:"Danke! Ich melde mich, wenn Android startet. 🙌",beta_eyebrow:"iPhone",beta_h:"Komm in die Beta und zähl Kalorien, indem du einfach sprichst.",beta_p:"Ein paar Minuten am Tag, ehrliches Feedback. Kostenlos während des Tests.",beta_cta:"Für die Beta anmelden",wait_eyebrow:"Noch nicht?",wait_h:"Lass deine E-Mail da — ich melde mich.",stable_h:"iPhone, lieber die stabile Version?",stable_p:"Wir melden uns, wenn Fiteo im App Store ist.",consent_label:"Ich bin einverstanden, zur Veröffentlichung per E-Mail benachrichtigt zu werden.",form_err:"Etwas ist schiefgelaufen — versuch es erneut.",foot_privacy:"Datenschutz",foot_beta:"Beta (iPhone)",foot_android:"Android"}
+  };
+  var SUPPORTED = ['pl','en','es','pt','it','fr','de'];
+  // Per-language beta/Android sign-up form (Google Forms). All CTAs (.js-form) point here; the
+  // recruitment form itself routes iPhone vs Android via its device question, so it's the lead backend for both.
+  var FORMS = {
+    pl:'https://forms.gle/pG5ZUVBNDkghYqMh7',
+    en:'https://forms.gle/YMrEMEzhZ1dURP3v5',
+    es:'https://forms.gle/xBaHLSxabPTWHDrBA',
+    pt:'https://forms.gle/QUCK9YFXeNLbYZNv5',
+    it:'https://forms.gle/3MtcpSV3FSTuX44DA',
+    fr:'https://forms.gle/Kip9HrKqbqkUwy1A7',
+    de:'https://forms.gle/6zRe3NLzu4gKAF6s7'
+  };
+  function applyLang(code){
+    var d = I18N[code] || I18N.en;
+    document.documentElement.lang = code;
+    document.querySelectorAll('[data-i18n]').forEach(function(el){ var k=el.getAttribute('data-i18n'); if(d[k]!=null) el.textContent=d[k]; });
+    document.querySelectorAll('[data-i18n-ph]').forEach(function(el){ var k=el.getAttribute('data-i18n-ph'); if(d[k]!=null) el.setAttribute('placeholder',d[k]); });
+    document.querySelectorAll('.langpill').forEach(function(p){ var on = p.getAttribute('data-lang')===code; p.classList.toggle('active',on); p.setAttribute('aria-pressed',on?'true':'false'); });
+    var form = FORMS[code] || FORMS.en;
+    document.querySelectorAll('.js-form').forEach(function(a){ a.setAttribute('href', form); });
+    try{ localStorage.setItem('fiteo_lang',code); }catch(e){}
+  }
+  (function(){
+    var saved; try{ saved=localStorage.getItem('fiteo_lang'); }catch(e){}
+    var nav=(navigator.language||'en').slice(0,2).toLowerCase();
+    var init = (saved && SUPPORTED.indexOf(saved)>=0) ? saved : (SUPPORTED.indexOf(nav)>=0 ? nav : 'en');
+    applyLang(init);
+    document.querySelectorAll('.langpill').forEach(function(p){ p.addEventListener('click',function(){ applyLang(p.getAttribute('data-lang')); }); });
+  })();
+
+  // reveal for non-scene sections
+  var reveals = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) reveals.forEach(function(el){el.classList.add('in');});
+  else { var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.2,rootMargin:'0px 0px -6% 0px'}); reveals.forEach(function(el){io.observe(el);}); }
+
+  // Auto-advancing showcase: the active scene cross-fades in (film from left, text from right); a
+  // timer advances ~every 6s, dots jump & restart it, each scene's video autoplays. Runs only on
+  // wider viewports without reduced-motion — otherwise CSS shows the scenes stacked & static.
+  var showcase = document.querySelector('.showcase');
+  var scenes = Array.prototype.slice.call(document.querySelectorAll('.scene'));
+  var dots = Array.prototype.slice.call(document.querySelectorAll('.showcase .dot'));
+  var idx = 0, timer = null, inView = false;
+  var carousel = !reduce && window.matchMedia('(min-width:681px)').matches;
+
+  function show(i){
+    idx = (i + scenes.length) % scenes.length;
+    scenes.forEach(function(s, j){
+      var on = j === idx;
+      s.classList.toggle('active', on);
+      var v = s.querySelector('video');
+      if (v){ if (on){ try{ v.currentTime = 0; }catch(e){} var p = v.play && v.play(); if (p && p.catch) p.catch(function(){}); } else if (v.pause){ v.pause(); } }
+    });
+    dots.forEach(function(d, j){ var on = j === idx; d.classList.toggle('on', on); d.setAttribute('aria-selected', on ? 'true' : 'false'); });
+  }
+  function advance(){ show(idx + 1); }
+  function play(){ stop(); timer = window.setInterval(advance, 6000); }
+  function stop(){ if (timer){ window.clearInterval(timer); timer = null; } }
+
+  if (carousel){
+    show(0);
+    dots.forEach(function(d){ d.addEventListener('click', function(){ show(parseInt(d.getAttribute('data-scene'), 10) || 0); if (inView) play(); }); });
+    if ('IntersectionObserver' in window){
+      new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          inView = e.isIntersecting;
+          if (inView){ show(idx); play(); }
+          else { stop(); scenes.forEach(function(s){ var v = s.querySelector('video'); if (v && v.pause) v.pause(); }); }
+        });
+      }, { threshold: 0.4 }).observe(showcase);
+    } else { play(); }
+  }
+
+  // Gallery: same rotation as the scenes, but for the localized app screenshots — one phone
+  // cross-fades through the 6 languages (auto every 3.5s, dots to jump, caption follows). Light
+  // enough to run on mobile too (unlike the scene stage, which stacks on small screens).
+  // Gallery: a sliding carousel — 3 cards visible on desktop, fewer on smaller screens, advancing one
+  // card every 3s and looping seamlessly (first cards are cloned; on reaching them we snap back). Step
+  // is measured from the rendered card so it follows the responsive widths.
+  var gtrack = document.querySelector('.gtrack');
+  var gcards = gtrack ? Array.prototype.slice.call(gtrack.children) : [];
+  var gdots = Array.prototype.slice.call(document.querySelectorAll('.gallery .dot'));
+  var gcount = gcards.length, gIndex = 0, gTimer = null, gInView = false, gStep = 0, GGAP = 16;
+  var GTRANS = 'transform .6s cubic-bezier(.2,.7,.2,1)';
+  function gdotsUpd(){ var a = ((gIndex % gcount) + gcount) % gcount; gdots.forEach(function(d, j){ var on = j === a; d.classList.toggle('on', on); d.setAttribute('aria-selected', on ? 'true' : 'false'); }); }
+  function gmeasure(){ if (!gcards.length) return; gStep = gcards[0].getBoundingClientRect().width + GGAP; gtrack.style.transition = 'none'; gtrack.style.transform = 'translateX(' + (-gIndex * gStep) + 'px)'; }
+  function ggo(i){ gIndex = i; gtrack.style.transition = reduce ? 'none' : GTRANS; gtrack.style.transform = 'translateX(' + (-gIndex * gStep) + 'px)'; gdotsUpd(); }
+  function gplay(){ gstop(); if (!reduce) gTimer = window.setInterval(function(){ ggo(gIndex + 1); }, 3000); }
+  function gstop(){ if (gTimer){ window.clearInterval(gTimer); gTimer = null; } }
+  if (gtrack && gcount){
+    for (var gc = 0; gc < Math.min(3, gcount); gc++){ gtrack.appendChild(gcards[gc].cloneNode(true)); } // clones for a seamless wrap
+    gtrack.addEventListener('transitionend', function(e){ if (e.propertyName !== 'transform') return; if (gIndex >= gcount){ gtrack.style.transition = 'none'; gIndex = 0; gtrack.style.transform = 'translateX(0)'; void gtrack.offsetWidth; gdotsUpd(); } });
+    gmeasure(); gdotsUpd();
+    window.addEventListener('resize', gmeasure);
+    gdots.forEach(function(d){ d.addEventListener('click', function(){ ggo(parseInt(d.getAttribute('data-g'), 10) || 0); if (gInView) gplay(); }); });
+    var gw = document.querySelector('.gwrap');
+    if (gw && 'IntersectionObserver' in window){ new IntersectionObserver(function(es){ es.forEach(function(e){ gInView = e.isIntersecting; if (gInView) gplay(); else gstop(); }); }, { threshold: 0.2 }).observe(gw); }
+    else { gplay(); }
+  }
+
+
+  // Lead capture → Worker /lead (App Store waitlist + Android). Consent required; honeypot; per-form UI state.
+  var LEAD_ENDPOINT = 'https://fiteo-ai.fiteomain.workers.dev/lead';
+  Array.prototype.slice.call(document.querySelectorAll('.leadcard')).forEach(function(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var emailEl = form.querySelector('.lead-email');
+      var consentEl = form.querySelector('.lead-consent');
+      var hp = form.querySelector('.hp');
+      var thanks = form.querySelector('.thanks-msg');
+      var err = form.querySelector('.err-msg');
+      if (thanks) thanks.hidden = true;
+      if (err) err.hidden = true;
+      if (!emailEl.value || !emailEl.checkValidity()) { emailEl.focus(); return; }
+      if (!consentEl.checked) { consentEl.focus(); return; }
+      var btn = form.querySelector('button[type=submit]');
+      if (btn) btn.disabled = true;
+      fetch(LEAD_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: emailEl.value.trim(),
+          segment: form.getAttribute('data-segment'),
+          lang: document.documentElement.lang || 'pl',
+          consent: true,
+          website: hp ? hp.value : ''
+        })
+      }).then(function(r){ return r.ok ? r.json() : Promise.reject(); })
+        .then(function(){
+          if (thanks) thanks.hidden = false;
+          var row = form.querySelector('.leadrow'); if (row) row.style.display = 'none';
+          var c = form.querySelector('.consent'); if (c) c.style.display = 'none';
+        })
+        .catch(function(){ if (err) err.hidden = false; if (btn) btn.disabled = false; });
+    });
+  });
+</script>
+</body></html>
