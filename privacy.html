@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fiteo — Privacy Policy</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6; max-width: 720px; margin: 0 auto; padding: 2rem 1.25rem 4rem;
+      color: #1c1c1e; background: #ffffff;
+    }
+    @media (prefers-color-scheme: dark) { body { color: #e5e5ea; background: #000000; } a { color: #0a84ff; } }
+    a { color: #0066cc; }
+    h1 { font-size: 1.7rem; margin-bottom: 0.25rem; }
+    h2 { font-size: 1.2rem; margin-top: 2rem; }
+    .meta { color: #8e8e93; font-size: 0.9rem; margin-bottom: 2rem; }
+    ul { padding-left: 1.25rem; }
+    code { font-size: 0.95em; }
+    hr { border: none; border-top: 1px solid #8e8e9333; margin: 2rem 0; }
+  </style>
+</head>
+<body>
+  <h1>Fiteo — Privacy Policy</h1>
+  <p class="meta">Last updated: 17 August 2026</p>
+
+  <p>
+    Fiteo is a calorie and macronutrient tracker for iPhone. It has no account, no sign-in, and no
+    cloud sync of your personal data. Almost everything stays on your device. A few things leave it
+    only when you choose to: the meal text or voice note you submit for an estimate (only to compute
+    it), a pseudonymous, non-reversible device identifier used only to count your free estimates
+    before you subscribe, and — if you share a recipe by link — that recipe's content. This policy
+    explains exactly what is sent, to whom, and what we never collect.
+  </p>
+
+  <h2>Data stored on your device only</h2>
+  <p>
+    Everything you log stays on your iPhone: your meals and their estimated nutrition, weights and
+    body measurements, goals, your meal schedule, and app preferences. This is kept in the app's local
+    storage on the device. We do not run a server that stores this personal data, and we cannot read it.
+  </p>
+
+  <h2>Meal estimation (AI)</h2>
+  <p>
+    To estimate a meal's calories and macros, the meal description you type, dictate, or record as a
+    voice note is sent — only when you submit a meal — from your device to our processing service (a
+    Cloudflare Worker), which
+    forwards it to a third-party AI provider whose large language model (LLM) generates the estimate.
+    The provider currently used is <strong>Google (Gemini)</strong>. The provider may change in future
+    versions; this page will be updated if it does.
+  </p>
+  <p>
+    What is sent is the meal text only (for example, "two fried eggs and a slice of bread"). It is not
+    linked to an account or to your identity. Our processing service is stateless and does not store
+    your meal descriptions. We use Google's <strong>paid</strong> Gemini API, under whose terms Google
+    does not use the content to train its models and retains it only briefly for abuse and legal
+    purposes. Google's handling is governed by its own
+    <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+    <a href="https://ai.google.dev/gemini-api/terms">Gemini API terms</a>.
+  </p>
+
+  <h2>Free usage limit</h2>
+  <p>
+    Before you subscribe, Fiteo lets you make a small number of free AI estimates. To count these per
+    device — with no account — the app sends a <strong>pseudonymous, non-reversible identifier</strong>:
+    a one-way SHA-256 hash of Apple's per-vendor identifier (<code>identifierForVendor</code>). We never
+    send or store the raw identifier. Our processing service keeps only a running count against this
+    hashed value; it is not linked to your identity, meals, weight, or health data, is never used for
+    advertising or cross-app tracking, and is not shared with anyone. It resets if you delete the app.
+  </p>
+
+  <h2>Dictation</h2>
+  <p>
+    If you dictate a meal instead of typing it, Fiteo uses Apple's Speech framework to transcribe your
+    voice into text. That text is then handled exactly like typed text (see "Meal estimation" above).
+    Speech recognition is governed by <a href="https://www.apple.com/legal/privacy/">Apple's privacy terms</a>.
+  </p>
+
+  <h2>Voice notes</h2>
+  <p>
+    Instead of typing or on-device dictation, you can record a short <strong>voice note</strong> (up to
+    45 seconds) describing your meal. When you submit it, the audio recording is sent — the same way as
+    meal text, and only when you submit — from your device to our processing service (the Cloudflare
+    Worker), which forwards it to <strong>Google (Gemini)</strong>, whose model transcribes it and
+    generates the estimate in a single step.
+  </p>
+  <p>
+    The recording is created on your device solely for this purpose and is deleted immediately after it
+    is sent. It is not stored on your device or on our processing service, and it is not linked to an
+    account or to your identity. As with meal text, we use Google's <strong>paid</strong> Gemini API,
+    under whose terms Google does not use the content to train its models and retains it only briefly for
+    abuse and legal purposes (see "Meal estimation" above). The microphone is used only while you hold
+    the record button.
+  </p>
+
+  <h2>Apple Health</h2>
+  <p>
+    If you grant access, Fiteo reads from Apple Health to compute indicators and your energy balance:
+    body weight, body-fat percentage, waist circumference, and energy burned (active and basal). Fiteo
+    writes back only one type of data — your body weight — and only when you change it in the app.
+    <strong>Health data never leaves your device:</strong> it is not sent to our service or any AI
+    provider, not written to logs, and not uploaded anywhere. You control this access at any time in
+    iOS Settings → Health. Deleting Fiteo does not remove samples already saved in Apple Health;
+    manage those in the Health app.
+  </p>
+
+  <h2>Subscription</h2>
+  <p>
+    AI meal estimation is part of "Fiteo Pro", an auto-renewable subscription with a free trial.
+    Purchases are handled entirely by Apple (StoreKit); we never see your payment details. To confirm
+    you have an active subscription, the app sends Apple's cryptographically signed subscription
+    transaction to our processing service for verification — this contains no personal data (it
+    identifies the product and that the subscription is valid, not who you are).
+  </p>
+
+  <h2>Analytics</h2>
+  <p>
+    Fiteo uses <a href="https://telemetrydeck.com/privacy/">TelemetryDeck</a> for privacy-preserving,
+    aggregate usage analytics — anonymous event names only (for example, that a screen was opened). It
+    does not collect your meals, weights, health data, name, email, or any identifier that points back
+    to you. You can turn analytics off completely in the app's settings; the opt-out is honored
+    immediately. Fiteo uses no advertising, attribution, or third-party tracking SDKs.
+  </p>
+
+  <h2>Website waitlist</h2>
+  <p>
+    If you submit your email on our website to be notified about the App Store or Android release, we
+    store that email — only with your explicit consent — with our processor
+    <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare</a>, solely to send you a launch
+    notification. We keep it for about 12 months and then delete it automatically; you can ask us to
+    delete it sooner at any time by emailing <a href="mailto:fiteoai@gmail.com">fiteoai@gmail.com</a>.
+    We also briefly log your IP address to prevent form abuse. This waitlist is part of the website
+    only and is separate from the app, which still requires no account or email.
+  </p>
+
+  <h2>Recipe sharing</h2>
+  <p>
+    Fiteo lets you share a recipe with a link. When you create a share link, the recipe's content —
+    its title, ingredients, nutrition values, preparation steps, and — if you added one — its photo —
+    is stored with our processor
+    <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare</a> under a random, unguessable
+    identifier, so that whoever opens the link can view and import it. This is a recipe you choose to
+    share; it carries no account, no personal data, and nothing that identifies you as its author. Any
+    photo you add is re-encoded before sharing, which removes embedded metadata such as camera and
+    location (EXIF/GPS) information. Anyone who has the link can open it (like an unlisted link), so
+    share it only with people you intend to. Links (and any shared photo) expire automatically after
+    90 days, after which they stop working. Opening or importing a shared recipe needs no account and
+    is free. You can ask us to delete a shared recipe sooner at any time by emailing
+    <a href="mailto:fiteoai@gmail.com">fiteoai@gmail.com</a>.
+  </p>
+
+  <h2>Importing a recipe from a link</h2>
+  <p>
+    If you paste a link to a cooking video (for example an Instagram Reel, TikTok, YouTube Short or
+    Facebook video), Fiteo can pull the recipe out of it for you. To do this, the link you paste is sent
+    from your device to our processing service (the Cloudflare Worker) and on to
+    <a href="https://supadata.ai/">Supadata</a>, a processor we use to read the recipe (title, ingredients
+    and steps) from that public video. We send only the link you chose to import — no account and nothing
+    that identifies you. The extracted recipe is returned to your device for you to review and edit, and a
+    copy is cached with <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare</a> for up to 30
+    days so that the same link imports instantly next time; nothing is added to your day until you save it.
+    This feature is available to Pro subscribers.
+  </p>
+
+  <h2>What we do not collect</h2>
+  <ul>
+    <li>No app account, email, or password — the app works with no sign-in. (The optional website
+        waitlist above is the only place we store an email, and only with your consent.)</li>
+    <li>No storage of your meals, weight, or health data on our servers — meal text only passes
+        through our service to compute an estimate and is not retained. (We keep only an anonymous
+        per-device count of free estimates used; see "Free usage limit". A recipe you explicitly
+        share by link is stored briefly so the recipient can open it; see "Recipe sharing".)</li>
+    <li>No selling or sharing of your data with advertisers or data brokers.</li>
+    <li>No location tracking, no advertising identifiers, no cross-app tracking.</li>
+  </ul>
+
+  <h2>Children</h2>
+  <p>
+    Fiteo is not directed at children under 13 and we do not knowingly collect data from them.
+  </p>
+
+  <h2>Deleting your data</h2>
+  <p>
+    Because your data lives on your device, deleting the app removes the meals, measurements, goals,
+    and preferences stored by Fiteo. Data you previously wrote to Apple Health remains in Apple Health
+    until you delete it there. Manage your subscription in iOS Settings → [your name] → Subscriptions.
+  </p>
+
+  <h2>Changes to this policy</h2>
+  <p>
+    If this policy changes, the "Last updated" date above will change and the revised version will be
+    posted at this address.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    Questions about privacy? Email <a href="mailto:fiteoai@gmail.com">fiteoai@gmail.com</a>.
+  </p>
+
+  <hr />
+  <p class="meta">Fiteo is an independent app. Apple Health is a trademark of Apple Inc. Provider names
+  are trademarks of their respective owners.</p>
+</body>
+</html>
