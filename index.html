@@ -365,6 +365,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         });
       }, { threshold: 0.4 }).observe(showcase);
     } else { play(); }
+  } else if (!reduce) {
+    // Narrow viewports (≤680px): CSS stacks the scenes statically, so the carousel above never runs
+    // and nothing was calling play() — the videos just sat on their poster frames. Play each one
+    // while its scene is on screen, pause it when it leaves, and loop it (no timer restarts them here).
+    scenes.forEach(function(s){
+      var v = s.querySelector('video');
+      if (!v) return;
+      v.loop = true;
+      var kick = function(){ var p = v.play && v.play(); if (p && p.catch) p.catch(function(){}); };
+      if ('IntersectionObserver' in window){
+        new IntersectionObserver(function(entries){
+          entries.forEach(function(e){ if (e.isIntersecting) kick(); else if (v.pause) v.pause(); });
+        }, { threshold: 0.35 }).observe(s);
+      } else { kick(); }
+    });
   }
 
   // Gallery: same rotation as the scenes, but for the localized app screenshots — one phone
