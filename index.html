@@ -34,6 +34,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .eyebrow{font-size:.8rem;font-weight:600;color:var(--accent-press);}
   .nav{display:flex;align-items:center;justify-content:space-between;gap:12px 18px;flex-wrap:wrap;padding:18px 0;}
   .navlangs{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end;}
+  .langselect{display:none;font-size:.85rem;font-weight:600;color:var(--ink);background:var(--surface);border:1px solid var(--hair);border-radius:980px;padding:0 15px;min-height:44px;font-family:var(--font);}
+  .langselect:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
   .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.24rem;letter-spacing:-.02em;}
   .logo{width:30px;height:30px;border-radius:8px;object-fit:cover;box-shadow:var(--shadow);display:block;}
   /* Header wordmark reads bigger than the footer one — it's the page's primary brand anchor. */
@@ -114,7 +116,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .gcard{flex-basis:calc((100% - 16px)/2);}
   }
   @media (max-width:680px){
-    .navlangs{width:100%;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;-webkit-overflow-scrolling:touch;padding-bottom:2px;}
+    .navlangs{display:none;}
+    .langselect{display:block;width:100%;}
     .hero{grid-template-columns:1fr;gap:34px;padding-bottom:24px;}.hero .sub{max-width:none;}
     .showcase-sticky{position:static;height:auto;overflow:visible;}
     .scene{position:relative;inset:auto;opacity:1!important;visibility:visible!important;padding:52px 0;transition:none;}
@@ -141,8 +144,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <button class="langpill" data-lang="it">Italiano</button>
       <button class="langpill" data-lang="pl">Polski</button>
       <button class="langpill" data-lang="pt">Português</button>
-    </div></nav>
-    <header class="hero">
+    </div>
+    <select class="langselect" aria-label="Wybór języka / Language">
+      <option value="de">Deutsch</option>
+      <option value="en">English</option>
+      <option value="es">Español</option>
+      <option value="fr">Français</option>
+      <option value="it">Italiano</option>
+      <option value="pl">Polski</option>
+      <option value="pt">Português</option>
+    </select>
+    </nav>
+    <header class="hero" id="hero">
       <div>
         <span class="eyebrow" data-i18n="hero_eyebrow">Licznik kalorii, do którego mówisz</span>
         <h1 data-i18n="hero_h1">Powiedz, co zjadłeś. Resztę policzy Fiteo.</h1>
@@ -155,7 +168,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
 
-  <div class="wrap"><section class="gallery reveal">
+  <div class="wrap"><section class="gallery reveal" id="gallery">
     <div class="gallery-head"><h2 data-i18n="gallery_h">Lokalne potrawy — po Twojemu.</h2><p data-i18n="gallery_p">Zaloguj to, co naprawdę jesz — od paelli po schabowego.</p></div>
     <div class="gwrap">
       <div class="gtrack">
@@ -179,7 +192,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section></div>
 
-  <section class="showcase"><div class="showcase-sticky">
+  <section class="showcase" id="showcase"><div class="showcase-sticky">
 
     <!-- Scene 0 — calories IN (phone, dictation) -->
     <div class="scene"><div class="stage-inner">
@@ -219,7 +232,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
-  <section class="section"><div class="wrap">
+  <section class="section" id="steps"><div class="wrap">
     <div class="section-head reveal"><span class="eyebrow" data-i18n="steps_eyebrow">Jak to działa</span><h2 data-i18n="steps_h">Trzy sekundy zamiast trzech minut.</h2></div>
     <div class="steps">
       <div class="step reveal" style="--i:0"><div class="n" data-i18n="st1_n">Opowiedz</div><h3 data-i18n="st1_h">Wpisz albo powiedz</h3><p data-i18n="st1_p">Całym zdaniem, z ilościami albo bez. „Owsianka z bananem, było tego sporo."</p></div>
@@ -319,6 +332,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.querySelectorAll('[data-i18n]').forEach(function(el){ var k=el.getAttribute('data-i18n'); if(d[k]!=null) el.textContent=d[k]; });
     document.querySelectorAll('[data-i18n-ph]').forEach(function(el){ var k=el.getAttribute('data-i18n-ph'); if(d[k]!=null) el.setAttribute('placeholder',d[k]); });
     document.querySelectorAll('.langpill').forEach(function(p){ var on = p.getAttribute('data-lang')===code; p.classList.toggle('active',on); p.setAttribute('aria-pressed',on?'true':'false'); });
+    var sel = document.querySelector('.langselect'); if (sel) sel.value = code;
     applyLaunchState(code);
     try{ localStorage.setItem('fiteo_lang',code); }catch(e){}
   }
@@ -328,6 +342,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var init = (saved && SUPPORTED.indexOf(saved)>=0) ? saved : (SUPPORTED.indexOf(nav)>=0 ? nav : 'en');
     applyLang(init);
     document.querySelectorAll('.langpill').forEach(function(p){ p.addEventListener('click',function(){ applyLang(p.getAttribute('data-lang')); }); });
+    var sel = document.querySelector('.langselect');
+    if (sel) sel.addEventListener('change', function(){ applyLang(sel.value); });
   })();
 
   // reveal for non-scene sections
@@ -446,9 +462,64 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           if (thanks) thanks.hidden = false;
           var row = form.querySelector('.leadrow'); if (row) row.style.display = 'none';
           var c = form.querySelector('.consent'); if (c) c.style.display = 'none';
+          trackEvent('lead_submit', { segment: form.getAttribute('data-segment') });
         })
         .catch(function(){ if (err) err.hidden = false; if (btn) btn.disabled = false; });
     });
   });
+
+  // ---- Analytics: the page pushes semantic events to dataLayer; GA4 tag/trigger mapping is done in
+  // GTM, not here — so swapping the measurement backend later needs no code change. ----
+  function trackEvent(name, params){
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(Object.assign({ event: name }, params || {}));
+  }
+
+  // cta_click — delegated so it also covers CTAs later swapped by applyLaunchState() on launch day.
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('.hero-cta, .beta-cta, #pricing .btn');
+    if (!a) return;
+    var cta = a.classList.contains('hero-cta') ? 'hero' : a.classList.contains('beta-cta') ? 'beta' : 'pricing';
+    trackEvent('cta_click', { cta: cta, lang: document.documentElement.lang || 'pl' });
+  });
+
+  // pricing_view — fires once per session, the first time #pricing is at least half in view.
+  (function(){
+    var pricing = document.getElementById('pricing');
+    if (!pricing || reduce || !('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting){ trackEvent('pricing_view', {}); io.disconnect(); } });
+    }, { threshold: 0.5 });
+    io.observe(pricing);
+  })();
+
+  // section_time — seconds each major section spent in view, flushed on hide/unload. visibilitychange
+  // + pagehide (not beforeunload, unreliable on iOS) are the only points where the totals are final.
+  (function(){
+    var ids = ['hero', 'gallery', 'showcase', 'steps', 'pricing', 'waitlist'];
+    var sections = {};
+    ids.forEach(function(id){ var el = document.getElementById(id); if (el) sections[id] = { el: el, since: null, total: 0 }; });
+    if (!Object.keys(sections).length || reduce || !('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        var id = null;
+        for (var k in sections){ if (sections[k].el === e.target){ id = k; break; } }
+        if (!id) return;
+        var s = sections[id];
+        if (e.isIntersecting) { s.since = Date.now(); }
+        else if (s.since) { s.total += (Date.now() - s.since) / 1000; s.since = null; }
+      });
+    }, { threshold: 0.3 });
+    Object.keys(sections).forEach(function(id){ io.observe(sections[id].el); });
+    function flush(){
+      Object.keys(sections).forEach(function(id){
+        var s = sections[id];
+        if (s.since) { s.total += (Date.now() - s.since) / 1000; s.since = null; }
+        if (s.total > 0.5) { trackEvent('section_time', { section: id, seconds: Math.round(s.total) }); s.total = 0; }
+      });
+    }
+    document.addEventListener('visibilitychange', function(){ if (document.visibilityState === 'hidden') flush(); });
+    window.addEventListener('pagehide', flush);
+  })();
 </script>
 </body></html>
