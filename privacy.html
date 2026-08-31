@@ -23,7 +23,7 @@
 </head>
 <body>
   <h1>Fiteo — Privacy Policy</h1>
-  <p class="meta">Last updated: 17 August 2026</p>
+  <p class="meta">Last updated: 31 August 2026</p>
 
   <p>
     Fiteo is a calorie and macronutrient tracker for iPhone. It has no account, no sign-in, and no
@@ -97,8 +97,9 @@
   <h2>Apple Health</h2>
   <p>
     If you grant access, Fiteo reads from Apple Health to compute indicators and your energy balance:
-    body weight, body-fat percentage, waist circumference, and energy burned (active and basal). Fiteo
-    writes back only one type of data — your body weight — and only when you change it in the app.
+    body weight, body-fat percentage, waist circumference, steps, workouts, and energy burned (active
+    and basal). Fiteo writes back only one type of data — your body weight — and only when you change
+    it in the app.
     <strong>Health data never leaves your device:</strong> it is not sent to our service or any AI
     provider, not written to logs, and not uploaded anywhere. You control this access at any time in
     iOS Settings → Health. Deleting Fiteo does not remove samples already saved in Apple Health;
@@ -110,17 +111,32 @@
     AI meal estimation is part of "Fiteo Pro", an auto-renewable subscription with a free trial.
     Purchases are handled entirely by Apple (StoreKit); we never see your payment details. To confirm
     you have an active subscription, the app sends Apple's cryptographically signed subscription
-    transaction to our processing service for verification — this contains no personal data (it
-    identifies the product and that the subscription is valid, not who you are).
+    transaction to our processing service for verification. That transaction identifies the product and
+    the fact that the subscription is valid — it does not contain your name, email, or Apple ID. It does
+    carry a pseudonymous identifier issued by Apple, which on its own tells us nothing about who you are.
+    We check the signature and do not store it.
   </p>
 
   <h2>Analytics</h2>
   <p>
-    Fiteo uses <a href="https://telemetrydeck.com/privacy/">TelemetryDeck</a> for privacy-preserving,
-    aggregate usage analytics — anonymous event names only (for example, that a screen was opened). It
-    does not collect your meals, weights, health data, name, email, or any identifier that points back
-    to you. You can turn analytics off completely in the app's settings; the opt-out is honored
-    immediately. Fiteo uses no advertising, attribution, or third-party tracking SDKs.
+    <strong>In the app.</strong> Fiteo uses <a href="https://telemetrydeck.com/privacy/">TelemetryDeck</a>
+    for privacy-preserving, aggregate usage analytics. What is sent is an event name (for example, that
+    a screen was opened) plus TelemetryDeck's standard technical envelope: device model, operating
+    system and app version, locale, and a salted, hashed installation identifier. It does not collect
+    your meals, weights, health data, name, or email. You can turn analytics off completely in the
+    app's settings; the opt-out is honored immediately and stops all network activity from the SDK. The
+    app contains no advertising SDKs and no cross-app tracking.
+  </p>
+  <p>
+    <strong>On this website.</strong> fiteoapp.io uses
+    <a href="https://policies.google.com/privacy">Google Analytics 4</a>, loaded through Google Tag
+    Manager, to measure how the site is used — which pages are opened, which sections are read, and
+    which buttons are clicked. This uses cookies and processes your approximate location (derived from
+    your IP address) together with basic device and browser information, with Google acting as our
+    processor. <strong>These cookies are set only if you agree to them.</strong> We ask through the
+    consent banner provided by <a href="https://www.cookieyes.com/privacy-policy/">CookieYes</a>, and
+    you can change or withdraw your choice at any time from that banner. If you decline, no analytics
+    cookies are set. This applies to the website only — it is entirely separate from the app.
   </p>
 
   <h2>Website waitlist</h2>
@@ -171,8 +187,10 @@
         through our service to compute an estimate and is not retained. (We keep only an anonymous
         per-device count of free estimates used; see "Free usage limit". A recipe you explicitly
         share by link is stored briefly so the recipient can open it; see "Recipe sharing".)</li>
-    <li>No selling or sharing of your data with advertisers or data brokers.</li>
-    <li>No location tracking, no advertising identifiers, no cross-app tracking.</li>
+    <li>No selling of your data, and no sharing of it with advertisers or data brokers.</li>
+    <li>In the app: no location tracking, no advertising identifiers, no cross-app tracking. (This
+        website's analytics derives an approximate location from your IP address, and only if you
+        consent — see "Analytics".)</li>
   </ul>
 
   <h2>Children</h2>
@@ -190,7 +208,16 @@
   <h2>Changes to this policy</h2>
   <p>
     If this policy changes, the "Last updated" date above will change and the revised version will be
-    posted at this address.
+    posted at this address. If a change is significant — for example if we start processing a new kind
+    of data, or use data we already hold for a new purpose — we will tell you before it takes effect,
+    with a notice in the app the next time you open it, rather than only updating this page.
+  </p>
+  <p>
+    <strong>Revision history.</strong><br />
+    31 August 2026 — described this website's analytics cookies and the consent banner; clarified in
+    "Subscription" that Apple's transaction carries a pseudonymous identifier which we verify but do
+    not store.<br />
+    17 August 2026 — first published version.
   </p>
 
   <h2>Contact</h2>
