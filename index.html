@@ -115,6 +115,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .waitlist{background:var(--surface);border:1px solid var(--hair);border-radius:22px;padding:38px;box-shadow:var(--shadow);display:grid;grid-template-columns:1.1fr .9fr;gap:38px;align-items:center;}
   .waitlist h2{font-size:clamp(1.55rem,3vw,2.1rem);} .waitlist p{margin-top:11px;color:var(--muted);}
   .waitgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  /* After launch the iPhone card is gone (see applyLaunchState), so the Android one stops being half a grid. */
+  body.launched [data-segment="stable"]{display:none;}
+  body.launched .waitgrid{grid-template-columns:1fr;max-width:460px;margin-inline:auto;}
   .leadcard{background:var(--surface);border:1px solid var(--hair);border-radius:20px;padding:26px;box-shadow:var(--shadow);position:relative;}
   .leadcard h3{font-size:1.3rem;margin-top:8px;} .leadcard p{margin-top:8px;color:var(--muted);font-size:.97rem;}
   .leadrow{display:flex;gap:10px;margin-top:16px;}
@@ -351,13 +354,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     pt:'Descarregar na App Store', it:"Scarica dall'App Store", fr:"Télécharger sur l'App Store",
     de:'Im App Store laden'
   };
+  // Every string that stops being true the moment the app ships, keyed by its data-i18n name. Swapping
+  // only the CTAs would leave "coming soon" printed under a "Download" button, the iPhone section still
+  // promising to let you know when it starts, and the pricing headline in the future tense.
+  // (fr `pricing_h` is identical to its pre-launch copy — that one was already present-tense; kept for symmetry.)
+  var LIVE_TEXT = {
+    pl:{hero_micro:'Dostępne w App Store',beta_h:'Fiteo jest już w App Store.',beta_p:"Pobierz na iPhone'a i zaloguj pierwszy posiłek w kilka sekund.",pricing_h:'Ile kosztuje.',android_h:'Fiteo jest już na iPhonie. Android w przygotowaniu.',wait_eyebrow:'Android',wait_h:'Zostaw maila — dam znać, gdy ruszy Android.'},
+    en:{hero_micro:'Available on the App Store',beta_h:'Fiteo is on the App Store.',beta_p:'Download it for iPhone and log your first meal in seconds.',pricing_h:'What it costs.',android_h:'Fiteo is live on iPhone. Android is in the works.',wait_eyebrow:'Android',wait_h:"Leave your email — I'll tell you when Android lands."},
+    es:{hero_micro:'Disponible en la App Store',beta_h:'Fiteo ya está en la App Store.',beta_p:'Descárgalo para iPhone y registra tu primera comida en segundos.',pricing_h:'Lo que cuesta.',android_h:'Fiteo ya está en iPhone. Android está en camino.',wait_eyebrow:'Android',wait_h:'Déjame tu correo — te aviso cuando llegue Android.'},
+    pt:{hero_micro:'Disponível na App Store',beta_h:'O Fiteo já está na App Store.',beta_p:'Descarregue para iPhone e registe a primeira refeição em segundos.',pricing_h:'Quanto custa.',android_h:'O Fiteo já está no iPhone. O Android está a caminho.',wait_eyebrow:'Android',wait_h:'Deixe o seu e-mail — aviso quando o Android sair.'},
+    it:{hero_micro:"Disponibile sull'App Store",beta_h:"Fiteo è sull'App Store.",beta_p:'Scaricalo per iPhone e registra il primo pasto in pochi secondi.',pricing_h:'Quanto costa.',android_h:'Fiteo è già su iPhone. Android è in arrivo.',wait_eyebrow:'Android',wait_h:'Lascia la tua email — ti avviso quando arriva Android.'},
+    fr:{hero_micro:"Disponible sur l'App Store",beta_h:"Fiteo est sur l'App Store.",beta_p:'Télécharge-le pour iPhone et enregistre ton premier repas en quelques secondes.',pricing_h:'Voici le prix.',android_h:'Fiteo est déjà sur iPhone. Android suivra bientôt.',wait_eyebrow:'Android',wait_h:'Laisse ton email — je te préviens quand Android arrive.'},
+    de:{hero_micro:'Im App Store erhältlich',beta_h:'Fiteo ist im App Store.',beta_p:'Lade es fürs iPhone und logge dein erstes Essen in Sekunden.',pricing_h:'So viel kostet es.',android_h:'Fiteo ist schon auf dem iPhone da. Android kommt bald.',wait_eyebrow:'Android',wait_h:'Lass deine E-Mail da — ich melde mich zum Android-Start.'}
+  };
   function applyLaunchState(code){
     if (!LAUNCHED || !APP_STORE_URL) return;
     var label = LIVE_CTA[code] || LIVE_CTA.en;
+    // Only these two: the nav carries the brand and the language switcher, no CTA (`nav_cta` and the
+    // .nav-cta rule are both leftovers with nothing to apply to).
     document.querySelectorAll('.hero-cta, .beta-cta').forEach(function(a){
       a.textContent = label; a.setAttribute('href', APP_STORE_URL);
       a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener');
     });
+    var live = LIVE_TEXT[code] || LIVE_TEXT.en;
+    Object.keys(live).forEach(function(k){
+      document.querySelectorAll('[data-i18n="' + k + '"]').forEach(function(el){ el.textContent = live[k]; });
+    });
+    // Hides the iPhone waitlist card: it offers to tell you about something you can already download.
+    document.body.classList.add('launched');
   }
 
   // Launch countdown. LAUNCH_AT is a fixed instant with an explicit offset, so everyone counts down to
