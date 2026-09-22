@@ -59,6 +59,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .langpill.active{background:var(--btn-bg);color:var(--on-accent);border-color:var(--btn-bg);}
   .langpill:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 
+  /* Launch countdown — sits above the gallery heading, in the same card vocabulary as .step/.leadcard.
+     Days/hours/minutes only: it ticks once a minute, so a seconds digit would sit there frozen. */
+  .countdown{padding:6px 0 26px;}
+  .cd-card{max-width:440px;margin:0 auto;text-align:center;background:var(--surface);border:1px solid var(--hair);border-radius:22px;padding:20px 22px 18px;box-shadow:var(--shadow);}
+  .cd-eyebrow{font-size:.8rem;font-weight:600;color:var(--accent-press);}
+  .cd-clock{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px;}
+  .cd-unit{background:var(--surface-2);border:1px solid var(--hair);border-radius:14px;padding:12px 4px 10px;}
+  .cd-num{display:block;font-size:clamp(1.9rem,6vw,2.4rem);font-weight:700;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums;}
+  .cd-cap{display:block;margin-top:7px;font-size:.68rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;}
+  .cd-when{margin-top:12px;font-size:.85rem;color:var(--muted);}
+  .cd-live{display:none;margin-top:12px;font-size:1.02rem;font-weight:600;}
+  /* On the last day a "0 dni" tile is dead weight — drop it and let the other two breathe. */
+  .countdown.no-days [data-unit="d"]{display:none;}
+  .countdown.no-days .cd-clock{grid-template-columns:repeat(2,1fr);max-width:260px;margin-inline:auto;}
+  .countdown.is-live .cd-clock,.countdown.is-live .cd-when{display:none;}
+  .countdown.is-live .cd-live{display:block;}
+  .cd-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}
+
   .gallery{padding:22px 0 60px;} .gallery-head{margin:0 auto 26px;max-width:44ch;text-align:center;} .gallery-head h2{font-size:clamp(1.4rem,3vw,2rem);} .gallery-head p{margin-top:8px;color:var(--muted);}
   .gwrap{overflow:hidden;padding:4px 0;}
   .gtrack{display:flex;gap:16px;will-change:transform;}
@@ -167,6 +185,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </header>
   </div>
 
+
+  <div class="wrap"><section class="countdown reveal" id="countdown" aria-labelledby="cd-eyebrow">
+    <div class="cd-card">
+      <p class="cd-eyebrow" id="cd-eyebrow" data-cd="eyebrow">Premiera w App Store</p>
+      <!-- The digits are decoration for a screen reader — .cd-sr below carries the same value as a sentence. -->
+      <div class="cd-clock" aria-hidden="true">
+        <div class="cd-unit" data-unit="d"><span class="cd-num" data-cd="d">—</span><span class="cd-cap" data-cap="d">dni</span></div>
+        <div class="cd-unit"><span class="cd-num" data-cd="h">—</span><span class="cd-cap" data-cap="h">godz.</span></div>
+        <div class="cd-unit"><span class="cd-num" data-cd="m">—</span><span class="cd-cap" data-cap="m">min</span></div>
+      </div>
+      <p class="cd-when" data-cd="when"></p>
+      <!-- Also aria-hidden: .cd-sr carries this same sentence, and hearing it twice is just noise. -->
+      <p class="cd-live" data-cd="live" aria-hidden="true">Premiera dziś — Fiteo lada chwila pojawi się w App Store.</p>
+      <p class="cd-sr" data-cd="sr"></p>
+    </div>
+  </section></div>
 
   <div class="wrap"><section class="gallery reveal" id="gallery">
     <div class="gallery-head"><h2 data-i18n="gallery_h">Lokalne potrawy — po Twojemu.</h2><p data-i18n="gallery_p">Zaloguj to, co naprawdę jesz — od paelli po schabowego.</p></div>
@@ -326,6 +360,65 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
   }
 
+  // Launch countdown. LAUNCH_AT is a fixed instant with an explicit offset, so everyone counts down to
+  // the same moment whatever their timezone; the line under the clock renders it in their local time.
+  var LAUNCH_AT = Date.parse('2026-09-23T17:00:00+02:00');
+  var CD_TEXT = {
+    pl:{eyebrow:'Premiera w App Store',d:'dni',h:'godz.',m:'min',soon:'Premiera dziś — Fiteo lada chwila pojawi się w App Store.',live:'Dziś premiera — Fiteo rusza na iPhonie.'},
+    en:{eyebrow:'Launching on the App Store',d:'days',h:'hrs',m:'min',soon:'Launch day — Fiteo lands on the App Store shortly.',live:'Launch day — Fiteo goes live on iPhone.'},
+    es:{eyebrow:'Lanzamiento en la App Store',d:'días',h:'h',m:'min',soon:'Hoy es el lanzamiento: Fiteo llegará a la App Store en breve.',live:'Hoy es el lanzamiento: Fiteo llega al iPhone.'},
+    pt:{eyebrow:'Lançamento na App Store',d:'dias',h:'h',m:'min',soon:'É hoje: o Fiteo chega à App Store dentro de momentos.',live:'É hoje: o Fiteo chega ao iPhone.'},
+    it:{eyebrow:"Lancio sull'App Store",d:'giorni',h:'ore',m:'min',soon:"È oggi: Fiteo arriva sull'App Store a momenti.",live:'È oggi: Fiteo arriva su iPhone.'},
+    fr:{eyebrow:"Lancement sur l'App Store",d:'jours',h:'h',m:'min',soon:"C'est aujourd'hui : Fiteo arrive sur l'App Store dans un instant.",live:"C'est aujourd'hui : Fiteo arrive sur iPhone."},
+    de:{eyebrow:'Start im App Store',d:'Tage',h:'Std.',m:'Min.',soon:'Heute ist es so weit: Fiteo erscheint in Kürze im App Store.',live:'Heute ist es so weit: Fiteo startet auf dem iPhone.'}
+  };
+  var cdLang = 'pl', cdTimer = null;
+
+  function countdownTick(){
+    var sec = document.getElementById('countdown');
+    if (!sec) return;
+    var t = CD_TEXT[cdLang] || CD_TEXT.en;
+    var set = function(key,val){ var el = sec.querySelector('[data-cd="'+key+'"]'); if (el) el.textContent = val; };
+    set('eyebrow', t.eyebrow);
+    ['d','h','m'].forEach(function(k){ var el = sec.querySelector('[data-cap="'+k+'"]'); if (el) el.textContent = t[k]; });
+
+    var left = LAUNCH_AT - Date.now();
+    if (cdTimer) { clearTimeout(cdTimer); cdTimer = null; }
+
+    // Launched, or the clock ran out: counting up would be nonsense, so say it plainly instead. Which
+    // sentence depends on the real go-live switch, not on the clock — Apple releases when we press the
+    // button, so "it's live on iPhone" is only true once LAUNCHED says so; until then the page may still
+    // be showing "notify me" CTAs and must not contradict them.
+    var live = !!(LAUNCHED && APP_STORE_URL);
+    if (live || left <= 0) {
+      sec.classList.add('is-live');
+      var word = live ? t.live : t.soon;
+      set('live', word); set('sr', word);
+      // A stale countdown is worse than none, so the block retires a day after the target — unless we
+      // really did launch, in which case it keeps saying so however late the release ran.
+      sec.hidden = !live && Date.now() > LAUNCH_AT + 864e5;
+      // Nothing schedules itself from here, so keep a slow re-check alive while we wait for the switch.
+      if (!live && !sec.hidden) cdTimer = setTimeout(countdownTick, 3e5);
+      return;
+    }
+    set('live', t.soon);
+
+    sec.classList.remove('is-live');
+    sec.hidden = false;
+    var d = Math.floor(left/864e5), h = Math.floor(left/36e5)%24, m = Math.floor(left/6e4)%60;
+    var pad = function(n){ return n<10 ? '0'+n : String(n); };
+    sec.classList.toggle('no-days', d === 0);
+    set('d', String(d)); set('h', pad(h)); set('m', pad(m));
+    set('sr', (d ? d+' '+t.d+', ' : '') + h+' '+t.h+', '+m+' '+t.m);
+    try {
+      set('when', new Date(LAUNCH_AT).toLocaleString(cdLang, {day:'numeric',month:'long',hour:'numeric',minute:'2-digit',timeZoneName:'short'}));
+    } catch(e) { set('when',''); }
+
+    // Fire when the displayed minute actually changes, rather than drifting on a free-running 60s interval.
+    cdTimer = setTimeout(countdownTick, Math.min(left % 6e4 + 250, 6e4));
+  }
+  document.addEventListener('visibilitychange', function(){ if (!document.hidden) countdownTick(); });
+
   function applyLang(code){
     var d = I18N[code] || I18N.en;
     document.documentElement.lang = code;
@@ -334,6 +427,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.querySelectorAll('.langpill').forEach(function(p){ var on = p.getAttribute('data-lang')===code; p.classList.toggle('active',on); p.setAttribute('aria-pressed',on?'true':'false'); });
     var sel = document.querySelector('.langselect'); if (sel) sel.value = code;
     applyLaunchState(code);
+    cdLang = code; countdownTick();
     try{ localStorage.setItem('fiteo_lang',code); }catch(e){}
   }
   (function(){
