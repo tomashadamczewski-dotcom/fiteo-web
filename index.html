@@ -348,7 +348,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   // manually released. Swaps the hero + "premiera niebawem" CTAs from "notify me" (scrolls to the
   // waitlist form) to a real "Download on the App Store" link — no other rebuild needed that day.
   var LAUNCHED = false;
-  var APP_STORE_URL = '';
+  // No country segment on purpose: the short link sends each visitor to their own storefront, which is
+  // the point on a seven-language page. It 404s until the version is released — harmless, because
+  // applyLaunchState needs LAUNCHED as well, so nothing on the page points at it yet.
+  var APP_STORE_URL = 'https://apps.apple.com/app/id6783411148';
   var LIVE_CTA = {
     pl:'Pobierz z App Store', en:'Download on the App Store', es:'Descargar en la App Store',
     pt:'Descarregar na App Store', it:"Scarica dall'App Store", fr:"Télécharger sur l'App Store",
