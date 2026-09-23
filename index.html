@@ -347,7 +347,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   // Go-live switch: flip LAUNCHED to true and fill APP_STORE_URL the day the app is approved and
   // manually released. Swaps the hero + "premiera niebawem" CTAs from "notify me" (scrolls to the
   // waitlist form) to a real "Download on the App Store" link — no other rebuild needed that day.
-  var LAUNCHED = false;
+  var LAUNCHED = true;
   // No country segment on purpose: the short link sends each visitor to their own storefront, which is
   // the point on a seven-language page. It 404s until the version is released — harmless, because
   // applyLaunchState needs LAUNCHED as well, so nothing on the page points at it yet.
