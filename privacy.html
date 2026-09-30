@@ -23,10 +23,10 @@
 </head>
 <body>
   <h1>Fiteo — Privacy Policy</h1>
-  <p class="meta">Last updated: 31 August 2026</p>
+  <p class="meta">Last updated: 30 September 2026</p>
 
   <p>
-    Fiteo is a calorie and macronutrient tracker for iPhone. It has no account, no sign-in, and no
+    Fiteo is a calorie and macronutrient tracker for iPhone and Android. It has no account, no sign-in, and no
     cloud sync of your personal data. Almost everything stays on your device. A few things leave it
     only when you choose to: the meal text or voice note you submit for an estimate (only to compute
     it), a pseudonymous, non-reversible device identifier used only to count your free estimates
@@ -36,7 +36,7 @@
 
   <h2>Data stored on your device only</h2>
   <p>
-    Everything you log stays on your iPhone: your meals and their estimated nutrition, weights and
+    Everything you log stays on your phone: your meals and their estimated nutrition, weights and
     body measurements, goals, your meal schedule, and app preferences. This is kept in the app's local
     storage on the device. We do not run a server that stores this personal data, and we cannot read it.
   </p>
@@ -64,17 +64,21 @@
   <p>
     Before you subscribe, Fiteo lets you make a small number of free AI estimates. To count these per
     device — with no account — the app sends a <strong>pseudonymous, non-reversible identifier</strong>:
-    a one-way SHA-256 hash of Apple's per-vendor identifier (<code>identifierForVendor</code>). We never
-    send or store the raw identifier. Our processing service keeps only a running count against this
+    a one-way SHA-256 hash of Apple's per-vendor identifier (<code>identifierForVendor</code>) on iPhone,
+    or of a random identifier the app creates when it is first installed on Android. We never send or
+    store the raw identifier. Our processing service keeps only a running count against this
     hashed value; it is not linked to your identity, meals, weight, or health data, is never used for
     advertising or cross-app tracking, and is not shared with anyone. It resets if you delete the app.
   </p>
 
   <h2>Dictation</h2>
   <p>
-    If you dictate a meal instead of typing it, Fiteo uses Apple's Speech framework to transcribe your
-    voice into text. That text is then handled exactly like typed text (see "Meal estimation" above).
-    Speech recognition is governed by <a href="https://www.apple.com/legal/privacy/">Apple's privacy terms</a>.
+    If you dictate a meal instead of typing it, Fiteo uses your phone's built-in speech recognition to
+    transcribe your voice into text: Apple's Speech framework on iPhone, and the system speech-recognition
+    service on Android (usually Google's). That text is then handled exactly like typed text (see "Meal
+    estimation" above). Speech recognition is governed by the privacy terms of that service
+    (<a href="https://www.apple.com/legal/privacy/">Apple</a>,
+    <a href="https://policies.google.com/privacy">Google</a>).
   </p>
 
   <h2>Voice notes</h2>
@@ -106,15 +110,39 @@
     manage those in the Health app.
   </p>
 
+  <h2>Health Connect (Android)</h2>
+  <p>
+    On Android, if you grant access, Fiteo reads from Health Connect to compute your energy balance and
+    body indicators: total calories burned, workouts (exercise sessions, shown on the daily chart), body
+    weight, and body-fat percentage. Fiteo writes back only one type of data — your body weight — and
+    only when you change it in the app. Each permission is optional; you choose which ones to grant.
+  </p>
+  <p>
+    <strong>Health Connect data never leaves your device:</strong> it is not sent to our service or any
+    AI provider, not written to logs, not shared with anyone, and never used for advertising. The use of
+    information received from Health Connect adheres to the
+    <a href="https://support.google.com/googleplay/android-developer/answer/12991134">Health Connect
+    Permissions policy</a>, including the Limited Use requirements. You can review or revoke Fiteo's
+    access at any time in the Health Connect app (or Android Settings → Health Connect). Deleting Fiteo
+    does not remove weight entries already saved to Health Connect; manage those in Health Connect.
+  </p>
+
   <h2>Subscription</h2>
   <p>
     AI meal estimation is part of "Fiteo Pro", an auto-renewable subscription with a free trial.
-    Purchases are handled entirely by Apple (StoreKit); we never see your payment details. To confirm
+    On iPhone, purchases are handled entirely by Apple (StoreKit); we never see your payment details. To confirm
     you have an active subscription, the app sends Apple's cryptographically signed subscription
     transaction to our processing service for verification. That transaction identifies the product and
     the fact that the subscription is valid — it does not contain your name, email, or Apple ID. It does
     carry a pseudonymous identifier issued by Apple, which on its own tells us nothing about who you are.
     We check the signature and do not store it.
+  </p>
+  <p>
+    On Android, purchases are handled entirely by Google Play; we never see your payment details. To
+    confirm your subscription, the app sends the purchase token Google Play issued for it to our
+    processing service, which checks it with Google Play. The token does not contain your name, email,
+    or Google account. To avoid asking Google on every request, the service keeps the result (valid or
+    not) against a one-way hash of the token for up to 10 minutes, then discards it.
   </p>
 
   <h2>Analytics</h2>
@@ -201,8 +229,9 @@
   <h2>Deleting your data</h2>
   <p>
     Because your data lives on your device, deleting the app removes the meals, measurements, goals,
-    and preferences stored by Fiteo. Data you previously wrote to Apple Health remains in Apple Health
-    until you delete it there. Manage your subscription in iOS Settings → [your name] → Subscriptions.
+    and preferences stored by Fiteo. Data you previously wrote to Apple Health or Health Connect remains
+    there until you delete it there. Manage your subscription in iOS Settings → [your name] →
+    Subscriptions on iPhone, or in the Play Store → Payments &amp; subscriptions → Subscriptions on Android.
   </p>
 
   <h2>Changes to this policy</h2>
@@ -214,6 +243,8 @@
   </p>
   <p>
     <strong>Revision history.</strong><br />
+    30 September 2026 — added Android: Health Connect, Google Play subscriptions, the Android free-usage
+    identifier and system speech recognition. Nothing changed for iPhone.<br />
     31 August 2026 — described this website's analytics cookies and the consent banner; clarified in
     "Subscription" that Apple's transaction carries a pseudonymous identifier which we verify but do
     not store.<br />
@@ -226,7 +257,8 @@
   </p>
 
   <hr />
-  <p class="meta">Fiteo is an independent app. Apple Health is a trademark of Apple Inc. Provider names
+  <p class="meta">Fiteo is an independent app. Apple Health is a trademark of Apple Inc. Google Play and Health Connect are
+  trademarks of Google LLC. Provider names
   are trademarks of their respective owners.</p>
 </body>
 </html>
