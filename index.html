@@ -118,6 +118,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   /* After launch the iPhone card is gone (see applyLaunchState), so the Android one stops being half a grid. */
   body.launched [data-segment="stable"]{display:none;}
   body.launched .waitgrid{grid-template-columns:1fr;max-width:460px;margin-inline:auto;}
+  /* After the Android launch the Android card stops collecting emails and links to Google Play instead. */
+  .leadcard .play-cta{display:none;margin-top:16px;}
+  body.android-launched [data-segment="android"] .play-cta{display:inline-flex;}
+  body.android-launched [data-segment="android"] :is(.leadrow,.consent,.note){display:none;}
   .leadcard{background:var(--surface);border:1px solid var(--hair);border-radius:20px;padding:26px;box-shadow:var(--shadow);position:relative;}
   .leadcard h3{font-size:1.3rem;margin-top:8px;} .leadcard p{margin-top:8px;color:var(--muted);font-size:.97rem;}
   .leadrow{display:flex;gap:10px;margin-top:16px;}
@@ -311,6 +315,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="eyebrow" data-i18n="android_eyebrow">Android</span>
         <h3 data-i18n="android_h">Fiteo rusza na iPhonie. Android w przygotowaniu.</h3>
         <p data-i18n="android_p">Zostaw kontakt — dam znać, gdy wersja na Androida będzie gotowa do testów.</p>
+        <a class="btn btn-primary play-cta" href="https://play.google.com/store/apps/details?id=io.fiteoapp" target="_blank" rel="noopener">Pobierz z Google Play</a>
         <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="leadrow"><input class="lead-email" type="email" inputmode="email" required placeholder="twój@email.com" data-i18n-ph="form_ph" aria-label="e-mail"><button class="btn btn-primary" type="submit" data-i18n="form_btn">Powiadom mnie</button></div>
         <label class="consent"><input class="lead-consent" type="checkbox" required> <span><span data-i18n="consent_label">Zgadzam się na kontakt mailowy w sprawie premiery.</span> <a href="https://fiteoapp.io/privacy" target="_blank" rel="noopener" data-i18n="foot_privacy">Prywatność</a></span></label>
@@ -385,6 +390,45 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
     // Hides the iPhone waitlist card: it offers to tell you about something you can already download.
     document.body.classList.add('launched');
+    applyAndroidLaunchState(code);
+  }
+
+  // Android go-live switch (Fiteo 1.0 public on Google Play 2026-10-16), the same idea as LAUNCHED: the
+  // Android card turns from the waitlist form into a Google Play link, and on an Android phone the hero
+  // button goes to Google Play instead of the App Store. fiteoapp.io/get (the Worker) switches separately.
+  var ANDROID_LAUNCHED = true;
+  var PLAY_URL = 'https://play.google.com/store/apps/details?id=io.fiteoapp';
+  var PLAY_CTA = {
+    pl:'Pobierz z Google Play', en:'Get it on Google Play', es:'Descargar en Google Play',
+    pt:'Descarregar no Google Play', it:'Scarica da Google Play', fr:'Télécharger sur Google Play',
+    de:'Bei Google Play laden'
+  };
+  var ANDROID_LIVE_TEXT = {
+    pl:{hero_micro:'Dostępne w App Store i Google Play',android_h:'Fiteo jest już w Google Play.',android_p:'Pobierz na Androida i zaloguj pierwszy posiłek w kilka sekund.',wait_eyebrow:'Android',wait_h:'Masz Androida?'},
+    en:{hero_micro:'Available on the App Store and Google Play',android_h:'Fiteo is on Google Play.',android_p:'Download it for Android and log your first meal in seconds.',wait_eyebrow:'Android',wait_h:'On Android?'},
+    es:{hero_micro:'Disponible en la App Store y Google Play',android_h:'Fiteo ya está en Google Play.',android_p:'Descárgalo para Android y registra tu primera comida en segundos.',wait_eyebrow:'Android',wait_h:'¿Tienes Android?'},
+    pt:{hero_micro:'Disponível na App Store e no Google Play',android_h:'O Fiteo já está no Google Play.',android_p:'Descarregue para Android e registe a primeira refeição em segundos.',wait_eyebrow:'Android',wait_h:'Tem Android?'},
+    it:{hero_micro:"Disponibile sull'App Store e su Google Play",android_h:'Fiteo è su Google Play.',android_p:'Scaricalo per Android e registra il primo pasto in pochi secondi.',wait_eyebrow:'Android',wait_h:'Hai Android?'},
+    fr:{hero_micro:"Disponible sur l'App Store et Google Play",android_h:'Fiteo est sur Google Play.',android_p:'Télécharge-le pour Android et enregistre ton premier repas en quelques secondes.',wait_eyebrow:'Android',wait_h:'Tu es sur Android ?'},
+    de:{hero_micro:'Im App Store und bei Google Play erhältlich',android_h:'Fiteo ist bei Google Play.',android_p:'Lade es für Android und logge dein erstes Essen in Sekunden.',wait_eyebrow:'Android',wait_h:'Du hast Android?'}
+  };
+  function applyAndroidLaunchState(code){
+    if (!ANDROID_LAUNCHED || !PLAY_URL) return;
+    var label = PLAY_CTA[code] || PLAY_CTA.en;
+    document.querySelectorAll('.play-cta').forEach(function(a){ a.textContent = label; a.setAttribute('href', PLAY_URL); });
+    // HEURISTIC: the platform from the User-Agent, as fiteoapp.io/get does. A miss only shows the App Store
+    // button, which is what every visitor saw before.
+    if (/Android/i.test(navigator.userAgent || '')) {
+      document.querySelectorAll('.hero-cta').forEach(function(a){
+        a.textContent = label; a.setAttribute('href', PLAY_URL);
+        a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener');
+      });
+    }
+    var live = ANDROID_LIVE_TEXT[code] || ANDROID_LIVE_TEXT.en;
+    Object.keys(live).forEach(function(k){
+      document.querySelectorAll('[data-i18n="' + k + '"]').forEach(function(el){ el.textContent = live[k]; });
+    });
+    document.body.classList.add('android-launched');
   }
 
   // Launch countdown. LAUNCH_AT is a fixed instant with an explicit offset, so everyone counts down to
@@ -598,9 +642,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   // cta_click — delegated so it also covers CTAs later swapped by applyLaunchState() on launch day.
   document.addEventListener('click', function(e){
-    var a = e.target.closest && e.target.closest('.hero-cta, .beta-cta, #pricing .btn');
+    var a = e.target.closest && e.target.closest('.hero-cta, .beta-cta, .play-cta, #pricing .btn');
     if (!a) return;
-    var cta = a.classList.contains('hero-cta') ? 'hero' : a.classList.contains('beta-cta') ? 'beta' : 'pricing';
+    var cta = a.classList.contains('hero-cta') ? 'hero' : a.classList.contains('beta-cta') ? 'beta'
+      : a.classList.contains('play-cta') ? 'android' : 'pricing';
     trackEvent('cta_click', { cta: cta, lang: document.documentElement.lang || 'pl' });
   });
 
