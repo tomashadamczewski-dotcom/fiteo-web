@@ -103,6 +103,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   /* After the Android launch the Android card stops collecting emails and links to Google Play instead. */
   .leadcard .play-cta{display:none;margin-top:16px;}
   body.android-launched [data-segment="android"] .play-cta{display:inline-flex;}
+  /* On a computer nobody knows which phone the visitor has: both stores side by side. On a phone the one
+     hero button already points to that phone's store. */
+  .hero-play{display:none;}
+  body.android-launched.desktop .hero-play{display:inline-flex;}
   body.android-launched [data-segment="android"] :is(.leadrow,.consent,.note){display:none;}
   .leadcard{background:var(--surface);border:1px solid var(--hair);border-radius:20px;padding:26px;box-shadow:var(--shadow);position:relative;}
   .leadcard h3{font-size:1.3rem;margin-top:8px;} .leadcard p{margin-top:8px;color:var(--muted);font-size:.97rem;}
@@ -167,7 +171,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="eyebrow" data-i18n="hero_eyebrow">Licznik kalorii, do którego mówisz</span>
         <h1 data-i18n="hero_h1">Powiedz, co zjadłeś. Resztę policzy Fiteo.</h1>
         <p class="sub" data-i18n="hero_sub">Bez ważenia, bez skanowania kodów, bez szukania w bazie. Opisujesz posiłek normalnie — jak koledze — a Fiteo szacuje kalorie i makro.</p>
-        <div class="cta-row"><a class="btn btn-primary hero-cta" href="#waitlist" data-i18n="hero_cta1">Powiadom mnie o premierze</a><a class="btn btn-ghost" href="#pricing" data-i18n="hero_cta2">Zobacz cennik</a></div>
+        <div class="cta-row"><a class="btn btn-primary hero-cta" href="#waitlist" data-i18n="hero_cta1">Powiadom mnie o premierze</a><a class="btn btn-primary play-cta hero-play" href="https://play.google.com/store/apps/details?id=io.fiteoapp" target="_blank" rel="noopener">Pobierz z Google Play</a><a class="btn btn-ghost" href="#pricing" data-i18n="hero_cta2">Zobacz cennik</a></div>
         <p class="microcopy" data-i18n="hero_micro">Wkrótce w App Store</p>
       </div>
       <figure class="herophoto"><img src="hero.jpg" alt="Ktoś sprawdza swój bilans kalorii w Fiteo przy stole"></figure>
@@ -390,6 +394,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener');
       });
     }
+    // HEURISTIC: no phone in the User-Agent = a computer. An iPad in desktop mode says "Macintosh" but has a
+    // touch screen, so it counts as a phone (it gets the App Store button only, as before).
+    var ua = navigator.userAgent || '';
+    var touchMac = /Macintosh/.test(ua) && navigator.maxTouchPoints > 1;
+    if (!/Android|iPhone|iPad|iPod/i.test(ua) && !touchMac) document.body.classList.add('desktop');
     var live = ANDROID_LIVE_TEXT[code] || ANDROID_LIVE_TEXT.en;
     Object.keys(live).forEach(function(k){
       document.querySelectorAll('[data-i18n="' + k + '"]').forEach(function(el){ el.textContent = live[k]; });
