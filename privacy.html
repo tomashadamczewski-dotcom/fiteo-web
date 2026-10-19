@@ -23,7 +23,7 @@
 </head>
 <body>
   <h1>Fiteo — Privacy Policy</h1>
-  <p class="meta">Last updated: 10 October 2026</p>
+  <p class="meta">Last updated: 19 October 2026</p>
 
   <p>
     Fiteo is a calorie and macronutrient tracker for iPhone and Android. It has no account, no sign-in, and no
@@ -174,6 +174,26 @@
     cookies are set. This applies to the website only — it is entirely separate from the app.
   </p>
 
+  <h2>Shared recipe links</h2>
+  <p>
+    When someone opens a recipe link shared from the app (fiteoapp.io/r/…) or taps its "Get the app"
+    button, our server counts that event: the event type, the kind of phone (iPhone, Android or other,
+    worked out from the browser's user-agent at the time) and the recipe's link id. The counts are kept
+    in Cloudflare Workers Analytics Engine. No IP address, cookie or device identifier is stored with
+    them, and link previews by messaging apps are not counted.
+  </p>
+
+  <h2>Partner coupons</h2>
+  <p>
+    Partners such as gyms hand out Fiteo coupons with a QR code. When you open a coupon
+    (fiteoapp.io/c/…) and choose your phone, we record which one-time App Store or Google Play code
+    the coupon received, for which store and when, so the same coupon always shows the same code and
+    no code is given out twice. We do not ask for or store your name, email or account. Your IP address
+    is used only for a moment to limit how often a coupon can be tried; it is not stored, and request
+    logs for coupon addresses are switched off. Redeeming the code, the free period and any renewal
+    happen in the App Store or Google Play under their terms; we do not learn who redeemed it.
+  </p>
+
   <h2>Website waitlist</h2>
   <p>
     If you submit your email on our website to be notified about the App Store or Android release, we
@@ -250,6 +270,8 @@
   </p>
   <p>
     <strong>Revision history.</strong><br />
+    19 October 2026 — added "Shared recipe links" (anonymous counting of link opens and "Get the app"
+    taps) and "Partner coupons".<br />
     10 October 2026 — "Meal estimation (AI)": a branded product's name may be looked up with Google Search
     to check its published nutrition label.<br />
     30 September 2026 — added Android: Health Connect, Google Play subscriptions, the Android free-usage
