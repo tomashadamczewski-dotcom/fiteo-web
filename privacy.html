@@ -69,13 +69,16 @@
 
   <h2>Free usage limit</h2>
   <p>
-    Before you subscribe, Fiteo lets you make a small number of free AI estimates. To count these per
-    device — with no account — the app sends a <strong>pseudonymous, non-reversible identifier</strong>:
+    Before you subscribe, Fiteo lets you make a small number of free AI estimates, one free recipe import
+    and one free ingredient substitution. To count these per device — with no account — the app sends a <strong>pseudonymous, non-reversible identifier</strong>:
     a one-way SHA-256 hash of Apple's per-vendor identifier (<code>identifierForVendor</code>) on iPhone,
     or of a random identifier the app creates when it is first installed on Android. We never send or
     store the raw identifier. Our processing service keeps only a running count against this
     hashed value; it is not linked to your identity, meals, weight, or health data, is never used for
     advertising or cross-app tracking, and is not shared with anyone. It resets if you delete the app.
+    To stop abuse of the free features, free requests are also counted per day against a one-way hash of
+    the network address they come from; that counter is not linked to anything else and expires within two
+    days. Subscribers' requests are not counted this way.
   </p>
 
   <h2>Dictation</h2>
@@ -231,7 +234,17 @@
     that identifies you. The extracted recipe is returned to your device for you to review and edit, and a
     copy is cached with <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare</a> for up to 30
     days so that the same link imports instantly next time; nothing is added to your day until you save it.
-    This feature is available to Pro subscribers.
+    Your first import is free; further imports are part of Fiteo Pro.
+  </p>
+
+  <h2>Suggest a substitute</h2>
+  <p>
+    If you ask Fiteo to suggest a substitute for an ingredient in a saved recipe, the recipe's ingredients
+    and steps, the ingredient you chose and your goal (for example "more protein", or a short wish you type
+    yourself) are sent to our processing service and on to the same AI provider as meal estimates
+    (<strong>Google (Gemini)</strong>, paid API, not used to train its models), which proposes the swaps.
+    Nothing that identifies you is sent with it, and the content is not stored after the answer is
+    returned. Your first substitution is free; further ones are part of Fiteo Pro.
   </p>
 
   <h2>What we do not collect</h2>
@@ -271,7 +284,8 @@
   <p>
     <strong>Revision history.</strong><br />
     19 October 2026 — added "Shared recipe links" (anonymous counting of link opens and "Get the app"
-    taps) and "Partner coupons".<br />
+    taps), "Partner coupons" and "Suggest a substitute"; "Free usage limit" now covers the free recipe
+    import and substitution and the per-address daily counter; recipe import is free once, then Pro.<br />
     10 October 2026 — "Meal estimation (AI)": a branded product's name may be looked up with Google Search
     to check its published nutrition label.<br />
     30 September 2026 — added Android: Health Connect, Google Play subscriptions, the Android free-usage
