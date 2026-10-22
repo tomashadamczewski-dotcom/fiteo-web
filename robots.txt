@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+# Partner coupons and their API carry one-time tokens: never crawl them.
+Disallow: /c/
+Disallow: /api/
+
+Sitemap: https://fiteoapp.io/sitemap.xml
