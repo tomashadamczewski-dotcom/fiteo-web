@@ -16,7 +16,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:title" content="Jak zapisać przepis z Instagrama — i od razu policzyć jego kalorie"><meta property="og:description" content="Zapisz przepis z rolki na Instagramie, TikToku lub YouTube razem z kaloriami i makro na porcję. Wklejasz link, Fiteo wyciąga składniki z gramaturami i kroki.">
 <meta property="og:image" content="https://fiteoapp.io/share.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "inLanguage": "pl", "name": "Jak zapisać przepis z Instagrama — i od razu policzyć jego kalorie", "step": [{"@type": "HowToStep", "position": 1, "text": "Pod rolką na Instagramie wybierz Udostępnij → Fiteo."}, {"@type": "HowToStep", "position": 2, "text": "Albo skopiuj link i wklej go w Fiteo: Przepisy → Importuj z linku."}, {"@type": "HowToStep", "position": 3, "text": "Fiteo wyciąga składniki, kroki oraz kalorie i makro na porcję."}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "inLanguage": "pl", "name": "Jak zapisać przepis z Instagrama — i od razu policzyć jego kalorie", "step": [{"@type": "HowToStep", "position": 1, "text": "Sposób 1: pod rolką na Instagramie wybierz Udostępnij → Fiteo."}, {"@type": "HowToStep", "position": 2, "text": "Sposób 2: skopiuj link do rolki i wklej go w Fiteo: Przepisy → Importuj z linku."}, {"@type": "HowToStep", "position": 3, "text": "Fiteo pokazuje składniki, kroki oraz kalorie i makro na porcję."}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": "pl", "mainEntity": [{"@type": "Question", "name": "Czy mogę zapisać przepis z TikToka albo YouTube?", "acceptedAnswer": {"@type": "Answer", "text": "Tak. Fiteo importuje przepisy z linków do Instagrama, TikToka, YouTube i Facebooka."}}, {"@type": "Question", "name": "Czy to działa na Androidzie?", "acceptedAnswer": {"@type": "Answer", "text": "Tak. Fiteo jest na iPhone'a i Androida, a udostępnianie rolki do Fiteo działa na obu."}}, {"@type": "Question", "name": "Czy Fiteo pobiera film na mój telefon?", "acceptedAnswer": {"@type": "Answer", "text": "Nie. Do aplikacji trafia tylko przepis: tytuł, składniki, kroki i wartości odżywcze."}}, {"@type": "Question", "name": "Czy autor rolki się o tym dowie?", "acceptedAnswer": {"@type": "Answer", "text": "Nie. Import działa jak zapisanie przepisu dla siebie. Jeśli przepis Ci smakował, zostaw autorowi polubienie albo komentarz."}}, {"@type": "Question", "name": "Jak policzyć kalorie przepisu, który już mam?", "acceptedAnswer": {"@type": "Answer", "text": "W Fiteo możesz też dodać przepis ręcznie: wpisujesz składniki z ilościami, a aplikacja liczy kalorie i makro na porcję."}}]}</script>
 <style>
   :root{--bg:#F5F5F7;--surface:#fff;--ink:#1C1C1E;--muted:#6E6E73;--hair:#E5E5EA;--accent:#0A84FF;--accent-press:#0060DF;
@@ -68,6 +68,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .shot img{width:260px;max-width:45%;border-radius:28px;box-shadow:var(--shadow)}
   @media (max-width:640px){.shot{flex-direction:column}.shot img{max-width:70%;align-self:center}}
   .ans{padding:4px 20px 8px}
+  .opts{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 8px}
+  .opt{background:var(--surface);border-radius:16px;padding:16px 18px;box-shadow:var(--shadow)}
+  .opt h3{margin:8px 0 6px} .opt p{margin:0}
+  .tag{display:inline-block;font-size:.78rem;font-weight:700;padding:3px 10px;border-radius:980px;background:var(--accent-soft);color:var(--accent-press)}
+  @media (max-width:640px){.opts{grid-template-columns:1fr}}
   .big-cta{display:inline-block;margin:10px 0 4px;font-weight:700;text-decoration:none;padding:13px 24px;border-radius:980px;background:var(--accent-press);color:#fff}
 </style>
 </head><body>
@@ -85,12 +90,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>zapisane posty mieszają się z resztą i trudno je potem znaleźć;</li>
 <li>nie wiesz, ile kalorii ma porcja, więc i tak liczysz wszystko ręcznie.</li>
 </ul>
-<h2>Z Fiteo: przepis, kroki i kalorie w 3 krokach</h2>
-<ol class="steps">
-<li><b>Udostępnij rolkę do Fiteo.</b> Pod rolką na Instagramie: <b>Udostępnij → Fiteo</b>. Tak samo na TikToku, YouTube i Facebooku — na iPhonie i Androidzie.</li>
-<li><b>Albo wklej link.</b> Wolisz inaczej? Skopiuj link do rolki i wklej go w Fiteo: <b>Przepisy → Importuj z linku</b>.</li>
-<li><b>Gotowe.</b> Fiteo wyciąga składniki z gramaturami, kroki przygotowania i części przepisu (np. ciasto, krem, kruszonka), a do tego liczy kalorie i makro na porcję.</li>
-</ol>
+<h2>Z Fiteo: dwa sposoby, jeden wynik</h2>
+<div class="opts">
+<div class="opt"><span class="tag">Sposób 1</span><h3>Udostępnij rolkę do Fiteo</h3><p>Pod rolką na Instagramie: <b>Udostępnij → Fiteo</b>. Bez kopiowania, prosto z Instagrama.</p></div>
+<div class="opt"><span class="tag">Sposób 2</span><h3>Skopiuj i wklej link</h3><p>Pod rolką: <b>Udostępnij → Kopiuj link</b>, potem w Fiteo: <b>Przepisy → Importuj z linku</b> i wklejasz adres.</p></div>
+</div>
+<p>Oba działają na iPhonie i Androidzie — z Instagrama, TikToka, YouTube i Facebooka. <b>Wynik:</b> składniki z gramaturami, kroki przygotowania i części przepisu (np. ciasto, krem, kruszonka), a do tego kalorie i makro na porcję.</p>
 <div class="shot"><img src="/reel-import-pl-recipe.jpg" alt="Przepis zaimportowany z rolki w Fiteo: składniki z gramaturami i kroki" loading="lazy" width="260">
 <div><h3>Co dalej z takim przepisem</h3><ul>
 <li><b>Dopasuj go pod siebie.</b> Przy składniku wybierasz <b>Zaproponuj zamiennik</b>: więcej białka, lżej, bez laktozy albo wege — Fiteo przelicza przepis.</li>
