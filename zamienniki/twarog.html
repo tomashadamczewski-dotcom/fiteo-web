@@ -64,6 +64,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .tile{display:block;background:var(--surface);border-radius:16px;padding:16px 18px;box-shadow:var(--shadow);text-decoration:none;color:var(--ink)}
   .tile b{display:block;font-size:1.1rem;margin-bottom:4px} .tile span{color:var(--muted);font-size:.92rem}
   @media (max-width:640px){.grid{grid-template-columns:1fr}}
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:18px 0}
+  .flow figure{margin:0} .flow img{width:100%;height:auto;border-radius:22px;box-shadow:var(--shadow);display:block}
+  .flow figcaption{font-size:.9rem;margin-top:10px;line-height:1.45}
+  @media (max-width:860px){.flow{grid-template-columns:1fr 1fr}}
+  @media (max-width:480px){.flow{grid-template-columns:1fr}.flow img{max-width:300px;margin:0 auto}}
   table.nut{width:100%;border-collapse:collapse;background:var(--surface);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);font-size:.95rem}
   table.nut th,table.nut td{padding:10px 12px;border-bottom:1px solid var(--hair);text-align:left}
   table.nut td.n,table.nut th.n{text-align:right;white-space:nowrap}
@@ -98,7 +103,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <tr><td>Skandynawia</td><td><b>Kvarg</b> (Szwecja), <b>kesam</b> (Norwegia) albo <b>skyr</b>.</td></tr>
 </tbody></table></div>
 <h2>Zamiennik dla każdego składnika — jednym dotknięciem</h2>
-<p>To tylko przykłady. W Fiteo przy <b>dowolnym</b> składniku przepisu wybierasz <b>Zaproponuj zamiennik</b> i cel: <b>więcej białka, lżej, bez laktozy albo wege</b>. Dostajesz kilka propozycji z gramaturą i krótką wskazówką, jak użyć zamiennika, a przepis przelicza się sam — kalorie i makro na porcję. Działa też z przepisami <a href="/przepis-z-instagrama">zapisanymi z Instagrama</a>. <a href="/zamienniki">Jak działają zamienniki</a>.</p>
+<p>To tylko przykłady. W Fiteo przy <b>dowolnym</b> składniku przepisu wybierasz <b>Zaproponuj zamiennik</b> i cel: <b>mniej kalorii, więcej białka, bez laktozy, wege albo taniej</b> — albo opisujesz własnymi słowami, o co chodzi. Dostajesz kilka propozycji z gramaturą i krótką wskazówką, jak użyć zamiennika, a przepis przelicza się sam — kalorie i makro na porcję. Działa też z przepisami <a href="/przepis-z-instagrama">zapisanymi z Instagrama</a>. <a href="/zamienniki">Jak działają zamienniki</a>.</p>
 <p><a class="big-cta" href="/get">Pobierz Fiteo — iPhone i Android</a></p>
 <h2>Najczęstsze pytania</h2>
 <details><summary>Czym zastąpić twaróg w serniku?</summary><div class="ans"><p>Najlepiej innym twarogiem chudym lub półtłustym (za granicą: Quark, kwark, fromage blanc). Ricotta też się sprawdzi, ale sernik będzie bardziej tłusty i delikatniejszy.</p></div></details><details><summary>Czy skyr to to samo co twaróg?</summary><div class="ans"><p>Nie. Skyr ma podobnie dużo białka w stosunku do kalorii, ale jest gładki jak gęsty jogurt i ma mniej białka na 100 g niż twaróg chudy.</p></div></details><details><summary>Jak nazywa się twaróg w Niemczech i Anglii?</summary><div class="ans"><p>W Niemczech — Quark (chudy: Magerquark). W Wielkiej Brytanii najczęściej też quark albo cottage cheese.</p></div></details>
