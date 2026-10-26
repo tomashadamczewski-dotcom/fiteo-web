@@ -6,8 +6,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-K9F592HL');</script>
 <!-- End Google Tag Manager -->
-<meta name="viewport" content="width=device-width, initial-scale=1"><title>Fiteo — powiedz, co zjadłeś. Resztę policzy Fiteo.</title>
-<meta name="description" content="Licznik kalorii, przepisy z rolek i zamienniki składników w jednej aplikacji. Opisz posiłek po swojemu — Fiteo szacuje kalorie i makro i pokazuje bilans dnia. Na iPhone'a i Androida.">
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>Fiteo — jedz świadomie: przepisy, zamienniki i bilans dnia</title>
+<meta name="description" content="Zapisz przepis — własny albo z rolki — dopasuj go zamiennikiem pod swój cel i zobacz, jak wpisuje się w bilans dnia. Im dokładniej opiszesz posiłek, tym dokładniejszy wynik. Na iPhone'a i Androida.">
 <link rel="canonical" href="https://fiteoapp.io/">
 <link rel="icon" href="icon.png">
 <link rel="apple-touch-icon" href="icon.png">
@@ -15,12 +15,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:url" content="https://fiteoapp.io/">
 <meta property="og:site_name" content="Fiteo">
 <meta property="og:locale" content="pl_PL">
-<meta property="og:title" content="Fiteo — kalorie, przepisy i zamienniki w jednej aplikacji">
-<meta property="og:description" content="Przepis z rolki, dopasowany pod Ciebie, w bilansie dnia. Fiteo szacuje kalorie i makro z opisu posiłku. App Store i Google Play.">
+<meta property="og:title" content="Fiteo — przepisy, zamienniki i bilans dnia w jednej aplikacji">
+<meta property="og:description" content="Przepis z rolki albo własny, dopasowany zamiennikiem pod Twój cel, w bilansie dnia. App Store i Google Play.">
 <meta property="og:image" content="https://fiteoapp.io/share.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Fiteo — kalorie, przepisy i zamienniki w jednej aplikacji">
+<meta property="og:image:alt" content="Fiteo — przepisy, zamienniki i bilans dnia w jednej aplikacji">
 <meta name="twitter:card" content="summary_large_image">
 <style>
   :root {
@@ -30,9 +30,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     --shadow:0 1px 2px rgba(0,0,0,.05),0 10px 30px -12px rgba(20,30,50,.18);
     --maxw:1080px; --font:-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
   }
-  @media (prefers-color-scheme: dark){:root{--bg:#000;--surface:#1C1C1E;--surface-2:#141416;--ink:#F5F5F7;--muted:#98989F;--hair:#2C2C2E;--accent:#0A84FF;--accent-press:#409CFF;--accent-soft:#0E2136;--btn-bg:#0A84FF;--shadow:0 1px 2px rgba(0,0,0,.5),0 16px 38px -14px rgba(0,0,0,.6);}}
+  @media (prefers-color-scheme: dark){:root{--bg:#000;--surface:#1C1C1E;--surface-2:#141416;--ink:#F5F5F7;--muted:#98989F;--hair:#2C2C2E;--accent:#0A84FF;--accent-press:#409CFF;--accent-soft:#0E2136;--btn-bg:#0060DF;--shadow:0 1px 2px rgba(0,0,0,.5),0 16px 38px -14px rgba(0,0,0,.6);}}
   :root[data-theme="light"]{--bg:#F5F5F7;--surface:#fff;--surface-2:#FBFBFD;--ink:#1C1C1E;--muted:#6E6E73;--hair:#E5E5EA;--accent:#0A84FF;--accent-soft:#E6F0FF;--shadow:0 1px 2px rgba(0,0,0,.05),0 10px 30px -12px rgba(20,30,50,.18);}
-  :root[data-theme="dark"]{--bg:#000;--surface:#1C1C1E;--surface-2:#141416;--ink:#F5F5F7;--muted:#98989F;--hair:#2C2C2E;--accent:#0A84FF;--accent-soft:#0E2136;--btn-bg:#0A84FF;--accent-press:#409CFF;--shadow:0 1px 2px rgba(0,0,0,.5),0 16px 38px -14px rgba(0,0,0,.6);}
+  :root[data-theme="dark"]{--bg:#000;--surface:#1C1C1E;--surface-2:#141416;--ink:#F5F5F7;--muted:#98989F;--hair:#2C2C2E;--accent:#0A84FF;--accent-soft:#0E2136;--btn-bg:#0060DF;--accent-press:#409CFF;--shadow:0 1px 2px rgba(0,0,0,.5),0 16px 38px -14px rgba(0,0,0,.6);}
   *{box-sizing:border-box;} html,body{margin:0;}
   body{background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
@@ -85,9 +85,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .stage-video{width:100%;transform:translateX(-60%);opacity:0;transition:transform .6s cubic-bezier(.2,.7,.2,1),opacity .6s;will-change:transform,opacity;}
   .stage-text{transform:translateX(60%);opacity:0;transition:transform .6s cubic-bezier(.2,.7,.2,1),opacity .6s;will-change:transform,opacity;}
   .scene.active .stage-video,.scene.active .stage-text{transform:none;opacity:1;}
-  .dots{display:flex;gap:9px;justify-content:center;margin-top:24px;}
+  .dots{display:flex;gap:14px;justify-content:center;align-items:center;margin-top:24px;}
   .dot{position:relative;width:9px;height:9px;border-radius:50%;border:none;background:var(--hair);cursor:pointer;padding:0;transition:background .25s,width .25s;}
-  .dot::after{content:"";position:absolute;inset:-12px;}
+  .dot::after{content:"";position:absolute;inset:-18px -6px;}
+  .playpause{width:28px;height:28px;margin-left:6px;border-radius:50%;border:1px solid var(--hair);background:var(--surface);cursor:pointer;position:relative;padding:0;}
+  .playpause::before{content:"";position:absolute;left:50%;top:50%;width:8px;height:10px;transform:translate(-50%,-50%);border-left:3px solid var(--muted);border-right:3px solid var(--muted);box-sizing:border-box;}
+  .playpause.paused::before{width:0;height:0;border-style:solid;border-width:6px 0 6px 10px;border-color:transparent transparent transparent var(--muted);border-right:0;transform:translate(-35%,-50%);}
+  .playpause::after{content:"";position:absolute;inset:-8px;}
+  .playpause:focus-visible{outline:3px solid var(--accent);outline-offset:3px;}
+  .subnav{display:flex;gap:2px;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:-8px -10px 0;scrollbar-width:none;}
+  .subnav::-webkit-scrollbar{display:none} .subnav a{flex:none;padding:11px 10px;font-size:.92rem;color:var(--muted);text-decoration:none;border-radius:10px;white-space:nowrap;} .subnav a:hover{color:var(--ink);background:var(--surface);}
+  .subnav a:focus-visible,.foot a:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
   .dot.on{background:var(--accent);width:26px;border-radius:6px;}
   .dot:focus-visible{outline:3px solid var(--accent);outline-offset:3px;}
   .phonewrap{position:relative;width:100%;max-width:300px;margin:0 auto;aspect-ratio:9/16;border-radius:34px;overflow:hidden;background:#0b0b0d;box-shadow:0 34px 70px -24px rgba(0,0,0,.55),0 0 0 1px var(--hair);}
@@ -101,29 +109,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .step{background:var(--surface);border:1px solid var(--hair);border-radius:18px;padding:22px;box-shadow:var(--shadow);}
   .step .n{font-weight:700;color:var(--accent);font-size:.86rem;} .step h3{font-size:1.24rem;margin-top:9px;} .step p{margin-top:7px;color:var(--muted);font-size:.97rem;}
 
-  .waitlist{background:var(--surface);border:1px solid var(--hair);border-radius:22px;padding:38px;box-shadow:var(--shadow);display:grid;grid-template-columns:1.1fr .9fr;gap:38px;align-items:center;}
-  .waitlist h2{font-size:clamp(1.55rem,3vw,2.1rem);} .waitlist p{margin-top:11px;color:var(--muted);}
-  .waitgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
-  /* After launch the iPhone card is gone (see applyLaunchState), so the Android one stops being half a grid. */
-  body.launched [data-segment="stable"]{display:none;}
-  body.launched .waitgrid{grid-template-columns:1fr;max-width:460px;margin-inline:auto;}
-  /* After the Android launch the Android card stops collecting emails and links to Google Play instead. */
-  .leadcard .play-cta{display:none;margin-top:16px;}
-  body.android-launched [data-segment="android"] .play-cta{display:inline-flex;}
   /* On a computer nobody knows which phone the visitor has: both stores side by side. On a phone the one
      hero button already points to that phone's store. */
   .hero-play{display:none;}
   body.android-launched.desktop .hero-play{display:inline-flex;}
-  body.android-launched [data-segment="android"] :is(.leadrow,.consent,.note){display:none;}
-  .leadcard{background:var(--surface);border:1px solid var(--hair);border-radius:20px;padding:26px;box-shadow:var(--shadow);position:relative;}
-  .leadcard h3{font-size:1.3rem;margin-top:8px;} .leadcard p{margin-top:8px;color:var(--muted);font-size:.97rem;}
-  .leadrow{display:flex;gap:10px;margin-top:16px;}
-  .lead-email{flex:1;min-width:0;padding:13px 16px;border-radius:980px;border:1.5px solid var(--hair);background:var(--surface-2);color:var(--ink);font-size:1rem;font-family:var(--font);}
-  .lead-email:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-color:var(--accent);}
-  .consent{display:flex;gap:8px;align-items:flex-start;margin-top:12px;font-size:.8rem;color:var(--muted);line-height:1.45;} .consent input{margin-top:3px;flex:none;width:16px;height:16px;} .consent a{color:var(--accent-press);}
-  .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;}
-  .note{margin-top:12px;font-size:.85rem;} .thanks-msg{color:var(--accent-press);font-weight:600;} .err-msg{color:#D1453B;font-weight:600;}
-  .foot{border-top:1px solid var(--hair);padding:32px 0 46px;color:var(--muted);font-size:.9rem;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;} .foot a{text-decoration:none;color:var(--muted);} .foot .links{display:flex;gap:20px;flex-wrap:wrap;}
+  .foot{border-top:1px solid var(--hair);padding:32px 0 46px;color:var(--muted);font-size:.9rem;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;} .foot a{text-decoration:none;color:var(--muted);display:inline-block;padding:10px 0;} .foot .links{display:flex;gap:20px;flex-wrap:wrap;}
   .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0)*90ms);} .reveal.in{opacity:1;transform:none;}
   .btn:focus-visible{outline:3px solid var(--accent);outline-offset:3px;}
   @media (prefers-reduced-motion: reduce){.reveal{animation:none;opacity:1;transform:none;transition:none;} .showcase-sticky{position:static;height:auto;overflow:visible;} .scene{position:relative;inset:auto;opacity:1!important;visibility:visible!important;padding:40px 0;transition:none;} .scene .stage-video,.scene .stage-text{opacity:1!important;transform:none!important;transition:none;} .dots{display:none;}}
@@ -142,7 +132,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .scene + .scene{border-top:1px solid var(--hair);}
     .stage-inner{grid-template-columns:1fr;gap:26px;text-align:center;}
     .scene .stage-video,.scene .stage-text{transform:none!important;opacity:1!important;transition:none;}
-    .dots{display:none;}
+    .showcase .dots{display:none;}
     .stage-text p{max-width:none;}.phonewrap{max-width:230px;margin:0 auto;}
     .steps{grid-template-columns:1fr;}.waitgrid{grid-template-columns:1fr;}.section{padding:60px 0;}
     .gcard{flex-basis:78%;}
@@ -173,21 +163,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <option value="pt">Português</option>
     </select>
     </nav>
+    <nav class="subnav" aria-label="Fiteo">
+      <a class="ig-link" href="/przepis-z-instagrama" data-i18n="nav_ig">Przepis z Instagrama</a>
+      <a href="/zamienniki" data-i18n="s4_eyebrow">Zamienniki</a>
+      <a href="/kalkulator-kalorii" data-i18n="tool1_h">Kalkulator kalorii</a>
+      <a href="/dokladnosc" data-i18n="foot_accuracy">Dokładność</a>
+    </nav>
     <header class="hero" id="hero">
       <div>
-        <span class="eyebrow" data-i18n="hero_eyebrow">Licznik kalorii, do którego mówisz</span>
-        <h1 data-i18n="hero_h1">Powiedz, co zjadłeś. Resztę policzy Fiteo.</h1>
-        <p class="sub" data-i18n="hero_sub">Bez ważenia, bez skanowania kodów, bez szukania w bazie. Opisujesz posiłek normalnie — jak koledze — a Fiteo szacuje kalorie i makro.</p>
-        <div class="cta-row"><a class="btn btn-primary hero-cta" href="https://apps.apple.com/app/id6783411148" data-i18n="hero_cta1">Powiadom mnie o premierze</a><a class="btn btn-primary play-cta hero-play" href="https://play.google.com/store/apps/details?id=io.fiteoapp" target="_blank" rel="noopener">Pobierz z Google Play</a><a class="btn btn-ghost" href="#pricing" data-i18n="hero_cta2">Zobacz cennik</a></div>
-        <p class="microcopy" data-i18n="hero_micro">Wkrótce w App Store</p>
+        <span class="eyebrow" data-i18n="hero_eyebrow">Jedz świadomie</span>
+        <h1 data-i18n="hero_h1">Twoje przepisy, posiłki i bilans dnia — w&nbsp;jednym miejscu.</h1>
+        <p class="sub" data-i18n="hero_sub">Zapisz przepis — własny albo z rolki — dopasuj go zamiennikiem pod swój cel i zobacz, jak wpisuje się w Twój dzień.</p>
+        <div class="cta-row"><a class="btn btn-primary hero-cta" href="https://apps.apple.com/app/id6783411148" data-i18n="hero_cta1">Pobierz z App Store</a><a class="btn btn-primary play-cta hero-play" href="https://play.google.com/store/apps/details?id=io.fiteoapp" target="_blank" rel="noopener">Pobierz z Google Play</a><a class="btn btn-ghost" href="#pricing" data-i18n="hero_cta2">Zobacz cennik</a></div>
+        <p class="microcopy" data-i18n="hero_micro">Dostępne w App Store i Google Play</p>
       </div>
-      <figure class="herophoto"><img src="hero.jpg" alt="Ktoś sprawdza swój bilans kalorii w Fiteo przy stole"></figure>
+      <figure class="herophoto"><img src="hero.jpg" alt="Telefon z aplikacją Fiteo przy stole"></figure>
     </header>
   </div>
 
 
   <div class="wrap"><section class="gallery reveal" id="gallery">
-    <div class="gallery-head"><h2 data-i18n="gallery_h">Lokalne potrawy — po Twojemu.</h2><p data-i18n="gallery_p">Zaloguj to, co naprawdę jesz — od paelli po schabowego.</p></div>
+    <div class="gallery-head"><h2 data-i18n="gallery_h">Lokalne potrawy — po Twojemu.</h2><p data-i18n="gallery_p">Zapisz to, co naprawdę jesz — od paelli po schabowego.</p></div>
     <div class="gwrap">
       <div class="gtrack">
         <figure class="gcard"><div class="gframe"><img src="shot_de.jpg?v=2" alt="Fiteo auf Deutsch — Schweineschnitzel mit Kartoffelsalat" loading="lazy"></div><figcaption>Deutsch</figcaption></figure>
@@ -199,26 +195,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <figure class="gcard"><div class="gframe"><img src="shot_pt.jpg?v=2" alt="Fiteo em português — bacalhau à brás" loading="lazy"></div><figcaption>Português</figcaption></figure>
       </div>
     </div>
-    <div class="dots gdots" role="tablist" aria-label="Język zrzutu">
-      <button class="dot on" data-g="0" aria-label="Deutsch" aria-selected="true"></button>
-      <button class="dot" data-g="1" aria-label="English" aria-selected="false"></button>
-      <button class="dot" data-g="2" aria-label="Español" aria-selected="false"></button>
-      <button class="dot" data-g="3" aria-label="Français" aria-selected="false"></button>
-      <button class="dot" data-g="4" aria-label="Italiano" aria-selected="false"></button>
-      <button class="dot" data-g="5" aria-label="Polski" aria-selected="false"></button>
-      <button class="dot" data-g="6" aria-label="Português" aria-selected="false"></button>
+    <div class="dots gdots" role="group" aria-label="Język zrzutu">
+      <button class="dot on" data-g="0" aria-label="Deutsch" aria-current="true"></button>
+      <button class="dot" data-g="1" aria-label="English"></button>
+      <button class="dot" data-g="2" aria-label="Español"></button>
+      <button class="dot" data-g="3" aria-label="Français"></button>
+      <button class="dot" data-g="4" aria-label="Italiano"></button>
+      <button class="dot" data-g="5" aria-label="Polski"></button>
+      <button class="dot" data-g="6" aria-label="Português"></button>
+      <button class="playpause" type="button" aria-label="Wstrzymaj" data-pp="gallery"></button>
     </div>
   </section></div>
 
   <section class="showcase" id="showcase"><div class="showcase-sticky">
 
+    <!-- Scene — recipe from a reel = USP -->
+    <div class="scene"><div class="stage-inner">
+      <div class="stage-video"><div class="phonewrap"><video muted playsinline preload="auto" poster="reel-import.jpg?v=2" src="reel-import.mp4?v=2"></video><div class="track"><div class="playhead"></div></div></div></div>
+      <div class="stage-text">
+        <span class="eyebrow" data-i18n="s3_eyebrow">Przepisy</span>
+        <h2 data-i18n="s3_h">Przepis z rolki? Zapisz go z kaloriami.</h2>
+        <p data-i18n="s3_p">Udostępnij rolkę do Fiteo albo wklej link — składniki, kroki i makro na porcję. Potem podmień dowolny składnik pod swój cel.</p>
+      </div>
+    </div></div>
+
+    <!-- Scene — substitute (screenshot) -->
+    <div class="scene"><div class="stage-inner">
+      <div class="stage-video"><div class="phonewrap"><img src="zamiennik-krok-3.jpg" alt="Fiteo proponuje zamienniki twarogu: skyr naturalny i serek wiejski light" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></div></div>
+      <div class="stage-text">
+        <span class="eyebrow" data-i18n="s4_eyebrow">Zamienniki</span>
+        <h2 data-i18n="s4_h">Podmień składnik pod swój cel.</h2>
+        <p data-i18n="s4_p">Przy dowolnym składniku wybierz „Zaproponuj zamiennik”: lżej, więcej białka, bez laktozy, wege, taniej — albo opisz własnymi słowami. Fiteo przeliczy przepis.</p>
+      </div>
+    </div></div>
+
     <!-- Scene 0 — calories IN (phone, dictation) -->
     <div class="scene"><div class="stage-inner">
       <div class="stage-video"><div class="phonewrap"><video muted playsinline preload="auto" poster="phone.jpg" src="phone.mp4"></video><div class="track"><div class="playhead"></div></div></div></div>
       <div class="stage-text">
-        <span class="eyebrow" data-i18n="s1_eyebrow">Przyjęcie kalorii</span>
-        <h2 data-i18n="s1_h">Mówisz, co zjadłeś.</h2>
-        <p data-i18n="s1_p">Bez wpisywania, bez zdjęć. Opisujesz posiłek po swojemu — konwersacyjny model zamienia to na kalorie i makro.</p>
+        <span class="eyebrow" data-i18n="s1_eyebrow">Posiłki</span>
+        <h2 data-i18n="s1_h">Zapisz, co zjadłeś — po swojemu.</h2>
+        <p data-i18n="s1_p">Napisz albo nagraj głosówkę. Im dokładniej opiszesz, tym dokładniejszy wynik: z ilościami Fiteo liczy najprecyzyjniej, a bez nich przyjmie typową porcję i pokaże ją do poprawienia.</p>
       </div>
     </div></div>
 
@@ -226,77 +243,78 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="scene"><div class="stage-inner">
       <div class="stage-video"><div class="phonewrap"><video muted playsinline preload="auto" poster="cycling.jpg" src="cycling.mp4"></video><div class="track"><div class="playhead"></div></div></div></div>
       <div class="stage-text">
-        <span class="eyebrow" data-i18n="s2_eyebrow">Wydatek kalorii</span>
-        <h2 data-i18n="s2_h">Fiteo widzi Twój trening.</h2>
-        <p data-i18n="s2_p">Spalone z aktywności wchodzą do bilansu z Apple Health — automatycznie, bez wpisywania.</p>
-      </div>
-    </div></div>
-
-    <!-- Scene 2 — the balance (screen) = USP -->
-    <div class="scene"><div class="stage-inner">
-      <div class="stage-video"><div class="phonewrap"><video muted playsinline preload="auto" poster="reel-import.jpg?v=2" src="reel-import.mp4?v=2"></video><div class="track"><div class="playhead"></div></div></div></div>
-      <div class="stage-text">
-        <span class="eyebrow" data-i18n="s3_eyebrow">Import przepisów</span>
-        <h2 data-i18n="s3_h">Przepis z rolki? Nie zgub go.</h2>
-        <p data-i18n="s3_p">Wklej link z Instagrama, TikToka albo YouTube — Fiteo wyciągnie składniki i policzy kalorie.</p>
+        <span class="eyebrow" data-i18n="s2_eyebrow">Bilans</span>
+        <h2 data-i18n="s2_h">Fiteo widzi, ile spalasz.</h2>
+        <p data-i18n="s2_p">Spalone z aktywności wchodzą do bilansu z Apple Health albo Health Connect — automatycznie, bez wpisywania.</p>
       </div>
     </div></div>
 
   </div>
-    <div class="dots" role="tablist" aria-label="Sceny">
-      <button class="dot on" data-scene="0" aria-label="Scena 1: przyjęcie kalorii" aria-selected="true"></button>
-      <button class="dot" data-scene="1" aria-label="Scena 2: wydatek kalorii" aria-selected="false"></button>
-      <button class="dot" data-scene="2" aria-label="Scena 3: import przepisów" aria-selected="false"></button>
+    <div class="dots" role="group" aria-label="Sceny">
+      <button class="dot on" data-scene="0" aria-label="Przepisy" aria-current="true"></button>
+      <button class="dot" data-scene="1" aria-label="Zamienniki"></button>
+      <button class="dot" data-scene="2" aria-label="Posiłki"></button>
+      <button class="dot" data-scene="3" aria-label="Bilans"></button>
+      <button class="playpause" type="button" aria-label="Wstrzymaj" data-pp="scene"></button>
     </div>
   </section>
 
   <section class="section" id="steps"><div class="wrap">
-    <div class="section-head reveal"><span class="eyebrow" data-i18n="steps_eyebrow">Jak to działa</span><h2 data-i18n="steps_h">Trzy sekundy zamiast trzech minut.</h2></div>
+    <div class="section-head reveal"><span class="eyebrow" data-i18n="steps_eyebrow">Jak to działa</span><h2 data-i18n="steps_h">Od przepisu do bilansu dnia.</h2></div>
     <div class="steps">
-      <div class="step reveal" style="--i:0"><div class="n" data-i18n="st1_n">Opowiedz</div><h3 data-i18n="st1_h">Wpisz albo powiedz</h3><p data-i18n="st1_p">Całym zdaniem, z ilościami albo bez. „Owsianka z bananem, było tego sporo."</p></div>
-      <div class="step reveal" style="--i:1"><div class="n" data-i18n="st2_n">Fiteo liczy</div><h3 data-i18n="st2_h">AI szacuje</h3><p data-i18n="st2_p">Kalorie i makro — bez ważenia i gramów. Wielokrotności też („3× kanapka").</p></div>
-      <div class="step reveal" style="--i:2"><div class="n" data-i18n="st3_n">Widzisz bilans</div><h3 data-i18n="st3_h">Na żywo</h3><p data-i18n="st3_p">Przyjęte vs spalone (z Apple Health), z celem na dziś.</p></div>
+      <div class="step reveal" style="--i:0"><div class="n" data-i18n="st1_n">Przepis</div><h3 data-i18n="st1_h">Zapisz albo zaimportuj</h3><p data-i18n="st1_p">Własny przepis albo rolka z Instagrama, TikToka czy YouTube — ze składnikami, krokami i makro.</p></div>
+      <div class="step reveal" style="--i:1"><div class="n" data-i18n="st2_n">Twój cel</div><h3 data-i18n="st2_h">Dopasuj zamiennikiem</h3><p data-i18n="st2_p">Mniej kalorii, więcej białka, bez laktozy, wege, taniej — albo opisz własnymi słowami.</p></div>
+      <div class="step reveal" style="--i:2"><div class="n" data-i18n="st3_n">Bilans</div><h3 data-i18n="st3_h">Zjedz i zobacz bilans</h3><p data-i18n="st3_p">Posiłek trafia do Twojego dnia: przyjęte kontra spalone, z celem na dziś.</p></div>
     </div>
   </div></section>
 
   <section class="section" id="accuracy"><div class="wrap">
-    <div class="section-head reveal"><span class="eyebrow" data-i18n="acc_eyebrow">Dokładność</span><h2 data-i18n="acc_h">Sprawdziliśmy Fiteo na 100 potrawach.</h2><p data-i18n="acc_p">Gdy podasz ilość, mediana błędu to 1%, a 94% potraw mieści się w ±10% wartości z danych referencyjnych. Pokazujemy też, gdzie Fiteo się myli.</p></div>
+    <div class="section-head reveal"><span class="eyebrow" data-i18n="acc_eyebrow">Dokładność</span><h2 data-i18n="acc_h">Sprawdziliśmy Fiteo na 100 potrawach.</h2><p data-i18n="acc_p">Gdy podasz ilość, mediana błędu to 1%, a 94% potraw mieści się w ±10% wartości z danych referencyjnych. Bez ilości („talerz spaghetti”) Fiteo przyjmuje typową porcję — wtedy mediana błędu to ok. 20%. Pokazujemy też, gdzie Fiteo się myli.</p></div>
     <p class="reveal" style="margin-top:18px;"><a class="btn btn-ghost" href="/dokladnosc" data-i18n="acc_link">Zobacz pełne wyniki testu</a></p>
+  </div></section>
+  <section class="section" id="tools"><div class="wrap">
+    <div class="section-head reveal"><span class="eyebrow" data-i18n="tools_eyebrow">Przydatne</span><h2 data-i18n="tools_h">Zacznij od jednego kroku.</h2></div>
+    <div class="steps">
+      <a class="step reveal" style="--i:0;text-decoration:none;color:inherit" href="/kalkulator-kalorii"><h3 data-i18n="tool1_h">Kalkulator kalorii</h3><p data-i18n="tool1_p">Policz zapotrzebowanie i dzienny cel na redukcję, utrzymanie albo masę.</p></a>
+      <a class="step reveal" style="--i:1;text-decoration:none;color:inherit" href="/zamienniki"><h3 data-i18n="tool2_h">Zamiennik dla każdego składnika</h3><p data-i18n="tool2_p">Zobacz, jak podmienić składnik pod swój cel — krok po kroku.</p></a>
+      <a class="step reveal" id="tool-ig" style="--i:2;text-decoration:none;color:inherit" href="/przepis-z-instagrama"><h3 data-i18n="tool3_h">Przepis z Instagrama</h3><p data-i18n="tool3_p">Jak zapisać przepis z rolki i od razu policzyć jego kalorie.</p></a>
+    </div>
   </div></section>
 
   <section class="section" id="pricing"><div class="wrap">
     <div class="section-head reveal" style="text-align:center;margin:0 auto 34px;max-width:44ch;">
       <span class="eyebrow" data-i18n="pricing_eyebrow">Cennik</span>
-      <h2 data-i18n="pricing_h">Ile będzie kosztować.</h2>
-      <p data-i18n="pricing_p">Nielimitowane szacowanie AI, prosto z rozmowy.</p>
+      <h2 data-i18n="pricing_h">Ile kosztuje.</h2>
+      <p data-i18n="pricing_p">Nielimitowane szacowanie AI, 20 importów przepisów miesięcznie i zamienniki składników.</p>
     </div>
     <div class="steps" style="grid-template-columns:repeat(2,1fr);max-width:560px;margin:0 auto;">
       <div class="step reveal" style="--i:0"><div class="n" data-i18n="price_m_label">Miesięcznie</div><h3 data-i18n="price_m_amt">29,99 zł</h3><p data-i18n="price_m_period">/ miesiąc</p></div>
       <div class="step reveal" style="--i:1"><div class="n" data-i18n="price_y_label">Rocznie</div><h3 data-i18n="price_y_amt">129,99 zł</h3><p data-i18n="price_y_period">≈64% taniej niż co miesiąc</p></div>
     </div>
     <p class="microcopy reveal" style="text-align:center;margin-top:22px;" data-i18n="pricing_trial">7 dni za darmo na start — zrezygnuj kiedy chcesz.</p>
+    <p class="microcopy reveal" style="text-align:center;margin-top:6px;" data-i18n="pricing_free">Pierwsze 5 szacowań, pierwszy import przepisu i pierwszy zamiennik — za darmo, bez subskrypcji.</p>
+    <div class="cta-row reveal" style="justify-content:center;"><a class="btn btn-primary hero-cta" href="https://apps.apple.com/app/id6783411148" data-i18n="hero_cta1">Pobierz z App Store</a><a class="btn btn-primary play-cta hero-play" href="https://play.google.com/store/apps/details?id=io.fiteoapp" target="_blank" rel="noopener">Pobierz z Google Play</a></div>
   </div></section>
 
-  <div class="wrap"><footer class="foot"><div class="brand"><img class="logo" src="icon.png" alt=""> Fiteo</div><div class="links"><a href="/dokladnosc" data-i18n="foot_accuracy">Dokładność</a><a href="https://fiteoapp.io/privacy" target="_blank" rel="noopener" data-i18n="foot_privacy">Prywatność</a><a href="https://apps.apple.com/app/id6783411148" target="_blank" rel="noopener" data-i18n="foot_beta">iPhone</a><a href="https://play.google.com/store/apps/details?id=io.fiteoapp" target="_blank" rel="noopener" data-i18n="foot_android">Android</a></div><div>© 2026 Fiteo</div></footer></div>
+  <div class="wrap"><footer class="foot"><div class="brand"><img class="logo" src="icon.png" alt=""> Fiteo</div><div class="links"><a href="/kalkulator-kalorii" data-i18n="tool1_h">Kalkulator kalorii</a><a href="/zamienniki" data-i18n="tool2_h">Zamiennik dla każdego składnika</a><a href="/dokladnosc" data-i18n="foot_accuracy">Dokładność</a><a href="https://fiteoapp.io/privacy" target="_blank" rel="noopener" data-i18n="foot_privacy">Prywatność</a><a href="https://apps.apple.com/app/id6783411148" target="_blank" rel="noopener" data-i18n="foot_beta">iPhone</a><a href="https://play.google.com/store/apps/details?id=io.fiteoapp" target="_blank" rel="noopener" data-i18n="foot_android">Android</a></div><div>© 2026 Fiteo</div></footer></div>
 
 <script>
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // ---- i18n: whole page localizes; language pills double as the switcher and swap the hero's regional dish ----
   var I18N = {
-    pl:{acc_eyebrow:"Dokładność",acc_h:"Sprawdziliśmy Fiteo na 100 potrawach.",acc_p:"Gdy podasz ilość, mediana błędu to 1%, a 94% potraw mieści się w ±10% wartości z danych referencyjnych. Pokazujemy też, gdzie Fiteo się myli.",acc_link:"Zobacz pełne wyniki testu",foot_accuracy:"Dokładność",nav_cta:"Powiadom mnie",hero_eyebrow:"Licznik kalorii, do którego mówisz",hero_h1:"Powiedz, co zjadłeś. Resztę policzy Fiteo.",hero_sub:"Bez ważenia, bez skanowania kodów, bez szukania w bazie. Opisujesz posiłek normalnie — jak koledze — a Fiteo szacuje kalorie i makro.",hero_cta1:"Powiadom mnie o premierze",hero_cta2:"Zobacz cennik",hero_micro:"Wkrótce w App Store",langs_label:"Fiteo mówi Twoim językiem:",gallery_h:"Lokalne potrawy — po Twojemu.",gallery_p:"Zaloguj to, co naprawdę jesz — od paelli po schabowego.",demo_input:"Opowiedz, co zjadłeś — normalnie…",demo_dish:"Kurczak z ryżem i surówką",demo_badge:"pewne",macro_p:"B",macro_f:"T",macro_c:"W",s1_eyebrow:"Przyjęcie kalorii",s1_h:"Mówisz, co zjadłeś.",s1_p:"Bez wpisywania, bez zdjęć. Opisujesz posiłek po swojemu — konwersacyjny model zamienia to na kalorie i makro.",s2_eyebrow:"Wydatek kalorii",s2_h:"Fiteo widzi Twój trening.",s2_p:"Spalone z aktywności wchodzą do bilansu z Apple Health — automatycznie, bez wpisywania.",s3_eyebrow:"Import przepisów",s3_h:"Przepis z rolki? Nie zgub go.",s3_p:"Wklej link z Instagrama, TikToka albo YouTube — Fiteo wyciągnie składniki i policzy kalorie.",steps_eyebrow:"Jak to działa",steps_h:"Trzy sekundy zamiast trzech minut.",st1_n:"Opowiedz",st1_h:"Wpisz albo powiedz",st1_p:"Całym zdaniem, z ilościami albo bez. „Owsianka z bananem, było tego sporo.”",st2_n:"Fiteo liczy",st2_h:"AI szacuje",st2_p:"Kalorie i makro — bez ważenia i gramów. Wielokrotności też („3× kanapka”).",st3_n:"Widzisz bilans",st3_h:"Na żywo",st3_p:"Przyjęte vs spalone (z Apple Health), z celem na dziś.",pricing_eyebrow:"Cennik",pricing_h:"Ile będzie kosztować.",pricing_p:"Nielimitowane szacowanie AI, prosto z rozmowy.",price_m_label:"Miesięcznie",price_m_amt:"29,99 zł",price_m_period:"/ miesiąc",price_y_label:"Rocznie",price_y_amt:"129,99 zł",price_y_period:"≈64% taniej niż co miesiąc",pricing_trial:"7 dni za darmo na start — zrezygnuj kiedy chcesz.",android_eyebrow:"Android",android_h:"Fiteo rusza na iPhonie. Android w przygotowaniu.",android_p:"Zostaw kontakt — dam znać, gdy wersja na Androida będzie gotowa do testów.",android_btn:"Zapisz się na listę Android",form_ph:"twój@email.com",form_btn:"Powiadom mnie",form_note:"Bez spamu. Jeden mail, gdy Android wystartuje.",form_thanks:"Dzięki! Odezwę się na premierę. 🙌",beta_eyebrow:"iPhone",beta_h:"Fiteo rusza na iPhonie — bądź pierwszy, gdy wystartuje.",beta_p:"Zostaw maila, a odezwę się, jak tylko appka będzie dostępna w App Store.",beta_cta:"Powiadom mnie o premierze",wait_eyebrow:"Jeszcze nie teraz?",wait_h:"Zostaw maila — dam znać.",stable_h:"Masz iPhone, wolisz stabilną wersję?",stable_p:"Damy Ci znać, gdy Fiteo trafi do App Store.",consent_label:"Zgadzam się na kontakt mailowy w sprawie premiery.",form_err:"Coś poszło nie tak — spróbuj ponownie.",foot_privacy:"Prywatność",foot_beta:"iPhone",foot_android:"Android"},
-    en:{acc_eyebrow:"Accuracy",acc_h:"We tested Fiteo on 100 dishes.",acc_p:"When you give the amount, the median error is 1% and 94% of dishes land within ±10% of reference data. We also show where Fiteo gets it wrong.",acc_link:"See the full results (in Polish)",foot_accuracy:"Accuracy",nav_cta:"Notify me",hero_eyebrow:"The calorie tracker you talk to",hero_h1:"Say what you ate. Fiteo counts the rest.",hero_sub:"No weighing, no barcode scanning, no database search. Describe your meal like you'd tell a friend — Fiteo estimates the calories and macros.",hero_cta1:"Notify me at launch",hero_cta2:"See pricing",hero_micro:"Coming to the App Store soon",langs_label:"Fiteo speaks your language:",gallery_h:"Local food, in your language.",gallery_p:"Log what you actually eat — from paella to schnitzel.",demo_input:"Tell me what you ate — just talk…",demo_dish:"Chicken with rice and salad",demo_badge:"confident",macro_p:"P",macro_f:"F",macro_c:"C",s1_eyebrow:"Calories in",s1_h:"Just say what you ate.",s1_p:"No typing, no photos. Describe your meal your way — a conversational model turns it into calories and macros.",s2_eyebrow:"Calories out",s2_h:"Fiteo sees your workout.",s2_p:"Calories burned flow into your balance from Apple Health — automatically, nothing to log.",s3_eyebrow:"Recipe import",s3_h:"Saw a recipe in a reel? Keep it.",s3_p:"Paste a link from Instagram, TikTok or YouTube — Fiteo pulls out the ingredients and counts the calories.",steps_eyebrow:"How it works",steps_h:"Three seconds instead of three minutes.",st1_n:"Say it",st1_h:"Type or talk",st1_p:"A full sentence, with amounts or without. “Oatmeal with a banana, quite a lot of it.”",st2_n:"Fiteo counts",st2_h:"AI estimates",st2_p:"Calories and macros — no weighing, no grams. Multiples too (“3× sandwich”).",st3_n:"See the balance",st3_h:"Live",st3_p:"Eaten vs burned (from Apple Health), against today's goal.",pricing_eyebrow:"Pricing",pricing_h:"What it'll cost.",pricing_p:"Unlimited AI estimation, straight from a conversation.",price_m_label:"Monthly",price_m_amt:"$6.99",price_m_period:"/ month",price_y_label:"Annual",price_y_amt:"$29.99",price_y_period:"≈64% cheaper than monthly",pricing_trial:"7-day free trial to start — cancel anytime.",android_eyebrow:"Android",android_h:"Fiteo is launching on iPhone. Android is in the works.",android_p:"Leave your details — I'll let you know when the Android version is ready for testing.",android_btn:"Join the Android list",form_ph:"you@email.com",form_btn:"Notify me",form_note:"No spam. One email when Android launches.",form_thanks:"Thanks! I'll reach out at launch. 🙌",beta_eyebrow:"iPhone",beta_h:"Fiteo is launching on iPhone — be first to know.",beta_p:"Leave your email and I'll reach out the moment it's live on the App Store.",beta_cta:"Notify me at launch",wait_eyebrow:"Not yet?",wait_h:"Leave your email — I'll let you know.",stable_h:"On iPhone, prefer the stable version?",stable_p:"We'll let you know when Fiteo hits the App Store.",consent_label:"I agree to be emailed about the launch.",form_err:"Something went wrong — please try again.",foot_privacy:"Privacy",foot_beta:"iPhone",foot_android:"Android"},
-    es:{acc_eyebrow:"Precisión",acc_h:"Probamos Fiteo con 100 platos.",acc_p:"Cuando indicas la cantidad, el error mediano es del 1% y el 94% de los platos queda dentro de ±10% de los datos de referencia. También mostramos dónde se equivoca Fiteo.",acc_link:"Ver los resultados completos (en polaco)",foot_accuracy:"Precisión",nav_cta:"Avísame",hero_eyebrow:"El contador de calorías al que le hablas",hero_h1:"Di qué comiste. Fiteo cuenta el resto.",hero_sub:"Sin pesar, sin escanear códigos, sin buscar en bases de datos. Describe tu comida como se lo contarías a un amigo — Fiteo estima las calorías y los macros.",hero_cta1:"Avísame en el lanzamiento",hero_cta2:"Ver precios",hero_micro:"Muy pronto en la App Store",langs_label:"Fiteo habla tu idioma:",gallery_h:"Comida local, en tu idioma.",gallery_p:"Registra lo que comes de verdad — de la paella al schnitzel.",demo_input:"Cuéntame qué comiste — habla normal…",demo_dish:"Paella de marisco",demo_badge:"seguro",macro_p:"P",macro_f:"G",macro_c:"C",s1_eyebrow:"Calorías que entran",s1_h:"Solo di qué comiste.",s1_p:"Sin escribir, sin fotos. Describe tu comida a tu manera — un modelo conversacional lo convierte en calorías y macros.",s2_eyebrow:"Calorías que gastas",s2_h:"Fiteo ve tu entrenamiento.",s2_p:"Las calorías quemadas entran en tu balance desde Apple Health — automáticamente, sin registrar nada.",s3_eyebrow:"Importar recetas",s3_h:"¿Una receta en un reel? No la pierdas.",s3_p:"Pega un enlace de Instagram, TikTok o YouTube — Fiteo extrae los ingredientes y calcula las calorías.",steps_eyebrow:"Cómo funciona",steps_h:"Tres segundos en vez de tres minutos.",st1_n:"Dilo",st1_h:"Escribe o habla",st1_p:"Una frase entera, con cantidades o sin ellas. «Avena con plátano, bastante cantidad.»",st2_n:"Fiteo cuenta",st2_h:"La IA estima",st2_p:"Calorías y macros — sin pesar, sin gramos. También múltiplos («3× sándwich»).",st3_n:"Ves el balance",st3_h:"En vivo",st3_p:"Ingerido vs quemado (de Apple Health), frente al objetivo de hoy.",pricing_eyebrow:"Precios",pricing_h:"Esto costará.",pricing_p:"Estimación de IA ilimitada, directo desde una conversación.",price_m_label:"Mensual",price_m_amt:"7,99 €",price_m_period:"/ mes",price_y_label:"Anual",price_y_amt:"≈64% menos",price_y_period:"que pagando cada mes",pricing_trial:"7 días gratis para empezar — cancela cuando quieras.",android_eyebrow:"Android",android_h:"Fiteo llega a iPhone. Android está en camino.",android_p:"Deja tus datos — te aviso cuando la versión Android esté lista para probar.",android_btn:"Apúntate a la lista de Android",form_ph:"tú@email.com",form_btn:"Avísame",form_note:"Sin spam. Un correo cuando Android salga.",form_thanks:"¡Gracias! Te escribiré en el lanzamiento. 🙌",beta_eyebrow:"iPhone",beta_h:"Fiteo llega a iPhone — sé el primero en saberlo.",beta_p:"Deja tu correo y te aviso en cuanto esté disponible en la App Store.",beta_cta:"Avísame en el lanzamiento",wait_eyebrow:"¿Todavía no?",wait_h:"Déjame tu correo — te aviso.",stable_h:"¿iPhone y prefieres la versión estable?",stable_p:"Te avisamos cuando Fiteo llegue a la App Store.",consent_label:"Acepto recibir un correo sobre el lanzamiento.",form_err:"Algo salió mal — inténtalo de nuevo.",foot_privacy:"Privacidad",foot_beta:"iPhone",foot_android:"Android"},
-    pt:{acc_eyebrow:"Precisão",acc_h:"Testamos o Fiteo com 100 pratos.",acc_p:"Quando você informa a quantidade, o erro mediano é de 1% e 94% dos pratos ficam dentro de ±10% dos dados de referência. Também mostramos onde o Fiteo erra.",acc_link:"Ver os resultados completos (em polonês)",foot_accuracy:"Precisão",nav_cta:"Avise-me",hero_eyebrow:"O contador de calorias com quem você fala",hero_h1:"Diga o que comeu. O Fiteo conta o resto.",hero_sub:"Sem pesar, sem escanear códigos, sem procurar em bases de dados. Descreva a refeição como contaria a um amigo — o Fiteo estima as calorias e os macros.",hero_cta1:"Avise-me no lançamento",hero_cta2:"Ver preços",hero_micro:"Muito em breve na App Store",langs_label:"O Fiteo fala a sua língua:",gallery_h:"Comida local, na sua língua.",gallery_p:"Registe o que come mesmo — da paella ao schnitzel.",demo_input:"Diga o que comeu — fale normal…",demo_dish:"Bacalhau à Brás",demo_badge:"confiante",macro_p:"P",macro_f:"G",macro_c:"C",s1_eyebrow:"Calorias que entram",s1_h:"Basta dizer o que comeu.",s1_p:"Sem digitar, sem fotos. Descreva a refeição do seu jeito — um modelo conversacional transforma isso em calorias e macros.",s2_eyebrow:"Calorias gastas",s2_h:"O Fiteo vê o seu treino.",s2_p:"As calorias queimadas entram no seu balanço pelo Apple Health — automaticamente, sem registrar nada.",s3_eyebrow:"Importar receitas",s3_h:"Viu uma receita num reel? Não a perca.",s3_p:"Cole um link do Instagram, TikTok ou YouTube — o Fiteo extrai os ingredientes e calcula as calorias.",steps_eyebrow:"Como funciona",steps_h:"Três segundos em vez de três minutos.",st1_n:"Diga",st1_h:"Escreva ou fale",st1_p:"Uma frase inteira, com quantidades ou sem. «Aveia com banana, bastante.»",st2_n:"O Fiteo conta",st2_h:"A IA estima",st2_p:"Calorias e macros — sem pesar, sem gramas. Múltiplos também («3× sanduíche»).",st3_n:"Veja o balanço",st3_h:"Ao vivo",st3_p:"Ingerido vs gasto (do Apple Health), frente à meta de hoje.",pricing_eyebrow:"Preços",pricing_h:"Quanto vai custar.",pricing_p:"Estimativa de IA ilimitada, direto de uma conversa.",price_m_label:"Mensal",price_m_amt:"7,99 €",price_m_period:"/ mês",price_y_label:"Anual",price_y_amt:"≈64% menos",price_y_period:"do que pagando por mês",pricing_trial:"7 dias grátis para começar — cancele quando quiser.",android_eyebrow:"Android",android_h:"O Fiteo está a chegar ao iPhone. O Android está a caminho.",android_p:"Deixe o seu contacto — aviso quando a versão Android estiver pronta para testar.",android_btn:"Entrar na lista de Android",form_ph:"voce@email.com",form_btn:"Avise-me",form_note:"Sem spam. Um e-mail quando o Android sair.",form_thanks:"Obrigado! Aviso no lançamento. 🙌",beta_eyebrow:"iPhone",beta_h:"O Fiteo está a chegar ao iPhone — seja o primeiro a saber.",beta_p:"Deixe o seu e-mail e aviso assim que estiver disponível na App Store.",beta_cta:"Avise-me no lançamento",wait_eyebrow:"Ainda não?",wait_h:"Deixe o seu e-mail — eu aviso.",stable_h:"iPhone e prefere a versão estável?",stable_p:"Avisamos quando o Fiteo chegar à App Store.",consent_label:"Aceito receber um e-mail sobre o lançamento.",form_err:"Algo correu mal — tente novamente.",foot_privacy:"Privacidade",foot_beta:"iPhone",foot_android:"Android"},
-    it:{acc_eyebrow:"Precisione",acc_h:"Abbiamo testato Fiteo su 100 piatti.",acc_p:"Quando indichi la quantità, l'errore mediano è dell'1% e il 94% dei piatti rientra entro ±10% dei dati di riferimento. Mostriamo anche dove Fiteo sbaglia.",acc_link:"Vedi i risultati completi (in polacco)",foot_accuracy:"Precisione",nav_cta:"Avvisami",hero_eyebrow:"Il contacalorie a cui parli",hero_h1:"Di' cosa hai mangiato. Al resto pensa Fiteo.",hero_sub:"Senza pesare, senza scansionare codici, senza cercare nel database. Descrivi il pasto come lo racconteresti a un amico — Fiteo stima calorie e macro.",hero_cta1:"Avvisami al lancio",hero_cta2:"Vedi i prezzi",hero_micro:"Presto sull'App Store",langs_label:"Fiteo parla la tua lingua:",gallery_h:"Cibo locale, nella tua lingua.",gallery_p:"Registra ciò che mangi davvero — dalla paella allo schnitzel.",demo_input:"Dimmi cosa hai mangiato — parla normale…",demo_dish:"Pasta al pomodoro e basilico",demo_badge:"sicuro",macro_p:"P",macro_f:"G",macro_c:"C",s1_eyebrow:"Calorie assunte",s1_h:"Basta dire cosa hai mangiato.",s1_p:"Niente da scrivere, niente foto. Descrivi il pasto a modo tuo — un modello conversazionale lo trasforma in calorie e macro.",s2_eyebrow:"Calorie bruciate",s2_h:"Fiteo vede il tuo allenamento.",s2_p:"Le calorie bruciate entrano nel bilancio da Apple Health — in automatico, senza registrare nulla.",s3_eyebrow:"Importa ricette",s3_h:"Una ricetta in un reel? Non perderla.",s3_p:"Incolla un link da Instagram, TikTok o YouTube — Fiteo estrae gli ingredienti e calcola le calorie.",steps_eyebrow:"Come funziona",steps_h:"Tre secondi invece di tre minuti.",st1_n:"Dillo",st1_h:"Scrivi o parla",st1_p:"Una frase intera, con quantità o senza. «Porridge con banana, parecchio.»",st2_n:"Fiteo conta",st2_h:"L'IA stima",st2_p:"Calorie e macro — senza pesare, senza grammi. Anche multipli («3× panino»).",st3_n:"Vedi il bilancio",st3_h:"In tempo reale",st3_p:"Assunte vs bruciate (da Apple Health), rispetto all'obiettivo di oggi.",pricing_eyebrow:"Prezzi",pricing_h:"Quanto costerà.",pricing_p:"Stima IA illimitata, direttamente da una conversazione.",price_m_label:"Mensile",price_m_amt:"7,99 €",price_m_period:"/ mese",price_y_label:"Annuale",price_y_amt:"≈64% in meno",price_y_period:"rispetto al mensile",pricing_trial:"7 giorni gratis per iniziare — annulla quando vuoi.",android_eyebrow:"Android",android_h:"Fiteo sta arrivando su iPhone. Android è in arrivo.",android_p:"Lascia i tuoi dati — ti avviso quando la versione Android sarà pronta per i test.",android_btn:"Iscriviti alla lista Android",form_ph:"tu@email.com",form_btn:"Avvisami",form_note:"Niente spam. Una email quando Android parte.",form_thanks:"Grazie! Ti scrivo al lancio. 🙌",beta_eyebrow:"iPhone",beta_h:"Fiteo sta arrivando su iPhone — sii il primo a saperlo.",beta_p:"Lascia la tua email e ti avviso appena sarà disponibile sull'App Store.",beta_cta:"Avvisami al lancio",wait_eyebrow:"Non ancora?",wait_h:"Lascia la tua email — ti avviso.",stable_h:"Hai iPhone e preferisci la versione stabile?",stable_p:"Ti avvisiamo quando Fiteo arriva sull'App Store.",consent_label:"Accetto di essere contattato via email per il lancio.",form_err:"Qualcosa è andato storto — riprova.",foot_privacy:"Privacy",foot_beta:"iPhone",foot_android:"Android"},
-    fr:{acc_eyebrow:"Précision",acc_h:"Nous avons testé Fiteo sur 100 plats.",acc_p:"Quand tu indiques la quantité, l'erreur médiane est de 1 % et 94 % des plats restent à ±10 % des données de référence. Nous montrons aussi où Fiteo se trompe.",acc_link:"Voir les résultats complets (en polonais)",foot_accuracy:"Précision",nav_cta:"Préviens-moi",hero_eyebrow:"Le compteur de calories à qui tu parles",hero_h1:"Dis ce que tu as mangé. Fiteo compte le reste.",hero_sub:"Sans peser, sans scanner de codes, sans chercher dans une base. Décris ton repas comme à un ami — Fiteo estime les calories et les macros.",hero_cta1:"Préviens-moi au lancement",hero_cta2:"Voir les tarifs",hero_micro:"Bientôt sur l'App Store",langs_label:"Fiteo parle ta langue :",gallery_h:"Des plats locaux, dans ta langue.",gallery_p:"Enregistre ce que tu manges vraiment — de la paella au schnitzel.",demo_input:"Dis-moi ce que tu as mangé — parle normalement…",demo_dish:"Poulet rôti et ratatouille",demo_badge:"fiable",macro_p:"P",macro_f:"L",macro_c:"G",s1_eyebrow:"Calories absorbées",s1_h:"Dis simplement ce que tu as mangé.",s1_p:"Sans saisie, sans photo. Décris ton repas à ta façon — un modèle conversationnel le transforme en calories et macros.",s2_eyebrow:"Calories dépensées",s2_h:"Fiteo voit ton entraînement.",s2_p:"Les calories brûlées entrent dans ton bilan via Apple Health — automatiquement, rien à saisir.",s3_eyebrow:"Import de recettes",s3_h:"Une recette vue en reel ? Garde-la.",s3_p:"Colle un lien Instagram, TikTok ou YouTube — Fiteo en extrait les ingrédients et compte les calories.",steps_eyebrow:"Comment ça marche",steps_h:"Trois secondes au lieu de trois minutes.",st1_n:"Dis-le",st1_h:"Écris ou parle",st1_p:"Une phrase entière, avec quantités ou non. « Porridge à la banane, une bonne portion. »",st2_n:"Fiteo compte",st2_h:"L'IA estime",st2_p:"Calories et macros — sans peser, sans grammes. Les multiples aussi (« 3× sandwich »).",st3_n:"Vois le bilan",st3_h:"En direct",st3_p:"Absorbé vs brûlé (via Apple Health), face à l'objectif du jour.",pricing_eyebrow:"Tarifs",pricing_h:"Voici le prix.",pricing_p:"Estimation IA illimitée, directement depuis une conversation.",price_m_label:"Mensuel",price_m_amt:"7,99 €",price_m_period:"/ mois",price_y_label:"Annuel",price_y_amt:"≈64 % moins cher",price_y_period:"qu'en payant chaque mois",pricing_trial:"7 jours d'essai gratuit — annulez quand vous voulez.",android_eyebrow:"Android",android_h:"Fiteo arrive sur iPhone. Android suivra bientôt.",android_p:"Laisse tes coordonnées — je te préviens dès que la version Android est prête à tester.",android_btn:"Rejoindre la liste Android",form_ph:"toi@email.com",form_btn:"Préviens-moi",form_note:"Pas de spam. Un email au lancement d'Android.",form_thanks:"Merci ! Je te contacte au lancement. 🙌",beta_eyebrow:"iPhone",beta_h:"Fiteo arrive sur iPhone — sois informé en premier.",beta_p:"Laisse ton email, je te préviens dès que c'est disponible sur l'App Store.",beta_cta:"Préviens-moi au lancement",wait_eyebrow:"Pas encore ?",wait_h:"Laisse ton email — je te préviens.",stable_h:"iPhone, tu préfères la version stable ?",stable_p:"On te prévient dès que Fiteo arrive sur l'App Store.",consent_label:"J'accepte d'être contacté par email pour le lancement.",form_err:"Une erreur s'est produite — réessaie.",foot_privacy:"Confidentialité",foot_beta:"iPhone",foot_android:"Android"},
-    de:{acc_eyebrow:"Genauigkeit",acc_h:"Wir haben Fiteo mit 100 Gerichten getestet.",acc_p:"Wenn du die Menge angibst, liegt der Medianfehler bei 1 % und 94 % der Gerichte liegen innerhalb von ±10 % der Referenzdaten. Wir zeigen auch, wo Fiteo danebenliegt.",acc_link:"Vollständige Ergebnisse ansehen (auf Polnisch)",foot_accuracy:"Genauigkeit",nav_cta:"Benachrichtige mich",hero_eyebrow:"Der Kalorienzähler, mit dem du sprichst",hero_h1:"Sag, was du gegessen hast. Den Rest zählt Fiteo.",hero_sub:"Kein Wiegen, kein Barcode-Scannen, keine Datenbanksuche. Beschreib dein Essen wie einem Freund — Fiteo schätzt Kalorien und Makros.",hero_cta1:"Benachrichtige mich zum Start",hero_cta2:"Preise ansehen",hero_micro:"Bald im App Store",langs_label:"Fiteo spricht deine Sprache:",gallery_h:"Lokale Gerichte, in deiner Sprache.",gallery_p:"Logge, was du wirklich isst — von Paella bis Schnitzel.",demo_input:"Sag, was du gegessen hast — einfach reden…",demo_dish:"Schnitzel mit Kartoffelsalat",demo_badge:"sicher",macro_p:"E",macro_f:"F",macro_c:"K",s1_eyebrow:"Kalorien rein",s1_h:"Sag einfach, was du gegessen hast.",s1_p:"Kein Tippen, keine Fotos. Beschreib dein Essen in deinen Worten — ein Sprachmodell macht daraus Kalorien und Makros.",s2_eyebrow:"Kalorien raus",s2_h:"Fiteo sieht dein Training.",s2_p:"Verbrannte Kalorien fließen über Apple Health in deine Bilanz — automatisch, ohne Eintragen.",s3_eyebrow:"Rezept-Import",s3_h:"Rezept in einem Reel gesehen? Behalt es.",s3_p:"Füge einen Link von Instagram, TikTok oder YouTube ein — Fiteo zieht die Zutaten heraus und zählt die Kalorien.",steps_eyebrow:"So funktioniert's",steps_h:"Drei Sekunden statt drei Minuten.",st1_n:"Sag es",st1_h:"Tippen oder sprechen",st1_p:"Ein ganzer Satz, mit Mengen oder ohne. „Haferbrei mit Banane, ziemlich viel.”",st2_n:"Fiteo zählt",st2_h:"KI schätzt",st2_p:"Kalorien und Makros — ohne Wiegen, ohne Gramm. Auch Vielfache („3× Sandwich”).",st3_n:"Sieh die Bilanz",st3_h:"In Echtzeit",st3_p:"Gegessen vs. verbrannt (aus Apple Health), gegen dein Tagesziel.",pricing_eyebrow:"Preise",pricing_h:"Das wird es kosten.",pricing_p:"Unbegrenzte KI-Schätzung, direkt aus einem Gespräch.",price_m_label:"Monatlich",price_m_amt:"7,99 €",price_m_period:"/ Monat",price_y_label:"Jährlich",price_y_amt:"≈64 % günstiger",price_y_period:"als monatlich zu zahlen",pricing_trial:"7 Tage kostenlos testen — jederzeit kündbar.",android_eyebrow:"Android",android_h:"Fiteo kommt aufs iPhone. Android folgt bald.",android_p:"Hinterlasse deine Daten — ich melde mich, sobald die Android-Version zum Testen bereit ist.",android_btn:"Auf die Android-Liste",form_ph:"du@email.com",form_btn:"Benachrichtige mich",form_note:"Kein Spam. Eine E-Mail zum Android-Start.",form_thanks:"Danke! Ich melde mich zum Start. 🙌",beta_eyebrow:"iPhone",beta_h:"Fiteo kommt aufs iPhone — sei der Erste, der es erfährt.",beta_p:"Hinterlasse deine E-Mail, ich melde mich, sobald es im App Store verfügbar ist.",beta_cta:"Benachrichtige mich zum Start",wait_eyebrow:"Noch nicht?",wait_h:"Lass deine E-Mail da — ich melde mich.",stable_h:"iPhone, lieber die stabile Version?",stable_p:"Wir melden uns, wenn Fiteo im App Store ist.",consent_label:"Ich bin einverstanden, zur Veröffentlichung per E-Mail benachrichtigt zu werden.",form_err:"Etwas ist schiefgelaufen — versuch es erneut.",foot_privacy:"Datenschutz",foot_beta:"iPhone",foot_android:"Android"}
+    pl:{"acc_eyebrow": "Dokładność", "acc_h": "Sprawdziliśmy Fiteo na 100 potrawach.", "acc_p": "Gdy podasz ilość, mediana błędu to 1%, a 94% potraw mieści się w ±10% wartości z danych referencyjnych. Bez ilości („talerz spaghetti”) Fiteo przyjmuje typową porcję — wtedy mediana błędu to ok. 20%. Pokazujemy też, gdzie Fiteo się myli.", "acc_link": "Zobacz pełne wyniki testu", "foot_accuracy": "Dokładność", "hero_eyebrow": "Jedz świadomie", "hero_h1": "Twoje przepisy, posiłki i bilans dnia — w jednym miejscu.", "hero_sub": "Zapisz przepis — własny albo z rolki — dopasuj go zamiennikiem pod swój cel i zobacz, jak wpisuje się w Twój dzień.", "hero_cta1": "Pobierz z App Store", "hero_cta2": "Zobacz cennik", "hero_micro": "Dostępne w App Store i Google Play", "gallery_h": "Lokalne potrawy — po Twojemu.", "gallery_p": "Zapisz to, co naprawdę jesz — od paelli po schabowego.", "s1_eyebrow": "Posiłki", "s1_h": "Zapisz, co zjadłeś — po swojemu.", "s1_p": "Napisz albo nagraj głosówkę. Im dokładniej opiszesz, tym dokładniejszy wynik: z ilościami Fiteo liczy najprecyzyjniej, a bez nich przyjmie typową porcję i pokaże ją do poprawienia.", "s2_eyebrow": "Bilans", "s2_h": "Fiteo widzi, ile spalasz.", "s2_p": "Spalone z aktywności wchodzą do bilansu z Apple Health albo Health Connect — automatycznie, bez wpisywania.", "s3_eyebrow": "Przepisy", "s3_h": "Przepis z rolki? Zapisz go z kaloriami.", "s3_p": "Udostępnij rolkę do Fiteo albo wklej link — składniki, kroki i makro na porcję. Potem podmień dowolny składnik pod swój cel.", "steps_eyebrow": "Jak to działa", "steps_h": "Od przepisu do bilansu dnia.", "st1_n": "Przepis", "st1_h": "Zapisz albo zaimportuj", "st1_p": "Własny przepis albo rolka z Instagrama, TikToka czy YouTube — ze składnikami, krokami i makro.", "st2_n": "Twój cel", "st2_h": "Dopasuj zamiennikiem", "st2_p": "Mniej kalorii, więcej białka, bez laktozy, wege, taniej — albo opisz własnymi słowami.", "st3_n": "Bilans", "st3_h": "Zjedz i zobacz bilans", "st3_p": "Posiłek trafia do Twojego dnia: przyjęte kontra spalone, z celem na dziś.", "pricing_eyebrow": "Cennik", "pricing_h": "Ile kosztuje.", "pricing_p": "Nielimitowane szacowanie AI, 20 importów przepisów miesięcznie i zamienniki składników.", "price_m_label": "Miesięcznie", "price_m_amt": "29,99 zł", "price_m_period": "/ miesiąc", "price_y_label": "Rocznie", "price_y_amt": "129,99 zł", "price_y_period": "≈64% taniej niż co miesiąc", "pricing_trial": "7 dni za darmo na start — zrezygnuj kiedy chcesz.", "foot_privacy": "Prywatność", "foot_beta": "iPhone", "foot_android": "Android", "tools_eyebrow": "Przydatne", "tools_h": "Zacznij od jednego kroku.", "tool1_h": "Kalkulator kalorii", "tool1_p": "Policz zapotrzebowanie i dzienny cel na redukcję, utrzymanie albo masę.", "tool2_h": "Zamiennik dla każdego składnika", "tool2_p": "Zobacz, jak podmienić składnik pod swój cel — krok po kroku.", "tool3_h": "Przepis z Instagrama", "tool3_p": "Jak zapisać przepis z rolki i od razu policzyć jego kalorie.", "pricing_free": "Pierwsze 5 szacowań, pierwszy import przepisu i pierwszy zamiennik — za darmo, bez subskrypcji.", "s4_eyebrow": "Zamienniki", "s4_h": "Podmień składnik pod swój cel.", "s4_p": "Przy dowolnym składniku wybierz „Zaproponuj zamiennik”: lżej, więcej białka, bez laktozy, wege, taniej — albo opisz własnymi słowami. Fiteo przeliczy przepis.", "nav_ig": "Przepis z Instagrama", "pause_l": "Wstrzymaj", "play_l": "Wznów"},
+    en:{"acc_eyebrow": "Accuracy", "acc_h": "We tested Fiteo on 100 dishes.", "acc_p": "When you give the amount, the median error is 1% and 94% of dishes land within ±10% of reference data. Without amounts (“a plate of spaghetti”) Fiteo assumes a typical portion — then the median error is about 20%. We also show where Fiteo gets it wrong.", "acc_link": "See the full results (in Polish)", "foot_accuracy": "Accuracy", "hero_eyebrow": "Eat mindfully", "hero_h1": "Your recipes, meals and daily balance — in one place.", "hero_sub": "Save a recipe — your own or from a reel — tweak it with a substitute for your goal, and see how it fits your day.", "hero_cta1": "Download on the App Store", "hero_cta2": "See pricing", "hero_micro": "Available on the App Store and Google Play", "gallery_h": "Local food, in your language.", "gallery_p": "Log what you actually eat — from paella to schnitzel.", "s1_eyebrow": "Meals", "s1_h": "Log what you ate — your way.", "s1_p": "Type or record a voice note. The more precise you are, the more accurate the result: with amounts Fiteo is most precise; without them it assumes a typical portion and shows it so you can correct it.", "s2_eyebrow": "Balance", "s2_h": "Fiteo sees your calorie burn.", "s2_p": "Calories burned flow into your balance from Apple Health or Health Connect — automatically, nothing to log.", "s3_eyebrow": "Recipes", "s3_h": "Saw a recipe in a reel? Save it with calories.", "s3_p": "Share the reel to Fiteo or paste the link — ingredients, steps and macros per serving. Then swap any ingredient for your goal.", "steps_eyebrow": "How it works", "steps_h": "From recipe to daily balance.", "st1_n": "Recipe", "st1_h": "Save or import", "st1_p": "Your own recipe or a reel from Instagram, TikTok or YouTube — with ingredients, steps and macros.", "st2_n": "Your goal", "st2_h": "Tweak it with a substitute", "st2_p": "Fewer calories, more protein, lactose-free, veggie, cheaper — or in your own words.", "st3_n": "Balance", "st3_h": "Eat and see your balance", "st3_p": "The meal lands in your day: eaten vs burned, against today's goal.", "pricing_eyebrow": "Pricing", "pricing_h": "What it costs.", "pricing_p": "Unlimited AI estimates, 20 recipe imports a month and ingredient substitutes.", "price_m_label": "Monthly", "price_m_amt": "$6.99", "price_m_period": "/ month", "price_y_label": "Annual", "price_y_amt": "$29.99", "price_y_period": "≈64% cheaper than monthly", "pricing_trial": "7-day free trial to start — cancel anytime.", "foot_privacy": "Privacy", "foot_beta": "iPhone", "foot_android": "Android", "tools_eyebrow": "Useful", "tools_h": "Start with one step.", "tool1_h": "Calorie calculator", "tool1_p": "Work out your daily needs and target for losing, keeping or gaining weight (in Polish).", "tool2_h": "A substitute for any ingredient", "tool2_p": "See how to swap an ingredient for your goal, step by step (in Polish).", "tool3_h": "Save a recipe from Instagram", "tool3_p": "How to save a recipe from a reel and count its calories right away.", "pricing_free": "Your first 5 estimates, first recipe import and first substitute are free — no subscription needed.", "s4_eyebrow": "Substitutes", "s4_h": "Swap an ingredient to fit your goal.", "s4_p": "On any ingredient, tap “Suggest a substitute”: lighter, more protein, lactose-free, veggie, cheaper — or in your own words. Fiteo recalculates the recipe.", "nav_ig": "Save an Instagram recipe", "pause_l": "Pause", "play_l": "Play"},
+    es:{"acc_eyebrow": "Precisión", "acc_h": "Probamos Fiteo con 100 platos.", "acc_p": "Cuando indicas la cantidad, el error mediano es del 1% y el 94% de los platos queda dentro de ±10% de los datos de referencia. Sin cantidades («un plato de espaguetis») Fiteo asume una ración típica y el error mediano sube a cerca del 20%. También mostramos dónde se equivoca Fiteo.", "acc_link": "Ver los resultados completos (en polaco)", "foot_accuracy": "Precisión", "hero_eyebrow": "Come de forma consciente", "hero_h1": "Tus recetas, tus comidas y el balance del día — en un solo lugar.", "hero_sub": "Guarda una receta — tuya o de un reel —, ajústala con un sustituto a tu objetivo y mira cómo encaja en tu día.", "hero_cta1": "Descargar en la App Store", "hero_cta2": "Ver precios", "hero_micro": "Disponible en la App Store y Google Play", "gallery_h": "Comida local, en tu idioma.", "gallery_p": "Registra lo que comes de verdad — de la paella al schnitzel.", "s1_eyebrow": "Comidas", "s1_h": "Registra lo que comiste — a tu manera.", "s1_p": "Escribe o graba una nota de voz. Cuanto más preciso seas, más exacto el resultado: con cantidades Fiteo es más preciso; sin ellas asume una ración típica y te la muestra para corregirla.", "s2_eyebrow": "Balance", "s2_h": "Fiteo ve lo que quemas.", "s2_p": "Las calorías quemadas llegan a tu balance desde Apple Salud o Health Connect — automáticamente.", "s3_eyebrow": "Recetas", "s3_h": "¿Una receta en un reel? Guárdala con calorías.", "s3_p": "Comparte el reel con Fiteo o pega el enlace — ingredientes, pasos y macros por ración. Luego cambia cualquier ingrediente según tu objetivo.", "steps_eyebrow": "Cómo funciona", "steps_h": "De la receta al balance del día.", "st1_n": "Receta", "st1_h": "Guarda o importa", "st1_p": "Tu receta o un reel de Instagram, TikTok o YouTube — con ingredientes, pasos y macros.", "st2_n": "Tu objetivo", "st2_h": "Ajústala con un sustituto", "st2_p": "Menos calorías, más proteína, sin lactosa, vegetariano, más barato — o con tus propias palabras.", "st3_n": "Balance", "st3_h": "Come y mira el balance", "st3_p": "La comida entra en tu día: ingerido frente a gastado, con el objetivo de hoy.", "pricing_eyebrow": "Precios", "pricing_h": "Lo que cuesta.", "pricing_p": "Estimaciones con IA ilimitadas, 20 importaciones de recetas al mes y sustitutos de ingredientes.", "price_m_label": "Mensual", "price_m_amt": "7,99 €", "price_m_period": "/ mes", "price_y_label": "Anual", "price_y_amt": "34,99 €", "price_y_period": "al año — ≈64% menos que pagando cada mes", "pricing_trial": "7 días gratis para empezar — cancela cuando quieras.", "foot_privacy": "Privacidad", "foot_beta": "iPhone", "foot_android": "Android", "tools_eyebrow": "Útil", "tools_h": "Empieza con un paso.", "tool1_h": "Calculadora de calorías", "tool1_p": "Calcula tus necesidades y tu objetivo diario (en polaco).", "tool2_h": "Un sustituto para cada ingrediente", "tool2_p": "Cómo cambiar un ingrediente según tu objetivo, paso a paso (en polaco).", "tool3_h": "Guardar una receta de Instagram", "tool3_p": "Cómo guardar una receta de un reel y ver al momento sus calorías (en inglés).", "pricing_free": "Las 5 primeras estimaciones, la primera importación de receta y el primer sustituto son gratis, sin suscripción.", "s4_eyebrow": "Sustitutos", "s4_h": "Cambia un ingrediente según tu objetivo.", "s4_p": "Toca cualquier ingrediente y pide un sustituto: más ligero, más proteína, sin lactosa, vegetariano, más barato — o con tus palabras. Fiteo recalcula la receta.", "nav_ig": "Receta de Instagram", "pause_l": "Pausar", "play_l": "Reanudar"},
+    pt:{"acc_eyebrow": "Precisão", "acc_h": "Testamos o Fiteo com 100 pratos.", "acc_p": "Quando você informa a quantidade, o erro mediano é de 1% e 94% dos pratos ficam dentro de ±10% dos dados de referência. Sem quantidades («um prato de esparguete») o Fiteo assume uma porção típica e o erro mediano sobe para cerca de 20%. Também mostramos onde o Fiteo erra.", "acc_link": "Ver os resultados completos (em polonês)", "foot_accuracy": "Precisão", "hero_eyebrow": "Coma de forma consciente", "hero_h1": "As suas receitas, refeições e o balanço do dia — num só lugar.", "hero_sub": "Guarde uma receita — sua ou de um reel —, ajuste-a com um substituto ao seu objetivo e veja como encaixa no seu dia.", "hero_cta1": "Descarregar na App Store", "hero_cta2": "Ver preços", "hero_micro": "Disponível na App Store e no Google Play", "gallery_h": "Comida local, na sua língua.", "gallery_p": "Registe o que come mesmo — da paella ao schnitzel.", "s1_eyebrow": "Refeições", "s1_h": "Registe o que comeu — à sua maneira.", "s1_p": "Escreva ou grave uma nota de voz. Quanto mais preciso for, mais exato o resultado: com quantidades o Fiteo é mais preciso; sem elas assume uma porção típica e mostra-a para a corrigir.", "s2_eyebrow": "Balanço", "s2_h": "O Fiteo vê quanto queima.", "s2_p": "As calorias gastas entram no balanço a partir do Apple Saúde ou do Health Connect — automaticamente.", "s3_eyebrow": "Receitas", "s3_h": "Uma receita num reel? Guarde-a com as calorias.", "s3_p": "Partilhe o reel com o Fiteo ou cole a ligação — ingredientes, passos e macros por porção. Depois troque qualquer ingrediente pelo seu objetivo.", "steps_eyebrow": "Como funciona", "steps_h": "Da receita ao balanço do dia.", "st1_n": "Receita", "st1_h": "Guarde ou importe", "st1_p": "A sua receita ou um reel do Instagram, TikTok ou YouTube — com ingredientes, passos e macros.", "st2_n": "O seu objetivo", "st2_h": "Ajuste com um substituto", "st2_p": "Menos calorias, mais proteína, sem lactose, vegetariano, mais barato — ou por palavras suas.", "st3_n": "Balanço", "st3_h": "Coma e veja o balanço", "st3_p": "A refeição entra no seu dia: ingerido vs gasto, com o objetivo de hoje.", "pricing_eyebrow": "Preços", "pricing_h": "Quanto custa.", "pricing_p": "Estimativas com IA ilimitadas, 20 importações de receitas por mês e substitutos de ingredientes.", "price_m_label": "Mensal", "price_m_amt": "7,99 €", "price_m_period": "/ mês", "price_y_label": "Anual", "price_y_amt": "34,99 €", "price_y_period": "por ano — ≈64% menos do que pagar por mês", "pricing_trial": "7 dias grátis para começar — cancele quando quiser.", "foot_privacy": "Privacidade", "foot_beta": "iPhone", "foot_android": "Android", "tools_eyebrow": "Útil", "tools_h": "Comece por um passo.", "tool1_h": "Calculadora de calorias", "tool1_p": "Calcule as suas necessidades e o objetivo diário (em polaco).", "tool2_h": "Um substituto para cada ingrediente", "tool2_p": "Como trocar um ingrediente pelo seu objetivo, passo a passo (em polaco).", "tool3_h": "Guardar uma receita do Instagram", "tool3_p": "Como guardar uma receita de um reel e ver logo as calorias (em inglês).", "pricing_free": "As primeiras 5 estimativas, a primeira importação de receita e o primeiro substituto são grátis, sem subscrição.", "s4_eyebrow": "Substitutos", "s4_h": "Troque um ingrediente conforme o seu objetivo.", "s4_p": "Toque em qualquer ingrediente e peça um substituto: mais leve, mais proteína, sem lactose, vegetariano, mais barato — ou com as suas palavras. O Fiteo recalcula a receita.", "nav_ig": "Receita do Instagram", "pause_l": "Pausar", "play_l": "Retomar"},
+    it:{"acc_eyebrow": "Precisione", "acc_h": "Abbiamo testato Fiteo su 100 piatti.", "acc_p": "Quando indichi la quantità, l'errore mediano è dell'1% e il 94% dei piatti rientra entro ±10% dei dati di riferimento. Senza quantità («un piatto di spaghetti») Fiteo considera una porzione tipica e l'errore mediano sale a circa il 20%. Mostriamo anche dove Fiteo sbaglia.", "acc_link": "Vedi i risultati completi (in polacco)", "foot_accuracy": "Precisione", "hero_eyebrow": "Mangia in modo consapevole", "hero_h1": "Le tue ricette, i tuoi pasti e il bilancio del giorno — in un unico posto.", "hero_sub": "Salva una ricetta — tua o da un reel —, adattala con un sostituto al tuo obiettivo e guarda come si inserisce nella tua giornata.", "hero_cta1": "Scarica dall'App Store", "hero_cta2": "Vedi i prezzi", "hero_micro": "Disponibile sull'App Store e su Google Play", "gallery_h": "Cibo locale, nella tua lingua.", "gallery_p": "Registra ciò che mangi davvero — dalla paella allo schnitzel.", "s1_eyebrow": "Pasti", "s1_h": "Registra cosa hai mangiato — a modo tuo.", "s1_p": "Scrivi o registra una nota vocale. Più sei preciso, più il risultato è accurato: con le quantità Fiteo è più preciso, senza assume una porzione tipica e te la mostra da correggere.", "s2_eyebrow": "Bilancio", "s2_h": "Fiteo vede quanto bruci.", "s2_p": "Le calorie bruciate entrano nel bilancio da Apple Salute o Health Connect — in automatico.", "s3_eyebrow": "Ricette", "s3_h": "Una ricetta in un reel? Salvala con le calorie.", "s3_p": "Condividi il reel con Fiteo o incolla il link — ingredienti, passaggi e macro per porzione. Poi sostituisci qualsiasi ingrediente per il tuo obiettivo.", "steps_eyebrow": "Come funziona", "steps_h": "Dalla ricetta al bilancio del giorno.", "st1_n": "Ricetta", "st1_h": "Salva o importa", "st1_p": "La tua ricetta o un reel di Instagram, TikTok o YouTube — con ingredienti, passaggi e macro.", "st2_n": "Il tuo obiettivo", "st2_h": "Adatta con un sostituto", "st2_p": "Meno calorie, più proteine, senza lattosio, vegetariano, più economico — o con parole tue.", "st3_n": "Bilancio", "st3_h": "Mangia e guarda il bilancio", "st3_p": "Il pasto entra nella tua giornata: assunte vs bruciate, con l'obiettivo di oggi.", "pricing_eyebrow": "Prezzi", "pricing_h": "Quanto costa.", "pricing_p": "Stime IA illimitate, 20 import di ricette al mese e sostituti degli ingredienti.", "price_m_label": "Mensile", "price_m_amt": "7,99 €", "price_m_period": "/ mese", "price_y_label": "Annuale", "price_y_amt": "34,99 €", "price_y_period": "all'anno — ≈64% in meno rispetto al mensile", "pricing_trial": "7 giorni gratis per iniziare — annulla quando vuoi.", "foot_privacy": "Privacy", "foot_beta": "iPhone", "foot_android": "Android", "tools_eyebrow": "Utile", "tools_h": "Inizia da un passo.", "tool1_h": "Calcolatore di calorie", "tool1_p": "Calcola il fabbisogno e l'obiettivo giornaliero (in polacco).", "tool2_h": "Un sostituto per ogni ingrediente", "tool2_p": "Come sostituire un ingrediente per il tuo obiettivo, passo dopo passo (in polacco).", "tool3_h": "Salvare una ricetta da Instagram", "tool3_p": "Come salvare una ricetta da un reel e vederne subito le calorie (in inglese).", "pricing_free": "Le prime 5 stime, il primo import di una ricetta e il primo sostituto sono gratis, senza abbonamento.", "s4_eyebrow": "Sostituti", "s4_h": "Sostituisci un ingrediente secondo il tuo obiettivo.", "s4_p": "Tocca un ingrediente e chiedi un sostituto: più leggero, più proteine, senza lattosio, vegetariano, più economico — o con parole tue. Fiteo ricalcola la ricetta.", "nav_ig": "Ricetta da Instagram", "pause_l": "Pausa", "play_l": "Riprendi"},
+    fr:{"acc_eyebrow": "Précision", "acc_h": "Nous avons testé Fiteo sur 100 plats.", "acc_p": "Quand tu indiques la quantité, l'erreur médiane est de 1 % et 94 % des plats restent à ±10 % des données de référence. Sans quantité (« une assiette de spaghettis »), Fiteo suppose une portion typique et l'erreur médiane monte à environ 20 %. Nous montrons aussi où Fiteo se trompe.", "acc_link": "Voir les résultats complets (en polonais)", "foot_accuracy": "Précision", "hero_eyebrow": "Mangez en conscience", "hero_h1": "Vos recettes, vos repas et votre bilan du jour — au même endroit.", "hero_sub": "Enregistrez une recette — la vôtre ou celle d'un reel —, adaptez-la avec un substitut à votre objectif et voyez comment elle s'intègre à votre journée.", "hero_cta1": "Télécharger sur l'App Store", "hero_cta2": "Voir les tarifs", "hero_micro": "Disponible sur l'App Store et Google Play", "gallery_h": "Des plats locaux, dans ta langue.", "gallery_p": "Enregistre ce que tu manges vraiment — de la paella au schnitzel.", "s1_eyebrow": "Repas", "s1_h": "Notez ce que vous avez mangé — à votre façon.", "s1_p": "Écrivez ou enregistrez une note vocale. Plus vous êtes précis, plus le résultat l'est : avec les quantités, Fiteo est le plus précis ; sans elles, il retient une portion type et l'affiche pour que vous la corrigiez.", "s2_eyebrow": "Bilan", "s2_h": "Fiteo voit ce que vous brûlez.", "s2_p": "Les calories brûlées arrivent dans votre bilan depuis Apple Santé ou Health Connect — automatiquement.", "s3_eyebrow": "Recettes", "s3_h": "Une recette dans un reel ? Gardez-la avec les calories.", "s3_p": "Partagez le reel avec Fiteo ou collez le lien — ingrédients, étapes et macros par portion. Puis remplacez n'importe quel ingrédient selon votre objectif.", "steps_eyebrow": "Comment ça marche", "steps_h": "De la recette au bilan du jour.", "st1_n": "Recette", "st1_h": "Enregistrez ou importez", "st1_p": "Votre recette ou un reel Instagram, TikTok ou YouTube — avec ingrédients, étapes et macros.", "st2_n": "Votre objectif", "st2_h": "Adaptez avec un substitut", "st2_p": "Moins de calories, plus de protéines, sans lactose, végétarien, moins cher — ou avec vos propres mots.", "st3_n": "Bilan", "st3_h": "Mangez et voyez le bilan", "st3_p": "Le repas s'ajoute à votre journée : consommé vs dépensé, avec l'objectif du jour.", "pricing_eyebrow": "Tarifs", "pricing_h": "Voici le prix.", "pricing_p": "Estimations IA illimitées, 20 imports de recettes par mois et substituts d'ingrédients.", "price_m_label": "Mensuel", "price_m_amt": "7,99 €", "price_m_period": "/ mois", "price_y_label": "Annuel", "price_y_amt": "34,99 €", "price_y_period": "par an — ≈64 % moins cher qu'en payant chaque mois", "pricing_trial": "7 jours d'essai gratuit — annulez quand vous voulez.", "foot_privacy": "Confidentialité", "foot_beta": "iPhone", "foot_android": "Android", "tools_eyebrow": "Utile", "tools_h": "Commencez par une étape.", "tool1_h": "Calculateur de calories", "tool1_p": "Calculez vos besoins et votre objectif du jour (en polonais).", "tool2_h": "Un substitut pour chaque ingrédient", "tool2_p": "Comment remplacer un ingrédient selon votre objectif, étape par étape (en polonais).", "tool3_h": "Enregistrer une recette Instagram", "tool3_p": "Comment garder une recette de reel et voir tout de suite ses calories (en anglais).", "pricing_free": "Tes 5 premières estimations, ton premier import de recette et ton premier substitut sont gratuits, sans abonnement.", "s4_eyebrow": "Substituts", "s4_h": "Remplacez un ingrédient selon votre objectif.", "s4_p": "Touchez un ingrédient et demandez un substitut : plus léger, plus de protéines, sans lactose, végétarien, moins cher — ou avec vos mots. Fiteo recalcule la recette.", "nav_ig": "Recette Instagram", "pause_l": "Pause", "play_l": "Reprendre"},
+    de:{"acc_eyebrow": "Genauigkeit", "acc_h": "Wir haben Fiteo mit 100 Gerichten getestet.", "acc_p": "Wenn du die Menge angibst, liegt der Medianfehler bei 1 % und 94 % der Gerichte liegen innerhalb von ±10 % der Referenzdaten. Ohne Mengen („ein Teller Spaghetti“) nimmt Fiteo eine typische Portion an – dann liegt der Medianfehler bei etwa 20 %. Wir zeigen auch, wo Fiteo danebenliegt.", "acc_link": "Vollständige Ergebnisse ansehen (auf Polnisch)", "foot_accuracy": "Genauigkeit", "hero_eyebrow": "Bewusst essen", "hero_h1": "Deine Rezepte, Mahlzeiten und Tagesbilanz — an einem Ort.", "hero_sub": "Speichere ein Rezept — dein eigenes oder aus einem Reel —, pass es mit einem Ersatz an dein Ziel an und sieh, wie es in deinen Tag passt.", "hero_cta1": "Im App Store laden", "hero_cta2": "Preise ansehen", "hero_micro": "Im App Store und bei Google Play erhältlich", "gallery_h": "Lokale Gerichte, in deiner Sprache.", "gallery_p": "Logge, was du wirklich isst — von Paella bis Schnitzel.", "s1_eyebrow": "Mahlzeiten", "s1_h": "Erfasse, was du gegessen hast — auf deine Art.", "s1_p": "Tippe oder sprich eine Sprachnachricht. Je genauer du beschreibst, desto genauer das Ergebnis: mit Mengen rechnet Fiteo am präzisesten, ohne nimmt es eine typische Portion an und zeigt sie dir zum Korrigieren.", "s2_eyebrow": "Bilanz", "s2_h": "Fiteo sieht, was du verbrennst.", "s2_p": "Verbrannte Kalorien fließen aus Apple Health oder Health Connect in deine Bilanz — automatisch, ohne Eintippen.", "s3_eyebrow": "Rezepte", "s3_h": "Rezept im Reel gesehen? Speichere es mit Kalorien.", "s3_p": "Teile das Reel mit Fiteo oder füge den Link ein — Zutaten, Schritte und Makros pro Portion. Dann tausch jede Zutat passend zu deinem Ziel.", "steps_eyebrow": "So funktioniert's", "steps_h": "Vom Rezept zur Tagesbilanz.", "st1_n": "Rezept", "st1_h": "Speichern oder importieren", "st1_p": "Dein eigenes Rezept oder ein Reel von Instagram, TikTok oder YouTube — mit Zutaten, Schritten und Makros.", "st2_n": "Dein Ziel", "st2_h": "Mit Ersatz anpassen", "st2_p": "Weniger Kalorien, mehr Eiweiß, laktosefrei, vegetarisch, günstiger — oder in deinen eigenen Worten.", "st3_n": "Bilanz", "st3_h": "Essen und Bilanz sehen", "st3_p": "Die Mahlzeit landet in deinem Tag: gegessen vs. verbrannt, mit deinem Tagesziel.", "pricing_eyebrow": "Preise", "pricing_h": "So viel kostet es.", "pricing_p": "Unbegrenzte KI-Schätzungen, 20 Rezeptimporte pro Monat und Zutatenersatz.", "price_m_label": "Monatlich", "price_m_amt": "7,99 €", "price_m_period": "/ Monat", "price_y_label": "Jährlich", "price_y_amt": "34,99 €", "price_y_period": "pro Jahr — ≈64 % günstiger als monatlich", "pricing_trial": "7 Tage kostenlos testen — jederzeit kündbar.", "foot_privacy": "Datenschutz", "foot_beta": "iPhone", "foot_android": "Android", "tools_eyebrow": "Nützlich", "tools_h": "Fang mit einem Schritt an.", "tool1_h": "Kalorienrechner", "tool1_p": "Berechne deinen Bedarf und dein Tagesziel (auf Polnisch).", "tool2_h": "Ersatz für jede Zutat", "tool2_p": "So tauschst du eine Zutat passend zu deinem Ziel — Schritt für Schritt (auf Polnisch).", "tool3_h": "Rezept aus Instagram speichern", "tool3_p": "So speicherst du ein Rezept aus einem Reel und siehst sofort die Kalorien (auf Englisch).", "pricing_free": "Die ersten 5 Schätzungen, der erste Rezept-Import und der erste Ersatz sind kostenlos – ohne Abo.", "s4_eyebrow": "Ersatz", "s4_h": "Tausch eine Zutat passend zu deinem Ziel.", "s4_p": "Tipp auf eine Zutat und lass dir einen Ersatz vorschlagen: leichter, mehr Protein, laktosefrei, vegetarisch, günstiger – oder in eigenen Worten. Fiteo rechnet das Rezept neu.", "nav_ig": "Rezept aus Instagram", "pause_l": "Pausieren", "play_l": "Fortsetzen"}
   };
   var SUPPORTED = ['pl','en','es','pt','it','fr','de'];
 
-  // Go-live switch: flip LAUNCHED to true and fill APP_STORE_URL the day the app is approved and
-  // manually released. Swaps the hero + "premiera niebawem" CTAs from "notify me" (scrolls to the
-  // waitlist form) to a real "Download on the App Store" link — no other rebuild needed that day.
+  // Both apps are live: the hero and pricing CTAs point to the visitor's store (App Store by default,
+  // Google Play on Android — see applyAndroidLaunchState). The flags stay as kill switches.
   var LAUNCHED = true;
   // No country segment on purpose: the short link sends each visitor to their own storefront, which is
   // the point on a seven-language page. It 404s until the version is released — harmless, because
@@ -307,55 +325,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     pt:'Descarregar na App Store', it:"Scarica dall'App Store", fr:"Télécharger sur l'App Store",
     de:'Im App Store laden'
   };
-  // Every string that stops being true the moment the app ships, keyed by its data-i18n name. Swapping
-  // only the CTAs would leave "coming soon" printed under a "Download" button, the iPhone section still
-  // promising to let you know when it starts, and the pricing headline in the future tense.
-  // (fr `pricing_h` is identical to its pre-launch copy — that one was already present-tense; kept for symmetry.)
-  var LIVE_TEXT = {
-    pl:{hero_micro:'Dostępne w App Store',beta_h:'Fiteo jest już w App Store.',beta_p:"Pobierz na iPhone'a i zaloguj pierwszy posiłek w kilka sekund.",pricing_h:'Ile kosztuje.',android_h:'Fiteo jest już na iPhonie. Android w przygotowaniu.',wait_eyebrow:'Android',wait_h:'Zostaw maila — dam znać, gdy ruszy Android.'},
-    en:{hero_micro:'Available on the App Store',beta_h:'Fiteo is on the App Store.',beta_p:'Download it for iPhone and log your first meal in seconds.',pricing_h:'What it costs.',android_h:'Fiteo is live on iPhone. Android is in the works.',wait_eyebrow:'Android',wait_h:"Leave your email — I'll tell you when Android lands."},
-    es:{hero_micro:'Disponible en la App Store',beta_h:'Fiteo ya está en la App Store.',beta_p:'Descárgalo para iPhone y registra tu primera comida en segundos.',pricing_h:'Lo que cuesta.',android_h:'Fiteo ya está en iPhone. Android está en camino.',wait_eyebrow:'Android',wait_h:'Déjame tu correo — te aviso cuando llegue Android.'},
-    pt:{hero_micro:'Disponível na App Store',beta_h:'O Fiteo já está na App Store.',beta_p:'Descarregue para iPhone e registe a primeira refeição em segundos.',pricing_h:'Quanto custa.',android_h:'O Fiteo já está no iPhone. O Android está a caminho.',wait_eyebrow:'Android',wait_h:'Deixe o seu e-mail — aviso quando o Android sair.'},
-    it:{hero_micro:"Disponibile sull'App Store",beta_h:"Fiteo è sull'App Store.",beta_p:'Scaricalo per iPhone e registra il primo pasto in pochi secondi.',pricing_h:'Quanto costa.',android_h:'Fiteo è già su iPhone. Android è in arrivo.',wait_eyebrow:'Android',wait_h:'Lascia la tua email — ti avviso quando arriva Android.'},
-    fr:{hero_micro:"Disponible sur l'App Store",beta_h:"Fiteo est sur l'App Store.",beta_p:'Télécharge-le pour iPhone et enregistre ton premier repas en quelques secondes.',pricing_h:'Voici le prix.',android_h:'Fiteo est déjà sur iPhone. Android suivra bientôt.',wait_eyebrow:'Android',wait_h:'Laisse ton email — je te préviens quand Android arrive.'},
-    de:{hero_micro:'Im App Store erhältlich',beta_h:'Fiteo ist im App Store.',beta_p:'Lade es fürs iPhone und logge dein erstes Essen in Sekunden.',pricing_h:'So viel kostet es.',android_h:'Fiteo ist schon auf dem iPhone da. Android kommt bald.',wait_eyebrow:'Android',wait_h:'Lass deine E-Mail da — ich melde mich zum Android-Start.'}
-  };
   function applyLaunchState(code){
     if (!LAUNCHED || !APP_STORE_URL) return;
     var label = LIVE_CTA[code] || LIVE_CTA.en;
     // Only these two: the nav carries the brand and the language switcher, no CTA (`nav_cta` and the
     // .nav-cta rule are both leftovers with nothing to apply to).
-    document.querySelectorAll('.hero-cta, .beta-cta').forEach(function(a){
+    document.querySelectorAll('.hero-cta').forEach(function(a){
       a.textContent = label; a.setAttribute('href', APP_STORE_URL);
       a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener');
     });
-    var live = LIVE_TEXT[code] || LIVE_TEXT.en;
-    Object.keys(live).forEach(function(k){
-      document.querySelectorAll('[data-i18n="' + k + '"]').forEach(function(el){ el.textContent = live[k]; });
-    });
-    // Hides the iPhone waitlist card: it offers to tell you about something you can already download.
     document.body.classList.add('launched');
     applyAndroidLaunchState(code);
   }
 
-  // Android go-live switch (Fiteo 1.0 public on Google Play 2026-10-16), the same idea as LAUNCHED: the
-  // Android card turns from the waitlist form into a Google Play link, and on an Android phone the hero
-  // button goes to Google Play instead of the App Store. fiteoapp.io/get (the Worker) switches separately.
+  // Android (public on Google Play since 2026-10-16): on an Android phone the CTAs go to Google Play;
+  // on a computer both store buttons show. fiteoapp.io/get (the Worker) switches separately.
   var ANDROID_LAUNCHED = true;
   var PLAY_URL = 'https://play.google.com/store/apps/details?id=io.fiteoapp';
   var PLAY_CTA = {
     pl:'Pobierz z Google Play', en:'Get it on Google Play', es:'Descargar en Google Play',
     pt:'Descarregar no Google Play', it:'Scarica da Google Play', fr:'Télécharger sur Google Play',
     de:'Bei Google Play laden'
-  };
-  var ANDROID_LIVE_TEXT = {
-    pl:{hero_micro:'Dostępne w App Store i Google Play',android_h:'Fiteo jest już w Google Play.',android_p:'Pobierz na Androida i zaloguj pierwszy posiłek w kilka sekund.',wait_eyebrow:'Android',wait_h:'Masz Androida?'},
-    en:{hero_micro:'Available on the App Store and Google Play',android_h:'Fiteo is on Google Play.',android_p:'Download it for Android and log your first meal in seconds.',wait_eyebrow:'Android',wait_h:'On Android?'},
-    es:{hero_micro:'Disponible en la App Store y Google Play',android_h:'Fiteo ya está en Google Play.',android_p:'Descárgalo para Android y registra tu primera comida en segundos.',wait_eyebrow:'Android',wait_h:'¿Tienes Android?'},
-    pt:{hero_micro:'Disponível na App Store e no Google Play',android_h:'O Fiteo já está no Google Play.',android_p:'Descarregue para Android e registe a primeira refeição em segundos.',wait_eyebrow:'Android',wait_h:'Tem Android?'},
-    it:{hero_micro:"Disponibile sull'App Store e su Google Play",android_h:'Fiteo è su Google Play.',android_p:'Scaricalo per Android e registra il primo pasto in pochi secondi.',wait_eyebrow:'Android',wait_h:'Hai Android?'},
-    fr:{hero_micro:"Disponible sur l'App Store et Google Play",android_h:'Fiteo est sur Google Play.',android_p:'Télécharge-le pour Android et enregistre ton premier repas en quelques secondes.',wait_eyebrow:'Android',wait_h:'Tu es sur Android ?'},
-    de:{hero_micro:'Im App Store und bei Google Play erhältlich',android_h:'Fiteo ist bei Google Play.',android_p:'Lade es für Android und logge dein erstes Essen in Sekunden.',wait_eyebrow:'Android',wait_h:'Du hast Android?'}
   };
   function applyAndroidLaunchState(code){
     if (!ANDROID_LAUNCHED || !PLAY_URL) return;
@@ -374,10 +364,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var ua = navigator.userAgent || '';
     var touchMac = /Macintosh/.test(ua) && navigator.maxTouchPoints > 1;
     if (!/Android|iPhone|iPad|iPod/i.test(ua) && !touchMac) document.body.classList.add('desktop');
-    var live = ANDROID_LIVE_TEXT[code] || ANDROID_LIVE_TEXT.en;
-    Object.keys(live).forEach(function(k){
-      document.querySelectorAll('[data-i18n="' + k + '"]').forEach(function(el){ el.textContent = live[k]; });
-    });
     document.body.classList.add('android-launched');
   }
 
@@ -385,6 +371,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var d = I18N[code] || I18N.en;
     document.documentElement.lang = code;
     document.querySelectorAll('[data-i18n]').forEach(function(el){ var k=el.getAttribute('data-i18n'); if(d[k]!=null) el.textContent=d[k]; });
+    document.querySelectorAll('#tool-ig, .ig-link').forEach(function(ig){ ig.setAttribute('href', code==='pl' ? '/przepis-z-instagrama' : '/en/save-instagram-recipe'); });
+    document.querySelectorAll('.playpause').forEach(function(b){ b.setAttribute('aria-label', b.classList.contains('paused') ? d.play_l : d.pause_l); });
+    document.querySelectorAll('.showcase .dot').forEach(function(dt, j){ var sc = document.querySelectorAll('.scene')[j]; var e = sc && sc.querySelector('.eyebrow'); if (e) dt.setAttribute('aria-label', e.textContent); });
     document.querySelectorAll('[data-i18n-ph]').forEach(function(el){ var k=el.getAttribute('data-i18n-ph'); if(d[k]!=null) el.setAttribute('placeholder',d[k]); });
     document.querySelectorAll('.langpill').forEach(function(p){ var on = p.getAttribute('data-lang')===code; p.classList.toggle('active',on); p.setAttribute('aria-pressed',on?'true':'false'); });
     var sel = document.querySelector('.langselect'); if (sel) sel.value = code;
@@ -412,6 +401,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var showcase = document.querySelector('.showcase');
   var scenes = Array.prototype.slice.call(document.querySelectorAll('.scene'));
   var dots = Array.prototype.slice.call(document.querySelectorAll('.showcase .dot'));
+  var ppScene = document.querySelector('.playpause[data-pp="scene"]');
   var idx = 0, timer = null, inView = false;
   var carousel = !reduce && window.matchMedia('(min-width:681px)').matches;
 
@@ -423,15 +413,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var v = s.querySelector('video');
       if (v){ if (on){ try{ v.currentTime = 0; }catch(e){} var p = v.play && v.play(); if (p && p.catch) p.catch(function(){}); } else if (v.pause){ v.pause(); } }
     });
-    dots.forEach(function(d, j){ var on = j === idx; d.classList.toggle('on', on); d.setAttribute('aria-selected', on ? 'true' : 'false'); });
+    dots.forEach(function(d, j){ var on = j === idx; d.classList.toggle('on', on); if (on) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current'); });
   }
   function advance(){ show(idx + 1); }
-  function play(){ stop(); timer = window.setInterval(advance, 6000); }
+  var userPaused = false, hovered = false;
+  function play(){ stop(); if (!userPaused && !hovered) timer = window.setInterval(advance, 9000); }
   function stop(){ if (timer){ window.clearInterval(timer); timer = null; } }
 
   if (carousel){
     show(0);
     dots.forEach(function(d){ d.addEventListener('click', function(){ show(parseInt(d.getAttribute('data-scene'), 10) || 0); if (inView) play(); }); });
+    var stageEl = document.querySelector('.showcase-sticky');
+    ['mouseenter', 'focusin'].forEach(function(ev){ stageEl.addEventListener(ev, function(){ hovered = true; stop(); }); });
+    ['mouseleave', 'focusout'].forEach(function(ev){ stageEl.addEventListener(ev, function(){ hovered = false; if (inView) play(); }); });
+    if (ppScene) ppScene.addEventListener('click', function(){ userPaused = !userPaused; ppScene.classList.toggle('paused', userPaused); var dd = I18N[document.documentElement.lang] || I18N.en; ppScene.setAttribute('aria-label', userPaused ? dd.play_l : dd.pause_l); if (userPaused) stop(); else if (inView) play(); });
     if ('IntersectionObserver' in window){
       new IntersectionObserver(function(entries){
         entries.forEach(function(e){
@@ -469,59 +464,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var gdots = Array.prototype.slice.call(document.querySelectorAll('.gallery .dot'));
   var gcount = gcards.length, gIndex = 0, gTimer = null, gInView = false, gStep = 0, GGAP = 16;
   var GTRANS = 'transform .6s cubic-bezier(.2,.7,.2,1)';
-  function gdotsUpd(){ var a = ((gIndex % gcount) + gcount) % gcount; gdots.forEach(function(d, j){ var on = j === a; d.classList.toggle('on', on); d.setAttribute('aria-selected', on ? 'true' : 'false'); }); }
+  function gdotsUpd(){ var a = ((gIndex % gcount) + gcount) % gcount; gdots.forEach(function(d, j){ var on = j === a; d.classList.toggle('on', on); if (on) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current'); }); }
   function gmeasure(){ if (!gcards.length) return; gStep = gcards[0].getBoundingClientRect().width + GGAP; gtrack.style.transition = 'none'; gtrack.style.transform = 'translateX(' + (-gIndex * gStep) + 'px)'; }
   function ggo(i){ gIndex = i; gtrack.style.transition = reduce ? 'none' : GTRANS; gtrack.style.transform = 'translateX(' + (-gIndex * gStep) + 'px)'; gdotsUpd(); }
-  function gplay(){ gstop(); if (!reduce) gTimer = window.setInterval(function(){ ggo(gIndex + 1); }, 3000); }
+  var gUserPaused = false, gHover = false;
+  function gplay(){ gstop(); if (!reduce && !gUserPaused && !gHover) gTimer = window.setInterval(function(){ ggo(gIndex + 1); }, 3500); }
   function gstop(){ if (gTimer){ window.clearInterval(gTimer); gTimer = null; } }
   if (gtrack && gcount){
-    for (var gc = 0; gc < Math.min(3, gcount); gc++){ gtrack.appendChild(gcards[gc].cloneNode(true)); } // clones for a seamless wrap
+    for (var gc = 0; gc < Math.min(3, gcount); gc++){ var cl = gcards[gc].cloneNode(true); cl.setAttribute('aria-hidden', 'true'); gtrack.appendChild(cl); } // clones for a seamless wrap, hidden from screen readers
     gtrack.addEventListener('transitionend', function(e){ if (e.propertyName !== 'transform') return; if (gIndex >= gcount){ gtrack.style.transition = 'none'; gIndex = 0; gtrack.style.transform = 'translateX(0)'; void gtrack.offsetWidth; gdotsUpd(); } });
     gmeasure(); gdotsUpd();
     window.addEventListener('resize', gmeasure);
     gdots.forEach(function(d){ d.addEventListener('click', function(){ ggo(parseInt(d.getAttribute('data-g'), 10) || 0); if (gInView) gplay(); }); });
+    var gwrapEl = document.querySelector('.gwrap'), ppG = document.querySelector('.playpause[data-pp="gallery"]');
+    ['mouseenter', 'focusin'].forEach(function(ev){ gwrapEl.addEventListener(ev, function(){ gHover = true; gstop(); }); });
+    ['mouseleave', 'focusout'].forEach(function(ev){ gwrapEl.addEventListener(ev, function(){ gHover = false; if (gInView) gplay(); }); });
+    if (ppG) ppG.addEventListener('click', function(){ gUserPaused = !gUserPaused; ppG.classList.toggle('paused', gUserPaused); var dd = I18N[document.documentElement.lang] || I18N.en; ppG.setAttribute('aria-label', gUserPaused ? dd.play_l : dd.pause_l); if (gUserPaused) gstop(); else if (gInView) gplay(); });
     var gw = document.querySelector('.gwrap');
     if (gw && 'IntersectionObserver' in window){ new IntersectionObserver(function(es){ es.forEach(function(e){ gInView = e.isIntersecting; if (gInView) gplay(); else gstop(); }); }, { threshold: 0.2 }).observe(gw); }
     else { gplay(); }
   }
 
-
-  // Lead capture → Worker /lead (App Store waitlist + Android). Consent required; honeypot; per-form UI state.
-  var LEAD_ENDPOINT = 'https://fiteo-ai.fiteomain.workers.dev/lead';
-  Array.prototype.slice.call(document.querySelectorAll('.leadcard')).forEach(function(form){
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      var emailEl = form.querySelector('.lead-email');
-      var consentEl = form.querySelector('.lead-consent');
-      var hp = form.querySelector('.hp');
-      var thanks = form.querySelector('.thanks-msg');
-      var err = form.querySelector('.err-msg');
-      if (thanks) thanks.hidden = true;
-      if (err) err.hidden = true;
-      if (!emailEl.value || !emailEl.checkValidity()) { emailEl.focus(); return; }
-      if (!consentEl.checked) { consentEl.focus(); return; }
-      var btn = form.querySelector('button[type=submit]');
-      if (btn) btn.disabled = true;
-      fetch(LEAD_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: emailEl.value.trim(),
-          segment: form.getAttribute('data-segment'),
-          lang: document.documentElement.lang || 'pl',
-          consent: true,
-          website: hp ? hp.value : ''
-        })
-      }).then(function(r){ return r.ok ? r.json() : Promise.reject(); })
-        .then(function(){
-          if (thanks) thanks.hidden = false;
-          var row = form.querySelector('.leadrow'); if (row) row.style.display = 'none';
-          var c = form.querySelector('.consent'); if (c) c.style.display = 'none';
-          trackEvent('lead_submit', { segment: form.getAttribute('data-segment') });
-        })
-        .catch(function(){ if (err) err.hidden = false; if (btn) btn.disabled = false; });
-    });
-  });
 
   // ---- Analytics: the page pushes semantic events to dataLayer; GA4 tag/trigger mapping is done in
   // GTM, not here — so swapping the measurement backend later needs no code change. ----
@@ -532,10 +495,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   // cta_click — delegated so it also covers CTAs later swapped by applyLaunchState() on launch day.
   document.addEventListener('click', function(e){
-    var a = e.target.closest && e.target.closest('.hero-cta, .beta-cta, .play-cta, #pricing .btn');
+    var a = e.target.closest && e.target.closest('.hero-cta, .play-cta');
     if (!a) return;
-    var cta = a.classList.contains('hero-cta') ? 'hero' : a.classList.contains('beta-cta') ? 'beta'
-      : a.classList.contains('play-cta') ? 'android' : 'pricing';
+    var where = a.closest('#pricing') ? 'pricing' : 'hero';
+    var cta = a.classList.contains('play-cta') ? where + '_android' : where;
     trackEvent('cta_click', { cta: cta, lang: document.documentElement.lang || 'pl' });
   });
 
@@ -552,7 +515,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   // section_time — seconds each major section spent in view, flushed on hide/unload. visibilitychange
   // + pagehide (not beforeunload, unreliable on iOS) are the only points where the totals are final.
   (function(){
-    var ids = ['hero', 'gallery', 'showcase', 'steps', 'pricing', 'waitlist'];
+    var ids = ['hero', 'gallery', 'showcase', 'steps', 'pricing'];
     var sections = {};
     ids.forEach(function(id){ var el = document.getElementById(id); if (el) sections[id] = { el: el, since: null, total: 0 }; });
     if (!Object.keys(sections).length || reduce || !('IntersectionObserver' in window)) return;
