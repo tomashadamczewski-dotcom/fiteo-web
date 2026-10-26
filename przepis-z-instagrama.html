@@ -19,7 +19,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "inLanguage": "pl", "name": "Jak zapisać przepis z Instagrama — i od razu policzyć jego kalorie", "step": [{"@type": "HowToStep", "position": 1, "text": "Sposób 1: pod rolką na Instagramie wybierz Udostępnij → Fiteo."}, {"@type": "HowToStep", "position": 2, "text": "Sposób 2: skopiuj link do rolki i wklej go w Fiteo: Przepisy → Importuj z linku."}, {"@type": "HowToStep", "position": 3, "text": "Fiteo pokazuje składniki, kroki oraz kalorie i makro na porcję."}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": "pl", "mainEntity": [{"@type": "Question", "name": "Czy mogę zapisać przepis z TikToka albo YouTube?", "acceptedAnswer": {"@type": "Answer", "text": "Tak. Fiteo importuje przepisy z linków do Instagrama, TikToka, YouTube i Facebooka."}}, {"@type": "Question", "name": "Czy to działa na Androidzie?", "acceptedAnswer": {"@type": "Answer", "text": "Tak. Fiteo jest na iPhone'a i Androida, a udostępnianie rolki do Fiteo działa na obu."}}, {"@type": "Question", "name": "Czy Fiteo pobiera film na mój telefon?", "acceptedAnswer": {"@type": "Answer", "text": "Nie. Do aplikacji trafia tylko przepis: tytuł, składniki, kroki i wartości odżywcze."}}, {"@type": "Question", "name": "Czy autor rolki się o tym dowie?", "acceptedAnswer": {"@type": "Answer", "text": "Nie. Import działa jak zapisanie przepisu dla siebie. Jeśli przepis Ci smakował, zostaw autorowi polubienie albo komentarz."}}, {"@type": "Question", "name": "Jak policzyć kalorie przepisu, który już mam?", "acceptedAnswer": {"@type": "Answer", "text": "W Fiteo możesz też dodać przepis ręcznie: wpisujesz składniki z ilościami, a aplikacja liczy kalorie i makro na porcję."}}]}</script>
 <style>
-  :root{--bg:#F5F5F7;--surface:#fff;--ink:#1C1C1E;--muted:#6E6E73;--hair:#E5E5EA;--accent:#0A84FF;--accent-press:#0060DF;
+  :root{--bg:#F5F5F7;--surface:#fff;--ink:#1C1C1E;--muted:#6E6E73;--hair:#E5E5EA;--accent:#0A84FF;--accent-press:#0060DF;--btn:#0060DF;
     --accent-soft:#E6F0FF;--good:#1E8E3E;--bad:#C5221F;--warn-bg:#FFF4E5;--shadow:0 1px 2px rgba(0,0,0,.05),0 10px 30px -12px rgba(20,30,50,.18);
     --font:-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;}
   @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#000;--surface:#1C1C1E;--ink:#F5F5F7;--muted:#98989F;--hair:#2C2C2E;
@@ -31,7 +31,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 0}
   .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.3rem;text-decoration:none;color:var(--ink)}
   .brand img{width:36px;height:36px;border-radius:9px;box-shadow:var(--shadow)}
-  .cta{font-weight:600;font-size:.92rem;text-decoration:none;padding:9px 16px;border-radius:980px;background:var(--accent-press);color:#fff;white-space:nowrap}
+  .cta{font-weight:600;font-size:.92rem;text-decoration:none;padding:9px 16px;border-radius:980px;background:var(--btn);color:#fff;white-space:nowrap}
+  .subnav{display:flex;gap:2px;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:-6px -8px 4px;padding:0 0 2px;scrollbar-width:none}
+  .subnav::-webkit-scrollbar{display:none}
+  .subnav a{flex:none;padding:11px 10px;font-size:.92rem;color:var(--muted);text-decoration:none;border-radius:10px;white-space:nowrap}
+  .subnav a:hover{color:var(--ink);background:var(--surface)} .subnav a[aria-current=page]{color:var(--ink);font-weight:600}
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
   h1{font-size:clamp(1.9rem,4.6vw,2.8rem);line-height:1.1;letter-spacing:-.02em;margin:24px 0 12px}
   h2{font-size:1.45rem;letter-spacing:-.015em;margin:44px 0 12px} h3{font-size:1.1rem;margin:22px 0 8px}
   .lead{font-size:1.12rem;color:var(--muted);max-width:60ch}
@@ -51,19 +56,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .trials{display:block;font-size:.76rem;color:var(--muted);font-weight:400}
   .assume{display:block;font-size:.78rem;color:var(--muted)}
   details{background:var(--surface);border-radius:16px;box-shadow:var(--shadow);margin:12px 0;overflow:hidden}
-  summary{cursor:pointer;padding:16px 20px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 16px;font-weight:600;list-style:none}
+  summary{cursor:pointer;padding:16px 48px 16px 20px;position:relative;display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 16px;font-weight:600;list-style:none}
   summary::-webkit-details-marker{display:none} summary .sum{font-weight:400;color:var(--muted);font-size:.88rem}
+  summary::after{content:"";position:absolute;right:22px;top:24px;width:8px;height:8px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .15s}
+  details[open] summary::after{transform:rotate(-135deg);top:28px}
   details[open] summary{border-bottom:1px solid var(--hair)}
   .groups td:first-child{font-weight:600}
   .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding:40px 0 48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--hair);margin-top:56px}
-  .foot a{color:var(--muted);margin-right:16px}
+  .foot a{color:var(--muted);margin-right:16px;display:inline-block;padding:10px 0}
   @media (max-width:700px){.stats{grid-template-columns:repeat(2,1fr)} .stat b{font-size:1.6rem}
     table{font-size:.84rem} th,td{padding:8px 6px}}
 </style>
 <style>
   .steps{counter-reset:s;list-style:none;padding:0;margin:18px 0}
   .steps li{counter-increment:s;position:relative;padding:14px 18px 14px 62px;margin:10px 0;background:var(--surface);border-radius:16px;box-shadow:var(--shadow)}
-  .steps li::before{content:counter(s);position:absolute;left:18px;top:14px;width:30px;height:30px;border-radius:50%;background:var(--accent-press);color:#fff;font-weight:700;display:grid;place-items:center}
+  .steps li::before{content:counter(s);position:absolute;left:18px;top:14px;width:30px;height:30px;border-radius:50%;background:var(--btn);color:#fff;font-weight:700;display:grid;place-items:center}
   .shot{display:flex;gap:24px;align-items:flex-start;margin:22px 0}
   .shot img{width:260px;max-width:45%;border-radius:28px;box-shadow:var(--shadow)}
   @media (max-width:640px){.shot{flex-direction:column}.shot img{max-width:70%;align-self:center}}
@@ -73,12 +80,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .opt h3{margin:8px 0 6px} .opt p{margin:0}
   .tag{display:inline-block;font-size:.78rem;font-weight:700;padding:3px 10px;border-radius:980px;background:var(--accent-soft);color:var(--accent-press)}
   @media (max-width:640px){.opts{grid-template-columns:1fr}}
-  .big-cta{display:inline-block;margin:10px 0 4px;font-weight:700;text-decoration:none;padding:13px 24px;border-radius:980px;background:var(--accent-press);color:#fff}
+  .big-cta{display:inline-block;margin:10px 0 4px;font-weight:700;text-decoration:none;padding:13px 24px;border-radius:980px;background:var(--btn);color:#fff}
 </style>
 </head><body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K9F592HL" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="wrap">
-<nav class="nav"><a class="brand" href="/"><img src="/icon.png" alt=""> Fiteo</a><span><a href="/en/save-instagram-recipe" hreflang="en" style="margin-right:14px;font-size:.9rem">English</a><a class="cta" href="/get">Pobierz Fiteo</a></span></nav>
+<nav class="nav"><a class="brand" href="/"><img src="/icon.png" alt=""> Fiteo</a><span><a href="/en/save-instagram-recipe" hreflang="en" style="margin-right:14px;font-size:.9rem;display:inline-block;padding:12px 0">English</a><a class="cta" href="/get">Pobierz Fiteo</a></span></nav><nav class="subnav" aria-label="Strony Fiteo"><a href="/przepis-z-instagrama" aria-current="page">Przepis z Instagrama</a><a href="/zamienniki">Zamienniki</a><a href="/kalkulator-kalorii">Kalkulator kalorii</a><a href="/dokladnosc">Dokładność</a></nav>
 <main>
 <h1>Jak zapisać przepis z Instagrama — i od razu policzyć jego kalorie</h1>
 <p class="lead">Widzisz świetny przepis na rolce, zapisujesz go… i nigdy do niego nie wracasz. A nawet jeśli wrócisz, nie wiesz, ile ma kalorii. Pokazujemy, jak zapisać przepis z Instagrama, TikToka czy YouTube tak, żeby mieć składniki, kroki i kalorie w jednym miejscu.</p>
@@ -98,12 +105,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>Oba działają na iPhonie i Androidzie — z Instagrama, TikToka, YouTube i Facebooka. <b>Wynik:</b> składniki z gramaturami, kroki przygotowania i części przepisu (np. ciasto, krem, kruszonka), a do tego kalorie i makro na porcję.</p>
 <div class="shot"><img src="/reel-import-pl-recipe.jpg" alt="Przepis zaimportowany z rolki w Fiteo: składniki z gramaturami i kroki" loading="lazy" width="260">
 <div><h3>Co dalej z takim przepisem</h3><ul>
-<li><b>Dopasuj go pod siebie.</b> Przy składniku wybierasz <b>Zaproponuj zamiennik</b>: więcej białka, lżej, bez laktozy albo wege — Fiteo przelicza przepis.</li>
+<li><b>Dopasuj go pod siebie.</b> Przy składniku wybierasz <b>Zaproponuj zamiennik</b>: lżej, więcej białka, bez laktozy, wege, taniej albo własnymi słowami — Fiteo przelicza przepis.</li>
 <li><b>Zjedz i zapisz.</b> Jedno dotknięcie dodaje porcję do dziennika, a bilans dnia od razu się aktualizuje.</li>
 <li><b>Podziel się.</b> Przepis wyślesz znajomym linkiem — zobaczą go nawet bez aplikacji.</li>
 </ul></div></div>
+<p><a class="big-cta" href="/get">Pobierz Fiteo i zaimportuj pierwszy przepis za darmo</a></p>
 <h2>Czy kalorie się zgadzają?</h2>
-<p>Przed zapisaniem możesz przejrzeć i poprawić każdy składnik. Jak dokładnie Fiteo liczy kalorie, sprawdziliśmy na 100 potrawach — <a href="/dokladnosc">wyniki testu dokładności</a>.</p>
+<p>Przed zapisaniem możesz przejrzeć i poprawić każdy składnik. Gdy w przepisie brakuje ilości, Fiteo przyjmuje typowe — sprawdź je przed zapisaniem. Jak dokładnie Fiteo liczy kalorie, sprawdziliśmy na 100 potrawach — <a href="/dokladnosc">wyniki testu dokładności</a>.</p>
 <h2>Ile to kosztuje</h2>
 <p><b>Pierwszy import jest za darmo.</b> W Fiteo Pro masz 20 importów przepisów miesięcznie, zamienniki składników i nielimitowane szacowanie kalorii — 29,99 zł miesięcznie albo 129,99 zł rocznie, z 7 dniami na start za darmo.</p>
 <p><a class="big-cta" href="/get">Pobierz Fiteo — iPhone i Android</a></p>
@@ -111,5 +119,5 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <details><summary>Czy mogę zapisać przepis z TikToka albo YouTube?</summary><div class="ans"><p>Tak. Fiteo importuje przepisy z linków do Instagrama, TikToka, YouTube i Facebooka.</p></div></details><details><summary>Czy to działa na Androidzie?</summary><div class="ans"><p>Tak. Fiteo jest na iPhone'a i Androida, a udostępnianie rolki do Fiteo działa na obu.</p></div></details><details><summary>Czy Fiteo pobiera film na mój telefon?</summary><div class="ans"><p>Nie. Do aplikacji trafia tylko przepis: tytuł, składniki, kroki i wartości odżywcze.</p></div></details><details><summary>Czy autor rolki się o tym dowie?</summary><div class="ans"><p>Nie. Import działa jak zapisanie przepisu dla siebie. Jeśli przepis Ci smakował, zostaw autorowi polubienie albo komentarz.</p></div></details><details><summary>Jak policzyć kalorie przepisu, który już mam?</summary><div class="ans"><p>W Fiteo możesz też dodać przepis ręcznie: wpisujesz składniki z ilościami, a aplikacja liczy kalorie i makro na porcję.</p></div></details>
 </main>
-<footer class="foot"><div><a href="/">Fiteo</a><a href="/dokladnosc">Dokładność</a><a href="https://fiteoapp.io/privacy">Prywatność i cookies</a><a href="https://apps.apple.com/app/id6783411148">iPhone</a><a href="https://play.google.com/store/apps/details?id=io.fiteoapp">Android</a></div><div>© 2026 Fiteo</div></footer>
+<footer class="foot"><div><a href="/">Fiteo</a><a href="/przepis-z-instagrama">Przepis z Instagrama</a><a href="/zamienniki">Zamienniki</a><a href="/kalkulator-kalorii">Kalkulator kalorii</a><a href="/dokladnosc">Dokładność</a><a href="https://fiteoapp.io/privacy">Prywatność i cookies</a><a href="https://apps.apple.com/app/id6783411148">App Store</a><a href="https://play.google.com/store/apps/details?id=io.fiteoapp">Google Play</a></div><div>Fiteo nie jest wyrobem medycznym i nie zastępuje porady lekarza ani dietetyka.<br>© 2026 Fiteo</div></footer>
 </div></body></html>
