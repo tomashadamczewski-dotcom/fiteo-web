@@ -221,7 +221,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- Scene — substitute (screenshot) -->
     <div class="scene"><div class="stage-inner">
-      <div class="stage-video"><div class="phonewrap"><img src="zamiennik-krok-3.jpg" alt="Fiteo proponuje zamienniki twarogu: skyr naturalny i serek wiejski light" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></div></div>
+      <div class="stage-video"><div class="phonewrap"><img data-sub-step src="zamiennik-krok-3.jpg" alt="Fiteo proponuje zamienniki twarogu: skyr naturalny i serek wiejski light" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></div></div>
       <div class="stage-text">
         <span class="eyebrow" data-i18n="s4_eyebrow">Zamienniki</span>
         <h2 data-i18n="s4_h">Podmień składnik pod swój cel.</h2>
@@ -371,7 +371,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var d = I18N[code] || I18N.en;
     document.documentElement.lang = code;
     document.querySelectorAll('[data-i18n]').forEach(function(el){ var k=el.getAttribute('data-i18n'); if(d[k]!=null) el.textContent=d[k]; });
-    document.querySelectorAll('#tool-ig, .ig-link').forEach(function(ig){ ig.setAttribute('href', code==='pl' ? '/przepis-z-instagrama' : '/en/save-instagram-recipe'); });
+    // Subpages exist in every language (fiteo/web/generators/common.py PATHS): point each link at the visitor's one,
+    // and show the substitute step in their language too.
+    var PAGES={"/przepis-z-instagrama": {"pl": "/przepis-z-instagrama", "en": "/en/save-instagram-recipe", "de": "/de/rezept-von-instagram-speichern", "fr": "/fr/enregistrer-recette-instagram", "it": "/it/salvare-ricetta-instagram", "es": "/es/guardar-receta-instagram", "pt": "/pt/guardar-receita-instagram"}, "/zamienniki": {"pl": "/zamienniki", "en": "/en/substitutes", "de": "/de/ersatz", "fr": "/fr/substituts", "it": "/it/sostituti", "es": "/es/sustitutos", "pt": "/pt/substitutos"}, "/kalkulator-kalorii": {"pl": "/kalkulator-kalorii", "en": "/en/calorie-calculator", "de": "/de/kalorienrechner", "fr": "/fr/calculateur-calories", "it": "/it/calcolatore-calorie", "es": "/es/calculadora-calorias", "pt": "/pt/calculadora-calorias"}, "/dokladnosc": {"pl": "/dokladnosc", "en": "/en/accuracy", "de": "/de/genauigkeit", "fr": "/fr/precision", "it": "/it/precisione", "es": "/es/precision", "pt": "/pt/precisao"}};
+    document.querySelectorAll('a[href]').forEach(function(a){ var k=a.getAttribute('data-page')||a.getAttribute('href'); var m=PAGES[k]; if(m){ a.setAttribute('data-page',k); a.setAttribute('href', m[code]||m.en); } });
+    var SUB_ALT={"pl": "Fiteo proponuje zamienniki twarogu: skyr naturalny i serek wiejski light", "en": "Fiteo suggests substitutes for cottage cheese, each with an amount and a tip", "de": "Fiteo schlägt Ersatz für Magerquark vor, jeweils mit Menge und Tipp", "fr": "Fiteo propose des substituts au fromage blanc, avec quantité et conseil", "it": "Fiteo propone sostituti della ricotta, ciascuno con quantità e consiglio", "es": "Fiteo propone sustitutos del requesón, cada uno con cantidad y consejo", "pt": "O Fiteo sugere substitutos do requeijão, cada um com quantidade e dica"};
+    document.querySelectorAll('img[data-sub-step]').forEach(function(im){ im.src = code==='pl' ? 'zamiennik-krok-3.jpg' : 'img/substitute-'+(SUB_ALT[code]?code:'en')+'-3.jpg'; im.alt = SUB_ALT[code]||SUB_ALT.en; });
     document.querySelectorAll('.playpause').forEach(function(b){ b.setAttribute('aria-label', b.classList.contains('paused') ? d.play_l : d.pause_l); });
     document.querySelectorAll('.showcase .dot').forEach(function(dt, j){ var sc = document.querySelectorAll('.scene')[j]; var e = sc && sc.querySelector('.eyebrow'); if (e) dt.setAttribute('aria-label', e.textContent); });
     document.querySelectorAll('[data-i18n-ph]').forEach(function(el){ var k=el.getAttribute('data-i18n-ph'); if(d[k]!=null) el.setAttribute('placeholder',d[k]); });
