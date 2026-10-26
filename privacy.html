@@ -23,14 +23,16 @@
 </head>
 <body>
   <h1>Fiteo — Privacy Policy</h1>
-  <p class="meta">Last updated: 19 October 2026</p>
+  <p class="meta">Last updated: 26 October 2026</p>
 
   <p>
     Fiteo is a calorie and macronutrient tracker for iPhone and Android. It has no account, no sign-in, and no
     cloud sync of your personal data. Almost everything stays on your device. A few things leave it
     only when you choose to: the meal text or voice note you submit for an estimate (only to compute
     it), a pseudonymous, non-reversible device identifier used only to count your free estimates
-    before you subscribe, and — if you share a recipe by link — that recipe's content. This policy
+    before you subscribe, and — if you share a recipe by link — that recipe's content. Anonymous usage
+    events (which screen or feature was used, never their content) are also sent unless you turn
+    analytics off in the app's settings. This policy
     explains exactly what is sent, to whom, and what we never collect.
   </p>
 
@@ -166,6 +168,15 @@
     app contains no advertising SDKs and no cross-app tracking.
   </p>
   <p>
+    <strong>Our own counts.</strong> The app also sends the same event names to our processing service,
+    which keeps aggregate counts in Cloudflare Workers Analytics Engine. Each count records only the
+    event name, the platform (iOS or Android), the app version and build number, and whether it came from
+    a test build. No device, installation or user identifier and nothing you type is stored with it. Your
+    IP address is used only for a moment to limit how often counts can be sent; it is not stored with the
+    counts (like any web service, our hosting provider Cloudflare may keep it briefly in its operational
+    request logs). The same analytics setting in the app turns this off as well.
+  </p>
+  <p>
     <strong>On this website.</strong> fiteoapp.io uses
     <a href="https://policies.google.com/privacy">Google Analytics 4</a>, loaded through Google Tag
     Manager, to measure how the site is used — which pages are opened, which sections are read, and
@@ -253,7 +264,8 @@
         waitlist above is the only place we store an email, and only with your consent.)</li>
     <li>No storage of your meals, weight, or health data on our servers — meal text only passes
         through our service to compute an estimate and is not retained. (We keep only an anonymous
-        per-device count of free estimates used; see "Free usage limit". A recipe you explicitly
+        per-device count of free estimates used; see "Free usage limit"; and aggregate usage counts with
+        no identifier; see "Analytics → Our own counts". A recipe you explicitly
         share by link is stored briefly so the recipient can open it; see "Recipe sharing".)</li>
     <li>No selling of your data, and no sharing of it with advertisers or data brokers.</li>
     <li>In the app: no location tracking, no advertising identifiers, no cross-app tracking. (This
@@ -283,6 +295,8 @@
   </p>
   <p>
     <strong>Revision history.</strong><br />
+    26 October 2026 — "Analytics → Our own counts": the app's anonymous event names are also counted by
+    our own service. No new kind of personal data and no identifier, so no in-app notice.<br />
     19 October 2026 — added "Shared recipe links" (anonymous counting of link opens and "Get the app"
     taps), "Partner coupons" and "Suggest a substitute"; "Free usage limit" now covers the free recipe
     import and substitution and the per-address daily counter; recipe import is free once, then Pro.<br />
