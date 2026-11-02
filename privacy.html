@@ -23,7 +23,7 @@
 </head>
 <body>
   <h1>Fiteo — Privacy Policy</h1>
-  <p class="meta">Last updated: 26 October 2026</p>
+  <p class="meta">Last updated: 27 October 2026</p>
 
   <p>
     Fiteo is a calorie and macronutrient tracker for iPhone and Android. It has no account, no sign-in, and no
@@ -161,11 +161,16 @@
   <p>
     <strong>In the app.</strong> Fiteo uses <a href="https://telemetrydeck.com/privacy/">TelemetryDeck</a>
     for privacy-preserving, aggregate usage analytics. What is sent is an event name (for example, that
-    a screen was opened) plus TelemetryDeck's standard technical envelope: device model, operating
+    a screen was opened, a setup step was completed, or how you answered the notification prompt) plus TelemetryDeck's standard technical envelope: device model, operating
     system and app version, locale, and a salted, hashed installation identifier. It does not collect
     your meals, weights, health data, name, or email. You can turn analytics off completely in the
     app's settings; the opt-out is honored immediately and stops all network activity from the SDK. The
     app contains no advertising SDKs and no cross-app tracking.
+  </p>
+  <p>
+    <strong>Install source (Android).</strong> On the first launch after installing, the Android app reads
+    the Google Play install referrer on your device and sends only which of three kinds of source it was
+    (a Fiteo import link, another Fiteo link, or anything else) as one event name. The referrer text itself is never sent or stored.
   </p>
   <p>
     <strong>Our own counts.</strong> The app also sends the same event names to our processing service,
@@ -295,6 +300,9 @@
   </p>
   <p>
     <strong>Revision history.</strong><br />
+    27 October 2026 — "Analytics": setup steps and the notification-prompt answer are named as examples of
+    events, and a new "Install source (Android)" paragraph (the Google Play install referrer, read on the
+    device, reduced to one of three event names).<br />
     26 October 2026 — "Analytics → Our own counts": the app's anonymous event names are also counted by
     our own service. No new kind of personal data and no identifier. "Voice notes": the microphone sentence now covers
     tap-to-start as well as press-and-hold.<br />
