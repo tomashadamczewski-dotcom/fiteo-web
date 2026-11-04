@@ -26,11 +26,11 @@
 ## Pages in other languages
 
 - Polish: [strona główna](https://fiteoapp.io/), [przepis z Instagrama](https://fiteoapp.io/przepis-z-instagrama), [zamienniki](https://fiteoapp.io/zamienniki), [kalkulator kalorii](https://fiteoapp.io/kalkulator-kalorii), [dokładność](https://fiteoapp.io/dokladnosc)
-- German: [Rezept von Instagram](https://fiteoapp.io/de/rezept-von-instagram-speichern), [Genauigkeit](https://fiteoapp.io/de/genauigkeit)
-- French: [Recette Instagram](https://fiteoapp.io/fr/enregistrer-recette-instagram), [Précision](https://fiteoapp.io/fr/precision)
-- Italian: [Ricetta Instagram](https://fiteoapp.io/it/salvare-ricetta-instagram), [Precisione](https://fiteoapp.io/it/precisione)
-- Spanish: [Receta de Instagram](https://fiteoapp.io/es/guardar-receta-instagram), [Precisión](https://fiteoapp.io/es/precision)
-- Portuguese: [Receita do Instagram](https://fiteoapp.io/pt/guardar-receita-instagram), [Precisão](https://fiteoapp.io/pt/precisao)
+- German: [Startseite](https://fiteoapp.io/de/), [Rezept von Instagram](https://fiteoapp.io/de/rezept-von-instagram-speichern), [Genauigkeit](https://fiteoapp.io/de/genauigkeit)
+- French: [Accueil](https://fiteoapp.io/fr/), [Recette Instagram](https://fiteoapp.io/fr/enregistrer-recette-instagram), [Précision](https://fiteoapp.io/fr/precision)
+- Italian: [Home](https://fiteoapp.io/it/), [Ricetta Instagram](https://fiteoapp.io/it/salvare-ricetta-instagram), [Precisione](https://fiteoapp.io/it/precisione)
+- Spanish: [Inicio](https://fiteoapp.io/es/), [Receta de Instagram](https://fiteoapp.io/es/guardar-receta-instagram), [Precisión](https://fiteoapp.io/es/precision)
+- Portuguese: [Início](https://fiteoapp.io/pt/), [Receita do Instagram](https://fiteoapp.io/pt/guardar-receita-instagram), [Precisão](https://fiteoapp.io/pt/precisao)
 
 ## Download
 
