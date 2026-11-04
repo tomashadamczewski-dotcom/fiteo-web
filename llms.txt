@@ -1,0 +1,43 @@
+# Fiteo
+
+> Fiteo is a mindful-eating app for iPhone and Android. Save a recipe, your own or one from an Instagram reel, adjust it with a substitute that fits your goal, and see how the meal fits into your day. Calories and macros are estimates: the more detail you give (amounts, brands), the closer the result.
+
+- Platforms: iPhone (App Store) and Android (Google Play)
+- Languages: English, Polish, German, French, Italian, Spanish, Portuguese
+- Pricing: free to try; Fiteo Pro is a subscription (monthly or yearly) with a free trial
+- Fiteo is not a medical device and does not replace advice from a doctor or dietitian.
+
+## Main features
+
+- Save recipe reels: share an Instagram reel to Fiteo and get the recipe with ingredients, steps, servings, and calories & macros per serving.
+- Substitutes: swap one ingredient (for example cottage cheese, sugar, butter, sour cream) and see the new estimate for the whole recipe.
+- Log meals by describing them in your own words, by voice or with a photo.
+- Day balance: food vs. activity from Apple Health or Health Connect, against your goal.
+- Share a recipe as a link; the recipient opens it in the browser or in their own Fiteo.
+
+## Pages (English)
+
+- [Home](https://fiteoapp.io/): what Fiteo does, download links
+- [Save a recipe from Instagram](https://fiteoapp.io/en/save-instagram-recipe): turn a recipe reel into a saved recipe with calories per serving
+- [Ingredient substitutes](https://fiteoapp.io/en/substitutes): swaps for [cottage cheese](https://fiteoapp.io/en/substitutes/cottage-cheese), [sugar](https://fiteoapp.io/en/substitutes/sugar), [butter](https://fiteoapp.io/en/substitutes/butter) and [sour cream](https://fiteoapp.io/en/substitutes/sour-cream)
+- [Calorie calculator](https://fiteoapp.io/en/calorie-calculator): daily calorie needs from age, height, weight and activity
+- [How accurate is Fiteo?](https://fiteoapp.io/en/accuracy): published test on 100 dishes, misses included
+
+## Pages in other languages
+
+- Polish: [przepis z Instagrama](https://fiteoapp.io/przepis-z-instagrama), [zamienniki](https://fiteoapp.io/zamienniki), [kalkulator kalorii](https://fiteoapp.io/kalkulator-kalorii), [dokładność](https://fiteoapp.io/dokladnosc)
+- German: [Rezept von Instagram](https://fiteoapp.io/de/rezept-von-instagram-speichern), [Genauigkeit](https://fiteoapp.io/de/genauigkeit)
+- French: [Recette Instagram](https://fiteoapp.io/fr/enregistrer-recette-instagram), [Précision](https://fiteoapp.io/fr/precision)
+- Italian: [Ricetta Instagram](https://fiteoapp.io/it/salvare-ricetta-instagram), [Precisione](https://fiteoapp.io/it/precisione)
+- Spanish: [Receta de Instagram](https://fiteoapp.io/es/guardar-receta-instagram), [Precisión](https://fiteoapp.io/es/precision)
+- Portuguese: [Receita do Instagram](https://fiteoapp.io/pt/guardar-receita-instagram), [Precisão](https://fiteoapp.io/pt/precisao)
+
+## Download
+
+- [App Store](https://apps.apple.com/app/id6783411148)
+- [Google Play](https://play.google.com/store/apps/details?id=io.fiteoapp)
+
+## Optional
+
+- [Privacy policy](https://fiteoapp.io/privacy)
+- [Support](https://fiteoapp.io/support)
