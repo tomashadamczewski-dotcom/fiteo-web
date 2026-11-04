@@ -17,7 +17,7 @@
 
 ## Pages (English)
 
-- [Home](https://fiteoapp.io/): what Fiteo does, download links
+- [Home](https://fiteoapp.io/en/): what Fiteo does, download links
 - [Save a recipe from Instagram](https://fiteoapp.io/en/save-instagram-recipe): turn a recipe reel into a saved recipe with calories per serving
 - [Ingredient substitutes](https://fiteoapp.io/en/substitutes): swaps for [cottage cheese](https://fiteoapp.io/en/substitutes/cottage-cheese), [sugar](https://fiteoapp.io/en/substitutes/sugar), [butter](https://fiteoapp.io/en/substitutes/butter) and [sour cream](https://fiteoapp.io/en/substitutes/sour-cream)
 - [Calorie calculator](https://fiteoapp.io/en/calorie-calculator): daily calorie needs from age, height, weight and activity
@@ -25,7 +25,7 @@
 
 ## Pages in other languages
 
-- Polish: [przepis z Instagrama](https://fiteoapp.io/przepis-z-instagrama), [zamienniki](https://fiteoapp.io/zamienniki), [kalkulator kalorii](https://fiteoapp.io/kalkulator-kalorii), [dokładność](https://fiteoapp.io/dokladnosc)
+- Polish: [strona główna](https://fiteoapp.io/), [przepis z Instagrama](https://fiteoapp.io/przepis-z-instagrama), [zamienniki](https://fiteoapp.io/zamienniki), [kalkulator kalorii](https://fiteoapp.io/kalkulator-kalorii), [dokładność](https://fiteoapp.io/dokladnosc)
 - German: [Rezept von Instagram](https://fiteoapp.io/de/rezept-von-instagram-speichern), [Genauigkeit](https://fiteoapp.io/de/genauigkeit)
 - French: [Recette Instagram](https://fiteoapp.io/fr/enregistrer-recette-instagram), [Précision](https://fiteoapp.io/fr/precision)
 - Italian: [Ricetta Instagram](https://fiteoapp.io/it/salvare-ricetta-instagram), [Precisione](https://fiteoapp.io/it/precisione)
