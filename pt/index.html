@@ -396,6 +396,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var fixed = document.documentElement.getAttribute('data-page-lang');
     var HOME = {"pl": "/", "en": "/en/", "de": "/de/", "fr": "/fr/", "it": "/it/", "es": "/es/", "pt": "/pt/"};
     var init = fixed || ((saved && SUPPORTED.indexOf(saved)>=0) ? saved : (SUPPORTED.indexOf(nav)>=0 ? nav : 'en'));
+    // The root page is the Polish one: send other visitors to their language's page (keeping ?src=… and #…).
+    // HEURISTIC: crawlers (by User-Agent) stay, so the Polish page keeps being indexed under /.
+    if (!fixed && init !== 'pl' && HOME[init] && !/bot|crawl|spider|slurp|lighthouse|preview/i.test(navigator.userAgent || '')){
+      location.replace(HOME[init] + location.search + location.hash); return;
+    }
     applyLang(init);
     function pick(code){
       if (fixed && code !== fixed && HOME[code]){ try{ localStorage.setItem('fiteo_lang',code); }catch(e){} location.href = HOME[code]; return; }
